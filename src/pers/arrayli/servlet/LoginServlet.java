@@ -2,6 +2,7 @@ package pers.arrayli.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -31,7 +32,7 @@ import pers.arrayli.utils.SysInfoUtils;
 /**
  * @author lzj13 ÓÃ»§µÇÂ¼Àà
  */
-public class LoginServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet  {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -55,6 +56,8 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("---------------------2-----------------");
 		sysinfo.setOs(SysInfoUtils.os);
 		System.out.println("---------------------3-----------------");
+		String hoString = SysInfoUtils.getHost();
+		System.out.println("host: "+hoString);
 		sysinfo.setHost(SysInfoUtils.getHost());
 		System.out.println("---------------------4-----------------");
 		sysinfo.setIp(SysInfoUtils.getIP());
