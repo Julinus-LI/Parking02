@@ -17,14 +17,14 @@ import pers.arrayli.db.JDBCUtils;
 public class UserInfoDaoImpl implements UserInfoDao{
 
 	@Override
-	public boolean login(String username, String password) throws SQLException {
+	public int login(String username, String password) throws SQLException {
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql = "select* from t_userinfo  where username = ? and pwd = ?";
 		UserInfo userinfo = queryRunner.query(sql,new BeanHandler<UserInfo>(UserInfo.class),username,password);
 		if(userinfo != null){
-			return true;
+			return userinfo.getId();
 		}else{
-			return false;
+			return 0;
 		}
 	}
 

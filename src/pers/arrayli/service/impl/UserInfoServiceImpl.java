@@ -13,7 +13,7 @@ import pers.arrayli.service.UserInfoService;
 public class UserInfoServiceImpl implements UserInfoService{
 	// 验证普通用户登录
 	@Override
-	public boolean login(String username, String password) throws SQLException {
+	public int login(String username, String password) throws SQLException {
 		UserInfoDao userInfoDao = new UserInfoDaoImpl();
 		return userInfoDao.login(username, password); 
 	}

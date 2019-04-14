@@ -2,7 +2,7 @@ package pers.arrayli.domain;
 
 public class SysInfo {
 	private String os;    // 操作系统
-	private String RunEnvironment;  //	运行环境
+	private String runEn;  //	运行环境
 	private String version;	//	系统版本
 	private String dateTime;  // 时间和日期
 	private String ip;		// 服务器IP
@@ -13,11 +13,11 @@ public class SysInfo {
 	public void setOs(String os) {
 		this.os = os;
 	}
-	public String getRunEnvironment() {
-		return RunEnvironment;
+	public String getRunEn() {
+		return runEn;
 	}
-	public void setRunEnvironment(String runEnvironment) {
-		RunEnvironment = runEnvironment;
+	public void setRunEn(String runEn) {
+		this.runEn = runEn;
 	}
 	public String getVersion() {
 		return version;
@@ -45,8 +45,8 @@ public class SysInfo {
 	}
 	@Override
 	public String toString() {
-		return "SysInfo [os=" + os + ", RunEnvironment=" + RunEnvironment + ", version=" + version + ", dateTime="
-				+ dateTime + ", ip=" + ip + ", host=" + host + "]";
+		return "SysInfo [os=" + os + ", runEn=" + runEn + ", version=" + version + ", dateTime=" + dateTime + ", ip="
+				+ ip + ", host=" + host + "]";
 	}
 	
 }

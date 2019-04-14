@@ -1,7 +1,6 @@
 <%@include file="/common/sub_header.jsp"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 
-
 <!doctype html>
 <html>
 	<head>
@@ -41,7 +40,7 @@
 								<label class="res-lab">
 									运行环境
 								</label>
-								<span class="res-info">${sysinfo.RunEnvironment }</span>
+								<span class="res-info">${sysinfo.runEn }</span>
 							</li>
 
 							<li>

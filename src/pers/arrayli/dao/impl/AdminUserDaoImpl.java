@@ -16,7 +16,7 @@ public class AdminUserDaoImpl  implements AdminUserDao{
 	public boolean login(String username,String password) throws SQLException {
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql = "select* from t_admin where userName = ? and userPassword = ?";
-		AdminUser admin = queryRunner.query(sql,new BeanHandler<AdminUser>(AdminUser.class),username);
+		AdminUser admin = queryRunner.query(sql,new BeanHandler<AdminUser>(AdminUser.class),username,password);
 		if(admin != null){
 			return true;
 		}else{
