@@ -1,3 +1,6 @@
+<%@page import="pers.arrayli.domain.UserInfo"%>
+<%@page import="pers.arrayli.service.impl.UserInfoServiceImpl"%>
+<%@page import="pers.arrayli.service.UserInfoService"%>
 <%@include file="/common/sub_header.jsp"%>	
 <%@ page contentType="text/html;charset=UTF-8" import="java.util.*,java.sql.*,pers.arrayli.db.*" pageEncoding="UTF-8"%>	
 	
@@ -27,15 +30,13 @@
 							name="myform" >	
 							<table class="insert-tab" width="100%">	
 								<tbody>	
-				<%-- 		 <%	
-				DBManager dbm = new DBManager();	
-				Connection conn = dbm.getConnection();	
-				String id =(String)session.getAttribute("uid");	
-				String sql = "select * from userinfo where id='" + id + "'";	
-				PreparedStatement stat = conn.prepareStatement(sql);	
-				ResultSet rs = stat.executeQuery();	
-				rs.next();	
-			%>	 --%>
+						 <%	
+					
+							String uid = request.getSession().getAttribute("uid").toString();
+							int id = Integer.parseInt(uid);
+							UserInfoService service = new UserInfoServiceImpl();
+							UserInfo user = service.QueryById(id);
+						%>	
 			 <input name="id" type="hidden" id="name" value='<%=id%>'>	
 			 <input name="type" type="hidden" id="type" value='type'>	
 									<tr>
@@ -43,7 +44,7 @@
 		<i class="require-red"></i>登录名：
 	</th>
 	<td>
-		<input class="common-text required"  value="<%=rs.getString("name")%>" id="name" name="name"
+		<input class="common-text required"  value="<%=user.getUsername()%>" id="name" name="username"
 			size="50" value="" type="text">
 	</td>
 </tr>
@@ -53,7 +54,7 @@
 		<i class="require-red"></i>密码：
 	</th>
 	<td>
-		<input class="common-text required"  value="<%=rs.getString("pwd")%>" id="pwd" name="pwd"
+		<input class="common-text required"  value="<%=user.getPwd()%>" id="pwd" name="password"
 			size="50" value="" type="text">
 	</td>
 </tr>
@@ -63,7 +64,7 @@
 		<i class="require-red"></i>年龄：
 	</th>
 	<td>
-		<input class="common-text required"  value="<%=rs.getString("age")%>" id="age" name="age"
+		<input class="common-text required"  value="<%=user.getAge()%>" id="age" name="age"
 			size="50" value="" type="text">
 	</td>
 </tr>
@@ -73,19 +74,19 @@
 		<i class="require-red"></i>电话：
 	</th>
 	<td>
-		<input class="common-text required"  value="<%=rs.getString("tel")%>" id="tel" name="tel"
+		<input class="common-text required"  value="<%=user.getTel()%>" id="tel" name="tel"
 			size="50" value="" type="text">
 	</td>
 </tr>
 										
-									 <%	
+	<%-- 								 <%	
 				if (rs != null)	
 					rs.close();	
 				if (stat != null)	
 					stat.close();	
 				if (conn != null)	
 					conn.close();	
-			%>		
+			%>		 --%>
 									<tr>	
 										<th></th>	
 										<td>	
@@ -117,7 +118,7 @@ function save() {
 		$.messager.alert('警告', '密码不能为空！', 'warning');	
 		return;	
 	}	
-	document.forms[0].action = "<%=path%>/ModUserinfoAction";	
+	document.forms[0].action = "<%=path%>/ModUserInfoServlet";	
 	document.forms[0].submit();	
 	
 }	

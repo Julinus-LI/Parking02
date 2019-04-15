@@ -16,5 +16,21 @@ public interface UserInfoDao {
 	 * @throws SQLException
 	 */
 	int login(String username,String password) throws SQLException;
+	
+	/**  按用户信息进行查询，把用户信息显示出来
+	 * @param id
+	 * @return  返回用户信息bean
+	 * @throws SQLException
+	 */
+	UserInfo QueryById (int id) throws SQLException;
+
+	/** 根据用户的id来更新用户信息
+	 * @param id  用户id
+	 * @param user  用户信息bean
+	 * @return  返回更新成功与否
+	 * @throws SQLException
+	 */
+	boolean update(int id,UserInfo user) throws SQLException;
+	
 }
  

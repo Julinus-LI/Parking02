@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import pers.arrayli.dao.UserInfoDao;
 import pers.arrayli.dao.impl.UserInfoDaoImpl;
+import pers.arrayli.domain.UserInfo;
 import pers.arrayli.service.UserInfoService;
 
 /**
@@ -16,6 +17,18 @@ public class UserInfoServiceImpl implements UserInfoService{
 	public int login(String username, String password) throws SQLException {
 		UserInfoDao userInfoDao = new UserInfoDaoImpl();
 		return userInfoDao.login(username, password); 
+	}
+
+	@Override
+	public UserInfo QueryById(int id) throws SQLException {
+		UserInfoDao userInfoDao = new UserInfoDaoImpl();
+		return userInfoDao.QueryById(id);
+	}
+
+	@Override
+	public boolean update(int id, UserInfo user) throws SQLException {
+		UserInfoDao userInfoDao = new UserInfoDaoImpl();
+		return userInfoDao.update(id, user);
 	}
 
 }

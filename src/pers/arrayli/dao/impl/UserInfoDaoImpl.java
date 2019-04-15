@@ -28,5 +28,22 @@ public class UserInfoDaoImpl implements UserInfoDao{
 		}
 	}
 
+	@Override
+	public UserInfo QueryById(int id) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "select* from t_userinfo where id = ?";
+		UserInfo userinfo = queryRunner.query(sql,new BeanHandler<UserInfo>(UserInfo.class),id);
+		return userinfo;
+	}
+
+	@Override
+	public boolean update(int id, UserInfo user) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "update t_userinfo set username = ?,pwd = ?,age = ?,tel = ? where id = ?";
+		int res = queryRunner.update(sql,user.getUsername(),user.getPwd(),user.getAge(),user.getTel(),id);
+		System.out.println("更新用户 uid = "+id+" 的信息，返回值为 res= "+res);
+		return res>0;
+	}
+
 }
  

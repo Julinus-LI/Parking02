@@ -81,6 +81,9 @@ public class LoginServlet extends HttpServlet  {
 				if(uid >0 ){
 					// 设置用户id
 					request.getSession().setAttribute("uid", uid);
+					request.getSession().setAttribute("username",username);
+					request.getSession().setAttribute("type", type);
+					
 					// 这里使用请求转发，可以共用request和response，在同一个servlet内执行
 					request.getRequestDispatcher("index.jsp").forward(request, response);
 					//response.sendRedirect("index.jsp");
@@ -99,6 +102,9 @@ public class LoginServlet extends HttpServlet  {
 			// 3. 在数据库中查找查找用户,验证管理员用户是否存在
 			try {
 			
+				request.getSession().setAttribute("username",username);
+				request.getSession().setAttribute("type", type);
+				
 				// 3. 在数据库中查找查找用户
 				AdminUserService service = new AdminUserServiceImpl();
 				// 调用业务层方法来验证登录

@@ -28,4 +28,14 @@
     <filter-name>CharsetFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModUserInfoServlet</display-name>
+    <servlet-name>ModUserInfoServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.ModUserInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModUserInfoServlet</servlet-name>
+    <url-pattern>/ModUserInfoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
