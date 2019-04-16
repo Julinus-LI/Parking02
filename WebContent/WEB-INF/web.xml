@@ -38,4 +38,34 @@
     <servlet-name>ModUserInfoServlet</servlet-name>
     <url-pattern>/ModUserInfoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddCheServlet</display-name>
+    <servlet-name>AddCheServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.AddCheServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCheServlet</servlet-name>
+    <url-pattern>/AddCheServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModCheServlet</display-name>
+    <servlet-name>ModCheServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.ModCheServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModCheServlet</servlet-name>
+    <url-pattern>/ModCheServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DelCheServlet</display-name>
+    <servlet-name>DelCheServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.DelCheServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DelCheServlet</servlet-name>
+    <url-pattern>/DelCheServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

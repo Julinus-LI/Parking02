@@ -76,7 +76,7 @@ public class LoginServlet extends HttpServlet  {
 				UserInfoService service = new UserInfoServiceImpl();
 				// 调用业务层方法来验证登录
 				int uid = service.login(username,password);
-				
+				System.out.println(username+":  uid = "+uid);
 				// 如果登录成功的话，重定向到后台的首页
 				if(uid >0 ){
 					// 设置用户id
