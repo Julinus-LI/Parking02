@@ -91,9 +91,9 @@ function up() {
 	</th>
 	<td>
 			<input type="text" name="fujian" id="fujian" size="30"
-												readonly="readonly" value="<%=che.getPicutrePath()%>"/>
+												readonly="readonly" value="<%=che.getPicture()%>"/>
 											<input type="button" value="上传" onclick="up()" />
-											<input type="hidden" name="fujian" id="fujian" value="<%=che.getPicutrePath()%>"/>
+											<input type="hidden" name="fujian" id="fujian" value="<%=che.getPicture()%>"/>
 	</td>
 </tr>
 

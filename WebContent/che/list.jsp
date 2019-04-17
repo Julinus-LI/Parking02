@@ -76,7 +76,10 @@
 							<%
 								// 从session中获取用户id 
 								int uid = Integer.parseInt(request.getSession().getAttribute("uid").toString());
-								
+								/* String queryName = request.getParameter("queryName");
+								if(queryName != null){
+							
+								} */
 								CheService service = new CheServiceImpl();
 								Che che = service.findByUid(uid);
 								if(che != null){
@@ -100,7 +103,7 @@
 								</td>
 
 								<td title="">
-									<img src="<%=path%>/<%=che.getPicutrePath()%>" height="100px" width="200px"/>
+									<img src="<%=path%>/<%=che.getPicture()%>" height="100px" width="200px"/>
 								</td>
 
 								<td title="">
@@ -113,7 +116,6 @@
 									<a class="link-del" href="<%=path%>/DelCheServlet?id=<%=che.getId()%>">删除</a>
 								</td>
 							</tr>
-							
 							<%
 								}
 							%>

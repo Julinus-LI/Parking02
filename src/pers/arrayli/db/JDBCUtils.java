@@ -42,7 +42,7 @@ public class JDBCUtils {
 	 * @param st   执行不带参数的sql语句
 	 * @param rs   数据结果集合
 	 */
-	public void release(Connection con,Statement st,ResultSet rs){
+	public static void release(Connection con,Statement st,ResultSet rs){
 		closeCon(con);
 		closeSt(st);
 		closeRs(rs);
@@ -53,7 +53,7 @@ public class JDBCUtils {
 	 * @param st   执行不带参数的sql语句
 	 * @param rs   数据结果集合
 	 */
-	public void release(Connection con,Statement st){
+	public static void release(Connection con,Statement st){
 		closeCon(con);
 		closeSt(st);
 	}
@@ -62,7 +62,7 @@ public class JDBCUtils {
 	 * @param con  数据库连接对象
 	 * @throws SQLException 
 	 */
-	public void closeCon(Connection con) {
+	public static void closeCon(Connection con) {
 		try {
 			if(con != null){
 				con.close();
@@ -78,7 +78,7 @@ public class JDBCUtils {
 	/** 关闭数据库操作语句对象
 	 * @param st  数据库语句执行对象
 	 */
-	public void closeSt(Statement st){
+	public static void closeSt(Statement st){
 		try {
 			if(st != null){
 				st.close();
@@ -93,7 +93,7 @@ public class JDBCUtils {
 	/** 关闭数据库查询结果街
 	 * @param st  查询结果集
 	 */
-	public void closeRs(ResultSet rSet){
+	public static void closeRs(ResultSet rSet){
 		try {
 			if(rSet != null){
 				rSet.close();

@@ -19,17 +19,20 @@ public class CheDaoImpl implements CheDao {
 	public boolean AddChe(Che che) throws SQLException {
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql = "insert into t_che values(null,?,?,?,?,?)";
-		int result = queryRunner.update(sql,che.getHao(),che.getLeixing(),che.getPicutrePath(),che.getInfo(),che.getUid());
+		int result = queryRunner.update(sql,che.getHao(),che.getLeixing(),che.getPicture(),che.getInfo(),che.getUid());
 		System.out.println("AddCheDao res = "+result);
 		return result>0;
 	}
 
 	@Override
 	public Che findByUid(int uid) throws SQLException {
+		System.out.println("------------------------findByUid-------------------");
 		System.out.println("CheDao uid = "+uid);
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql = "select* from t_che where uid = ?";
 		Che che = queryRunner.query(sql,new BeanHandler<Che>(Che.class),uid);
+		System.out.println("CheDao che: "+che);
+		System.out.println("------------------------findByUid-------------------");
 		return che;
 	}
 
@@ -45,7 +48,7 @@ public class CheDaoImpl implements CheDao {
 	public boolean updateCheById(int id, Che che) throws SQLException {		
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql = "update t_che set hao = ?,leixing=?,picture=?,info=?";
-		int result = queryRunner.update(sql,che.getHao(),che.getLeixing(),che.getPicutrePath(),che.getInfo());
+		int result = queryRunner.update(sql,che.getHao(),che.getLeixing(),che.getPicture(),che.getInfo());
 		return result > 0;
 	}
 

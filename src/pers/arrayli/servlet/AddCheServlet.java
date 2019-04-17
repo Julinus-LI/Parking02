@@ -37,7 +37,7 @@ public class AddCheServlet extends HttpServlet {
 			che.setHao(hao);
 			che.setLeixing(leixing);
 			che.setInfo(info);
-			che.setPicutrePath(picture);
+			che.setPicture(picture);
 			che.setUid(uid);
 			
 			System.out.println(che.toString());
@@ -50,7 +50,7 @@ public class AddCheServlet extends HttpServlet {
 			// 如果添加成功
 			if(result){
 				// 如果添加成功，重定向到  车的list.jsp
-				response.sendRedirect("list.jsp");
+				response.sendRedirect("che/list.jsp");
 			}else{
 				// 如果登录失败的话
 				// 获取输出流对象

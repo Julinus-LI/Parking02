@@ -1,12 +1,12 @@
 package pers.arrayli.domain; 
 
 public class Che {
-	private int id;
-	private String hao;
-	private String leixing;
-	private String picutrePath;
-	private String info;
-	private int uid;
+	private int id;				// 车辆信息id
+	private String hao;			// 车牌号
+	private String leixing;		// 车类型
+	private String picture;		// 图片
+	private String info;		// 备注
+	private int uid;			// 用户id
 	public int getId() {
 		return id;
 	}
@@ -25,11 +25,11 @@ public class Che {
 	public void setLeixing(String leixing) {
 		this.leixing = leixing;
 	}
-	public String getPicutrePath() {
-		return picutrePath;
+	public String getPicture() {
+		return picture;
 	}
-	public void setPicutrePath(String picutrePath) {
-		this.picutrePath = picutrePath;
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 	public String getInfo() {
 		return info;
@@ -45,8 +45,10 @@ public class Che {
 	}
 	@Override
 	public String toString() {
-		return "Che [id=" + id + ", hao=" + hao + ", leixing=" + leixing + ", picutrePath=" + picutrePath + ", info="
-				+ info + ", uid=" + uid + "]";
+		return "Che [id=" + id + ", hao=" + hao + ", leixing=" + leixing + ", picture=" + picture + ", info=" + info
+				+ ", uid=" + uid + "]";
 	}
+	
+	
 }
  

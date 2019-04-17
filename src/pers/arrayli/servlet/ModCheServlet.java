@@ -38,7 +38,7 @@ public class ModCheServlet extends HttpServlet {
 			che.setId(id);
 			che.setHao(hao);
 			che.setLeixing(leixing);
-			che.setPicutrePath(picture);
+			che.setPicture(picture);
 			che.setInfo(info);
 
 			// 3.调用业务层代码进行处理
@@ -47,7 +47,7 @@ public class ModCheServlet extends HttpServlet {
 			// 如果修改成功的话
 			if (result) {
 				// 如果添加成功，重定向到 车的list.jsp
-				response.sendRedirect("list.jsp");
+				response.sendRedirect("che/list.jsp");
 			} else {
 				// 如果修改失败的话
 				out.println("<script>alert('修改车辆信息失败！');window.location.href='che/list.jsp'</script>");

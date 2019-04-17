@@ -23,7 +23,7 @@ public class CheServiceImpl implements CheService {
 	@Override
 	public Che findByUid(int uid) throws SQLException {
 		CheDao dao = new CheDaoImpl();
-		return dao.findById(uid);
+		return dao.findByUid(uid);
 	}
 
 	@Override
