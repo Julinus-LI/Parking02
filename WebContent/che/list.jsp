@@ -87,7 +87,7 @@
 							
 							<tr>
 
-
+								<%-- alert("<%=che.toString() %>"); --%>
 								<td>
 									<%=che.getId()%>
 									<script type="text/javascript">

@@ -1,7 +1,5 @@
-<%@page import="pers.arrayli.service.impl.UserInfoServiceImpl"%>
-<%@page import="pers.arrayli.service.UserInfoService"%>
 <%@include file="/common/sub_header.jsp"%>	
-<%@ page contentType="text/html;charset=UTF-8" import="java.util.*,java.sql.*,pers.arrayli.db.*" pageEncoding="UTF-8"%>	
+<%@ page contentType="text/html;charset=UTF-8" import="java.util.*,java.sql.*,com.cn.db.*" pageEncoding="UTF-8"%>	
 	
 	
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">	
@@ -20,7 +18,7 @@
 	
 				<div class="crumb-wrap">	
 					<div class="crumb-list">	
-						<i class="icon-font"></i><span>卡余额查看</span>	
+						<i class="icon-font"></i><span>修改车位</span>	
 					</div>	
 				</div>	
 				<div class="result-wrap">	
@@ -29,33 +27,46 @@
 							name="myform" >	
 							<table class="insert-tab" width="100%">	
 								<tbody>	
-				<%-- 					 <%	s
+									 <%	
 				DBManager dbm = new DBManager();	
 				Connection conn = dbm.getConnection();	
-				 	
-				String sql = "select * from userinfo where id='" + request.getSession().getAttribute("uid") + "'";	
+				String id = request.getParameter("id");	
+				String sql = "select * from chewei where id='" + id + "'";	
 				PreparedStatement stat = conn.prepareStatement(sql);	
 				ResultSet rs = stat.executeQuery();	
 				rs.next();	
-			%>	 --%>
-			  	<%
-			  		// 获取到用户 id
-			  		int uid = Integer.parseInt(request.getSession().getAttribute("uid").toString());
-			  		UserInfoService service = new UserInfoServiceImpl();
-			  		int money = service.QueryMoneyById(uid);
-			  	%>
+			%>	
+			 <input name="id" type="hidden" id="name" value='<%=id%>'>	
 									<tr>
 	<th>
-		<i class="require-red"></i>卡余额：
+		<i class="require-red"></i>车位号：
 	</th>
 	<td>
-		<input class="common-text required"  value="<%=money%>" id="jine" name="jine"
-			size="50" readonly="readonly" type="text">
+		<input class="common-text required"  value="<%=rs.getString("hao")%>" id="hao" name="hao"
+			size="50" value="*" type="text">
 	</td>
 </tr>
 
- 
-		<%-- 								
+<tr>
+	<th>
+		<i class="require-red"></i>区域：
+	</th>
+	<td>
+		<input class="common-text required"  value="<%=rs.getString("qu")%>" id="qu" name="qu"
+			size="50" value="" type="text">
+	</td>
+</tr>
+
+<tr>
+	<th>
+		<i class="require-red"></i>备注：
+	</th>
+	<td>
+		<input class="common-text required"  value="<%=rs.getString("info")%>" id="info" name="info"
+			size="50" value="" type="text">
+	</td>
+</tr>
+										
 									 <%	
 				if (rs != null)	
 					rs.close();	
@@ -63,11 +74,12 @@
 					stat.close();	
 				if (conn != null)	
 					conn.close();	
-			%>		 --%>
+			%>		
 									<tr>	
 										<th></th>	
 										<td>	
-										
+											<input class="btn btn-primary btn6 mr10" onclick="save();" value="提交"	
+												type="button">	
 											<input class="btn btn6" onclick="history.go(-1)" value="返回"	
 												type="button">	
 										</td>	
@@ -86,15 +98,15 @@
 <script>	
 	
 function save() {	
-	if ($("#name").val() == "") {	
-		$.messager.alert('警告', '姓名不能为空！', 'warning');	
+	if ($("#hao").val() == "") {	
+		$.messager.alert('警告', '车位号不能为空！', 'warning');	
 		return;	
 	}	
 	if ($("#pwd").val() == "") {	
 		$.messager.alert('警告', '密码不能为空！', 'warning');	
 		return;	
 	}	
-	document.forms[0].action = "<%=path%>/ModUserinfoAction";	
+	document.forms[0].action = "<%=path%>/ModCheweiAction";	
 	document.forms[0].submit();	
 	
 }	

@@ -31,5 +31,11 @@ public class UserInfoServiceImpl implements UserInfoService{
 		return userInfoDao.update(id, user);
 	}
 
+	@Override
+	public int QueryMoneyById(int id) throws SQLException {
+		UserInfoDao userInfoDao = new UserInfoDaoImpl();
+		return userInfoDao.QueryMoneyById(id);
+	}
+
 }
  

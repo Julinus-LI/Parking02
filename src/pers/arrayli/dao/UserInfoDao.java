@@ -32,5 +32,13 @@ public interface UserInfoDao {
 	 */
 	boolean update(int id,UserInfo user) throws SQLException;
 	
+	/**	根据用户的 id来 查询用户的余额
+	 * @param id		
+	 * @return  用户余额
+	 * @throws SQLException
+	 */
+	int QueryMoneyById(int id) throws SQLException;
+	
+	
 }
  

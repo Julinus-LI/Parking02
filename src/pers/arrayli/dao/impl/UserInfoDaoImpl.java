@@ -45,5 +45,13 @@ public class UserInfoDaoImpl implements UserInfoDao{
 		return res>0;
 	}
 
+	@Override
+	public int QueryMoneyById(int id) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "select money from t_userinfo where id = ?";
+		UserInfo user = queryRunner.query(sql,new BeanHandler<UserInfo>(UserInfo.class),id);
+		return user.getMoney();
+	}
+
 }
  
