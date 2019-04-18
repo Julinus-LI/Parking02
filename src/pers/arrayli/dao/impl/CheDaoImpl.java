@@ -60,5 +60,13 @@ public class CheDaoImpl implements CheDao {
 		return result > 0;
 	}
 
+	@Override
+	public String getHaoByUid(int uid) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "select hao from t_che where uid = ?";
+		Che che = queryRunner.query(sql,new BeanHandler<Che>(Che.class),uid);
+		return che.getHao();
+	}
+
 }
  

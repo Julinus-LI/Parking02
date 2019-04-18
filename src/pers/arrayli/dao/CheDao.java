@@ -46,5 +46,12 @@ public interface CheDao {
 	 */
 	boolean delCheById(int id) throws SQLException;
 	
+	/**	根据用户 id来查询车牌号
+	 * @param uid	用户id
+	 * @return		返回车牌号
+	 * @throws SQLException
+	 */
+	String getHaoByUid(int uid) throws SQLException;
+	
 }
  

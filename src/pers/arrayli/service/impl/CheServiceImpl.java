@@ -43,5 +43,11 @@ public class CheServiceImpl implements CheService {
 		CheDao dao = new CheDaoImpl();
 		return dao.delCheById(id);
 	}
+
+	@Override
+	public String getHaoByUid(int uid) throws SQLException {
+		CheDao dao = new CheDaoImpl();
+		return dao.getHaoByUid(uid);
+	}
 }
  

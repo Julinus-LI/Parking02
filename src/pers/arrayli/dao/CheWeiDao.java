@@ -18,5 +18,12 @@ public interface CheWeiDao {
 	 * @throws SQLException
 	 */
 	List<CheWei> QueryCheWei(String hao,String quyu) throws SQLException;
+	
+	/**	在车位信息表中查找车牌号为 hao 有没有停车
+	 * @param hao  车牌号
+	 * @return	   返回车牌号为 hao 的车辆有没有停车
+	 * @throws SQLException
+	 */
+	boolean isReverse(String hao) throws SQLException;
+	
 }
- 

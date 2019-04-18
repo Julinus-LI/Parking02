@@ -1,0 +1,78 @@
+package pers.arrayli.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.jasper.tagplugins.jstl.core.Out;
+
+import pers.arrayli.service.CheService;
+import pers.arrayli.service.CheWeiService;
+import pers.arrayli.service.impl.CheFeiServiceImpl;
+import pers.arrayli.service.impl.CheServiceImpl;
+import pers.arrayli.service.impl.CheWeiServiceImpl;
+
+
+/**
+ * @author lzj13
+ *	预定车位servlet
+ */
+public class ReserveServlet extends HttpServlet {
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// 获取输出流对象
+		PrintWriter out = response.getWriter();
+		try {
+			// 获取预定车位 id
+			int id = Integer.parseInt(request.getParameter("id"));
+			
+			// 获取用户 id
+			int uid = Integer.parseInt(request.getSession().getAttribute("uid").toString());
+			
+			//根据用户 uid  来查询车牌号
+			CheService service = new CheServiceImpl();
+			String hao = service.getHaoByUid(uid);
+			
+			// 如果车牌号不为空的话,可以预定车位
+			if(hao != null){
+				// 在车位信息表中查询 车牌号为 hao 车有没有停车
+				CheWeiService cheWeiService = new CheWeiServiceImpl();
+				// 如果已经停车的话
+				if(cheWeiService.isReverse(hao)){
+					out
+.println("<script>alert('你的车已经停在车位上！');window.location.href='chewei/tlist.jsp'</script>");
+				}else{
+					// 如果没有停车的话
+					
+					
+				}
+				
+				
+				
+			}else{ 
+				// 车牌号为空的话，请先添加车辆信息
+				out
+.println("<script>alert('请添加车辆信息！');window.location.href='chewei/tlist.jsp'</script>");
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		out.flush();
+		out.close();
+	}
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

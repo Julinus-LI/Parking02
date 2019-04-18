@@ -4,10 +4,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import pers.arrayli.dao.CheWeiDao;
 import pers.arrayli.db.JDBCUtils;
+import pers.arrayli.domain.Che;
 import pers.arrayli.domain.CheWei;
 
 /**
@@ -34,6 +36,19 @@ public class CheWeiDaoImpl implements CheWeiDao {
 		System.out.println("list: "+list.toString());
 		System.out.println("------------------------CheWeiDaoImpl---------------------");
 		return list;
+	}
+
+	@Override
+	public boolean isReverse(String hao) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql  = "select chepai from t_chewei where hao = ?";
+		CheWei cheWei = queryRunner.query(sql,new BeanHandler<CheWei>(CheWei.class) ,hao);
+		// 如果车牌号为 hao的车，查询的车位号不为空，说明该车以及停车
+		if(cheWei.getHao() != null){
+			return true;
+		}
+		// 为空的话，说明该车还没有停车
+		return false;
 	}
 
 }

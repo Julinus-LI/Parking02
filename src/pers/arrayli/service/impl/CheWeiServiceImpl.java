@@ -20,5 +20,11 @@ public class CheWeiServiceImpl implements CheWeiService {
 		return dao.QueryCheWei(hao,quyu);
 	}
 
+	@Override
+	public boolean isReverse(String hao) throws SQLException {
+		CheWeiDao dao = new CheWeiDaoImpl();
+		return dao.isReverse(hao);
+	}
+
 }
  

@@ -68,4 +68,14 @@
     <servlet-name>DelCheServlet</servlet-name>
     <url-pattern>/DelCheServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReserveServlet</display-name>
+    <servlet-name>ReserveServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.ReserveServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReserveServlet</servlet-name>
+    <url-pattern>/ReserveServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

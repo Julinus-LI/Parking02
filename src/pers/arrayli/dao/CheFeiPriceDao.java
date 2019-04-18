@@ -7,7 +7,7 @@ import java.sql.SQLException;
  *	车费标准接口
  *	主要用来定义一些设置和查询车费标准的接口
  */
-public interface CheFeiDao {
+public interface CheFeiPriceDao {
 	/**	查询车费标准
 	 * @return 查询的车费标准
 	 * @throws SQLException
