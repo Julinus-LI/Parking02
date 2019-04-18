@@ -26,9 +26,10 @@ public class CheWeiDaoImpl implements CheWeiDao {
 			sql = sql + " and hao like '%" + hao + "%'";				
 		}
 		if(quyu != null){
-			sql = sql + " and quyu like '%" + hao + "%'";
+			sql = sql + " and quyu like '%" + quyu + "%'";
 		}
 		
+		System.out.println("sql: "+sql);
 		List<CheWei> list = queryRunner.query(sql,new BeanListHandler<CheWei>(CheWei.class));
 		System.out.println("list: "+list.toString());
 		System.out.println("------------------------CheWeiDaoImpl---------------------");
