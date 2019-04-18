@@ -53,5 +53,13 @@ public class UserInfoDaoImpl implements UserInfoDao{
 		return user.getMoney();
 	}
 
+	@Override
+	public boolean RegisterUser(UserInfo user) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "insert into t_userinfo values(null,?,?,?,?,?)";
+		int result = queryRunner.update(sql,user.getUsername(),user.getPwd(),user.getAge(),user.getTel(),user.getMoney());	
+		return result > 0;
+	}
+
 }
  

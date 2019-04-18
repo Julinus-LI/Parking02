@@ -67,6 +67,5 @@ public class CheDaoImpl implements CheDao {
 		Che che = queryRunner.query(sql,new BeanHandler<Che>(Che.class),uid);
 		return che.getHao();
 	}
-
 }
  

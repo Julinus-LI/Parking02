@@ -26,5 +26,11 @@ public class CheWeiServiceImpl implements CheWeiService {
 		return dao.isReverse(hao);
 	}
 
+	@Override
+	public boolean updateCheWei(String hao, String adate, int id) throws SQLException {
+		CheWeiDao dao = new CheWeiDaoImpl();
+		return dao.updateCheWei(hao, adate, id);
+	}
+
 }
  

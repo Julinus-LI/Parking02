@@ -1,6 +1,7 @@
 package pers.arrayli.service.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import pers.arrayli.domain.AdminUser;
 
@@ -18,6 +19,12 @@ public class AdminUserServiceImpl implements AdminUserService {
 	public boolean login(String username,String password) throws SQLException {
 		AdminUserDao dao = new AdminUserDaoImpl();
 		return dao.login(username,password);
+	}
+
+	@Override
+	public List<AdminUser> queryAdmins() throws SQLException {
+		AdminUserDao dao = new AdminUserDaoImpl();
+		return dao.queryAdmins();
 	}
 }
  

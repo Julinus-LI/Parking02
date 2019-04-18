@@ -96,7 +96,7 @@ function save() {
 		$.messager.alert('警告', '密码不能为空！', 'warning');
 		return;
 	}
-	document.forms[0].action = "<%=path%>/RegUserinfoAction";
+	document.forms[0].action = "<%=path%>/UserRegisterServlet";
 	document.forms[0].submit();
 
 }

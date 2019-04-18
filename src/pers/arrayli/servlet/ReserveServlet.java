@@ -3,6 +3,8 @@ package pers.arrayli.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,22 +40,35 @@ public class ReserveServlet extends HttpServlet {
 			CheService service = new CheServiceImpl();
 			String hao = service.getHaoByUid(uid);
 			
+			System.out.println("id: "+id+"\tuid: "+uid+"\thao: "+hao);
 			// 如果车牌号不为空的话,可以预定车位
 			if(hao != null){
 				// 在车位信息表中查询 车牌号为 hao 车有没有停车
 				CheWeiService cheWeiService = new CheWeiServiceImpl();
+				System.out.println("================== ReserveServlet DEBUG Start =============");
 				// 如果已经停车的话
 				if(cheWeiService.isReverse(hao)){
+					System.out.println("================== ReserveServlet DEBUG End =============");
 					out
 .println("<script>alert('你的车已经停在车位上！');window.location.href='chewei/tlist.jsp'</script>");
 				}else{
 					// 如果没有停车的话
+					// 获取当前时间
+					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+					Date date = new Date();
+					String time = sdf.format(date);
+					boolean result = cheWeiService.updateCheWei(hao,time, uid);
 					
-					
+					// 预定成功
+					if(result){
+						out
+.println("<script>alert('预订成功！');window.location.href='chewei/tlist.jsp'</script>");
+					}else{
+						// 预定失败
+						out
+.println("<script>alert('预订失败！');window.location.href='chewei/tlist.jsp'</script>");
+					}
 				}
-				
-				
-				
 			}else{ 
 				// 车牌号为空的话，请先添加车辆信息
 				out

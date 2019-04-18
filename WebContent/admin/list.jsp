@@ -1,6 +1,9 @@
+<%@page import="pers.arrayli.domain.AdminUser"%>
+<%@page import="pers.arrayli.service.impl.AdminUserServiceImpl"%>
+<%@page import="pers.arrayli.service.AdminUserService"%>
 <%@include file="/common/sub_header.jsp"%>
 <%@ page language="java"
-	import="java.util.*,java.sql.*,com.cn.db.*"
+	import="java.util.*,java.sql.*"
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -73,7 +76,7 @@
 										操作
 									</th>
 								</tr>
-								<%
+					<%-- 			<%
 						DBManager dbm = new DBManager();
 						Connection conn = dbm.getConnection();
 						String queryName = request.getParameter("queryName");
@@ -87,26 +90,37 @@
 
 						while (rs.next()) {
 							String id = rs.getString("id");
+					%> --%>
+					
+					<%
+						// 获取管理员信息列表
+						AdminUserService service = new AdminUserServiceImpl();
+						List<AdminUser>list = service.queryAdmins();
+						if(list != null){
+							for(AdminUser admin:list){	
+
 					%>
+					
 								<tr>
 									
 									
 									<td>
-										<%=id%>
+										<%=admin.getId()%>
 									</td>
 									<td title="">
-										<%=rs.getString("userName")%>
+										<%=admin.getUserName()%>
 									</td>
 									<td>
-										<%=rs.getString("userPw")%>
+										<%=admin.getUserPassword()%>
 									</td>
 									 
 									<td>
-										<a class="link-update" href="<%=path %>/admin/modAdmin.jsp?id=<%=id %>">修改</a>
-										<a class="link-del" href="<%=path %>/DelAdminAction?id=<%=id %>">删除</a>
+										<a class="link-update" href="<%=path %>/admin/modAdmin.jsp?id=<%=admin.getId() %>">修改</a>
+										<a class="link-del" href="<%=path %>/DelAdminAction?id=<%=admin.getId() %>">删除</a>
 									</td>
 								</tr>
-									<%
+								
+					<%-- <%
 						}
 						if (rs != null)
 							rs.close();
@@ -114,7 +128,12 @@
 							pstmt.close();
 						if (conn != null)
 							conn.close();
-					%> 
+					%>  --%>
+					
+					<%
+							}
+						}
+					%>
 							</table>
 							<div class="list-page">
 								 

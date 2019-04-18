@@ -40,5 +40,13 @@ public interface UserInfoDao {
 	int QueryMoneyById(int id) throws SQLException;
 	
 	
+	/**注册用户
+	 * @param user	户信息对象
+	 * @return		返回是否注册成功
+	 * @throws SQLException
+	 */
+	boolean RegisterUser(UserInfo user) throws SQLException;
+	
+	
 }
  

@@ -41,14 +41,30 @@ public class CheWeiDaoImpl implements CheWeiDao {
 	@Override
 	public boolean isReverse(String hao) throws SQLException {
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
-		String sql  = "select chepai from t_chewei where hao = ?";
+		System.out.println("---------------------  isReverse DEBUG Starts --------------------");
+		String sql  = "select * from t_chewei where chepai = ?";
+		System.out.println("hao : "+hao);
+		System.out.println("sql: "+sql);
 		CheWei cheWei = queryRunner.query(sql,new BeanHandler<CheWei>(CheWei.class) ,hao);
-		// 如果车牌号为 hao的车，查询的车位号不为空，说明该车以及停车
-		if(cheWei.getHao() != null){
+		System.out.println("cheWei: "+cheWei);
+		System.out.println("---------------------  isReverse DEBUG End --------------------");
+		// 如果车牌号为 hao的车，查询的车位号不为空，说明该车已经停车
+		if(cheWei != null){
 			return true;
 		}
 		// 为空的话，说明该车还没有停车
 		return false;
+	}
+
+	@Override
+	public boolean updateCheWei(String hao, String adate, int id) throws SQLException {
+		System.out.println("================== updateCheWei DEBUG Start =============");
+		System.out.println("hao: "+hao+"  adate: "+adate+" id: "+id);
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "update t_chewei set chepai = ?,adate = ? where id = ?";
+		int result = queryRunner.update(sql,hao,adate,id);
+		System.out.println("================== updateCheWei DEBUG End =============");
+		return result > 0;
 	}
 
 }

@@ -113,7 +113,7 @@
 								<%
 									if (chewei.getChepai() == null || chewei.getChepai().equals("")) {
 								%> 
-								<a class="link-update" href="<%=path%>/YudingAction?id=<%=chewei.getId()%>">预订</a>
+								<a class="link-update" href="<%=path%>/ReserveServlet?id=<%=chewei.getId()%>">预订</a>
 						 <%
  									} else {
  										out.println("已停车(" + chewei.getChepai() + ")");

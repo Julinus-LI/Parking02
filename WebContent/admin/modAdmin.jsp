@@ -27,7 +27,7 @@
 							name="myform" >
 							<table class="insert-tab" width="100%">
 								<tbody>
-									 <%
+							<%-- 		 <%
 				DBManager dbm = new DBManager();
 				Connection conn = dbm.getConnection();
 				String id = request.getParameter("id");
@@ -35,7 +35,14 @@
 				PreparedStatement stat = conn.prepareStatement(sql);
 				ResultSet rs = stat.executeQuery();
 				rs.next();
-			%>
+			%> --%>
+				<%
+				
+					
+				
+				%>
+			
+			
 			 <input name="id" type="hidden" id="name" value='<%=id%>'>
 									<tr>
 										<th>
@@ -56,14 +63,14 @@
 										</td>
 									</tr>
 									
-									 <%
+			<%-- 						 <%
 				if (rs != null)
 					rs.close();
 				if (stat != null)
 					stat.close();
 				if (conn != null)
 					conn.close();
-			%>	
+			%>	 --%>
 									<tr>
 										<th></th>
 										<td>

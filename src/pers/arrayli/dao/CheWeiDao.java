@@ -26,4 +26,13 @@ public interface CheWeiDao {
 	 */
 	boolean isReverse(String hao) throws SQLException;
 	
+	/** 更新当前车位信息
+	 * @param hao		车牌号
+	 * @param adate		当前时间和日期
+	 * @param id		车位信息 id
+	 * @return			更新成功与否
+	 * @throws SQLException
+	 */
+	boolean updateCheWei(String hao,String adate,int id) throws SQLException;
+	
 }

@@ -37,5 +37,11 @@ public class UserInfoServiceImpl implements UserInfoService{
 		return userInfoDao.QueryMoneyById(id);
 	}
 
+	@Override
+	public boolean RegisterUser(UserInfo user) throws SQLException {
+		UserInfoDao dao = new UserInfoDaoImpl();
+		return dao.RegisterUser(user);
+	}
+
 }
  
