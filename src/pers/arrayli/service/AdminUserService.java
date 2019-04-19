@@ -31,4 +31,26 @@ public interface AdminUserService {
 	 * @throws SQLException
 	 */
 	AdminUser findAdminById(int id) throws SQLException;
+	
+	
+	/** 通过管理员 id 来对管理员信息进行修改
+	 * @param id 	管理员 id
+	 * @return	修改成功与否
+	 * @throws SQLException
+	 */
+	boolean updateAdminById(int id,AdminUser admin) throws SQLException;
+	
+	/** 通过管理员 id 来删除管理员
+	 * @param id  管理员 id
+	 * @return   返回删除管理的成功与否
+	 * @throws SQLException
+	 */
+	boolean delAdminById(int id) throws SQLException;
+	
+	/**	添加管理员信息
+	 * @param admin		管理员bean
+	 * @return			返回添加管理员信息成功与否
+	 * @throws SQLException
+	 */
+	boolean addAdmin(AdminUser admin) throws SQLException;
 }

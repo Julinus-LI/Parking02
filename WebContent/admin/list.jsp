@@ -76,21 +76,6 @@
 										操作
 									</th>
 								</tr>
-					<%-- 			<%
-						DBManager dbm = new DBManager();
-						Connection conn = dbm.getConnection();
-						String queryName = request.getParameter("queryName");
-						String sql = "select * from admin";
-						if (queryName != null) {
-							sql = "select * from admin where userName like '%" + queryName
-									+ "%'";
-						}
-						PreparedStatement pstmt = conn.prepareStatement(sql);
-						ResultSet rs = pstmt.executeQuery();
-
-						while (rs.next()) {
-							String id = rs.getString("id");
-					%> --%>
 					
 					<%
 						// 获取管理员信息列表
@@ -116,19 +101,10 @@
 									 
 									<td>
 										<a class="link-update" href="<%=path %>/admin/modAdmin.jsp?id=<%=admin.getId() %>">修改</a>
-										<a class="link-del" href="<%=path %>/DelAdminAction?id=<%=admin.getId() %>">删除</a>
+										<a class="link-del" href="<%=path %>/DelAdminServlet?id=<%=admin.getId() %>">删除</a>
 									</td>
 								</tr>
 								
-					<%-- <%
-						}
-						if (rs != null)
-							rs.close();
-						if (pstmt != null)
-							pstmt.close();
-						if (conn != null)
-							conn.close();
-					%>  --%>
 					
 					<%
 							}

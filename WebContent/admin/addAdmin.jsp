@@ -79,7 +79,7 @@ function save() {
 		$.messager.alert('警告', '密码不能为空！', 'warning');
 		return;
 	}
-	document.forms[0].action = "<%=path%>/AddAdminAction";
+	document.forms[0].action = "<%=path%>/AddAdminServlet";
 	document.forms[0].submit();
 
 }

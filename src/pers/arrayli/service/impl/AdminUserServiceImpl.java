@@ -26,5 +26,29 @@ public class AdminUserServiceImpl implements AdminUserService {
 		AdminUserDao dao = new AdminUserDaoImpl();
 		return dao.queryAdmins();
 	}
+
+	@Override
+	public AdminUser findAdminById(int id) throws SQLException {
+		AdminUserDao dao = new AdminUserDaoImpl();
+		return dao.findAdminById(id);
+	}
+
+	@Override
+	public boolean updateAdminById(int id, AdminUser admin) throws SQLException {
+		AdminUserDao dao = new AdminUserDaoImpl();
+		return dao.updateAdminById(id, admin);
+	}
+
+	@Override
+	public boolean delAdminById(int id) throws SQLException {
+		AdminUserDao dao = new AdminUserDaoImpl();
+		return dao.delAdminById(id);
+	}
+
+	@Override
+	public boolean addAdmin(AdminUser admin) throws SQLException {
+		AdminUserDao dao = new AdminUserDaoImpl();
+		return dao.addAdmin(admin);
+	}
 }
  

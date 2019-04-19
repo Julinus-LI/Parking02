@@ -47,5 +47,29 @@ public class AdminUserDaoImpl  implements AdminUserDao{
 		return admin;
 	}
 
+	@Override
+	public boolean updateAdminById(int id,AdminUser admin) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "update t_admin set userName = ?,userPassword = ? where id = ?";
+		int result = queryRunner.update(sql,admin.getUserName(),admin.getUserPassword(),id);
+		return result > 0;
+	}
+
+	@Override
+	public boolean delAdminById(int id) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "delete from t_admin where id = ?";
+		int result = queryRunner.update(sql,id);
+		return result > 0;
+	}
+
+	@Override
+	public boolean addAdmin(AdminUser admin) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "insert into t_admin values(null,?,?) ";
+		int result = queryRunner.update(sql,admin.getUserName(),admin.getUserPassword());
+		return result > 0;
+	}
+
 }
  

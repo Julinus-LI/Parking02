@@ -1,5 +1,8 @@
+<%@page import="pers.arrayli.domain.AdminUser"%>
+<%@page import="pers.arrayli.service.impl.AdminUserServiceImpl"%>
+<%@page import="pers.arrayli.service.AdminUserService"%>
 <%@include file="/common/sub_header.jsp"%>
-<%@ page contentType="text/html;charset=UTF-8" import="java.util.*,java.sql.*,com.cn.db.*" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" import="java.util.*,java.sql.*" pageEncoding="UTF-8"%>
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -37,9 +40,12 @@
 				rs.next();
 			%> --%>
 				<%
-				
-					
-				
+					// 获取管理员 id
+					int id = Integer.parseInt(request.getParameter("id").toString());
+					// 根据管理员 id查询管理员信息
+					AdminUserService service = new AdminUserServiceImpl();
+					AdminUser admin = service.findAdminById(id);
+					if(admin != null){
 				%>
 			
 			
@@ -49,7 +55,7 @@
 											<i class="require-red">*</i>姓名：
 										</th>
 										<td>
-											<input class="common-text required" id="name" value='<%=rs.getString("userName")%>' name="name"
+											<input class="common-text required" id="name" value='<%=admin.getUserName()%>' name="name"
 												size="50" value="" type="text">
 										</td>
 									</tr>
@@ -58,7 +64,7 @@
 											密码：
 										</th>
 										<td>
-											<input class="common-text" name="pwd" value='<%=rs.getString("userPw")%>'  id="pwd" size="50"
+											<input class="common-text" name="pwd" value='<%=admin.getUserPassword()%>'  id="pwd" size="50"
 												 type="password">
 										</td>
 									</tr>
@@ -71,6 +77,9 @@
 				if (conn != null)
 					conn.close();
 			%>	 --%>
+			<%
+					}
+			%>
 									<tr>
 										<th></th>
 										<td>
@@ -102,7 +111,7 @@ function save() {
 		$.messager.alert('警告', '密码不能为空！', 'warning');
 		return;
 	}
-	document.forms[0].action = "<%=path%>/ModAdminAction";
+	document.forms[0].action = "<%=path%>/ModAdminServlet";
 	document.forms[0].submit();
 
 }

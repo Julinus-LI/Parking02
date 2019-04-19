@@ -19,7 +19,6 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
-  
   <filter>
     <display-name>CharsetFilter</display-name>
     <filter-name>CharsetFilter</filter-name>
@@ -29,7 +28,6 @@
     <filter-name>CharsetFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
   <servlet>
     <description></description>
     <display-name>ModUserInfoServlet</display-name>
@@ -89,5 +87,35 @@
   <servlet-mapping>
     <servlet-name>UserRegisterServlet</servlet-name>
     <url-pattern>/UserRegisterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModAdminServlet</display-name>
+    <servlet-name>ModAdminServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.ModAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModAdminServlet</servlet-name>
+    <url-pattern>/ModAdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DelAdminServlet</display-name>
+    <servlet-name>DelAdminServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.DelAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DelAdminServlet</servlet-name>
+    <url-pattern>/DelAdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddAdminServlet</display-name>
+    <servlet-name>AddAdminServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.AddAdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddAdminServlet</servlet-name>
+    <url-pattern>/AddAdminServlet</url-pattern>
   </servlet-mapping>
 </web-app>
