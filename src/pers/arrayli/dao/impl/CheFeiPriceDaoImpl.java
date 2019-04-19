@@ -7,7 +7,7 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 
 import pers.arrayli.dao.CheFeiPriceDao;
 import pers.arrayli.db.JDBCUtils;
-import pers.arrayli.domain.CheFei;
+import pers.arrayli.domain.CheFeiPrice;
 
 /**
  * @author lzj13
@@ -19,8 +19,16 @@ public class CheFeiPriceDaoImpl implements CheFeiPriceDao {
 	public int findFare() throws SQLException {
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql = "select* from t_price";
-		CheFei cheFeil = queryRunner.query(sql,new BeanHandler<CheFei>(CheFei.class));	
+		CheFeiPrice cheFeil = queryRunner.query(sql,new BeanHandler<CheFeiPrice>(CheFeiPrice.class));	
 		return cheFeil.getPrice();
+	}
+
+	@Override
+	public boolean setFare(int id,CheFeiPrice price) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "update t_price set price = ? where id = ?";
+		int result = queryRunner.update(sql,price.getPrice(),id);
+		return result > 0;
 	}
 
 }

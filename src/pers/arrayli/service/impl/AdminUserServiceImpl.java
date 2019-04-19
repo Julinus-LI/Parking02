@@ -22,9 +22,9 @@ public class AdminUserServiceImpl implements AdminUserService {
 	}
 
 	@Override
-	public List<AdminUser> queryAdmins() throws SQLException {
+	public List<AdminUser> queryAdmins(String queryName) throws SQLException {
 		AdminUserDao dao = new AdminUserDaoImpl();
-		return dao.queryAdmins();
+		return dao.queryAdmins(queryName);
 	}
 
 	@Override

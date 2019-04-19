@@ -20,10 +20,11 @@ public interface AdminUserService {
 	
 
 	/**	查询所有管理员用户
+	 *  @param 	queryName  模糊查询查询条件
 	 * @return	所有管理员用户的集合
 	 * @throws SQLException	
 	 */
-	List<AdminUser> queryAdmins() throws SQLException;
+	List<AdminUser> queryAdmins(String queryName) throws SQLException;
 	
 	/**通过 id 对管理员表进行查询
 	 * @param id 管理员id

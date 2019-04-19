@@ -31,10 +31,13 @@ public class AdminUserDaoImpl  implements AdminUserDao{
 	}
 
 	@Override
-	public List<AdminUser> queryAdmins() throws SQLException {
+	public List<AdminUser> queryAdmins(String  queryName) throws SQLException {
 		
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql = "select* from t_admin";
+		if(queryName != null){
+			sql = "select* from t_admin where userName like '%"+queryName+"%'";
+		}
 		List<AdminUser>list  = queryRunner.query(sql,new BeanListHandler<AdminUser>(AdminUser.class));
 		return list;
 	}

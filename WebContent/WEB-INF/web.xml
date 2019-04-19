@@ -118,4 +118,34 @@
     <servlet-name>AddAdminServlet</servlet-name>
     <url-pattern>/AddAdminServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddUserInfoServlet</display-name>
+    <servlet-name>AddUserInfoServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.AddUserInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddUserInfoServlet</servlet-name>
+    <url-pattern>/AddUserInfoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RechargeServlet</display-name>
+    <servlet-name>RechargeServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.RechargeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RechargeServlet</servlet-name>
+    <url-pattern>/RechargeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DelUserInfoServlet</display-name>
+    <servlet-name>DelUserInfoServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.DelUserInfoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DelUserInfoServlet</servlet-name>
+    <url-pattern>/DelUserInfoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -36,10 +36,12 @@ public class AddAdminServlet extends HttpServlet {
 			boolean result = service.addAdmin(admin);
 			// 如果添加管理员信息成功
 			if(result){
-				// 如果添加成功，重定向到  车的list.jsp
-				//response.sendRedirect("che/list.jsp");
+				// 如果添加成功，重定向到  admin/list.jsp
+				response.sendRedirect("admin/list.jsp");
 			}else{
 				// 如果添加失败
+				response.getWriter()
+	.println("<script>alert('添加管理员失败！');window.location.href='admin/list.jsp'</script>");
 			}
 			
 			

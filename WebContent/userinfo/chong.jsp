@@ -33,7 +33,7 @@
 											<i class="require-red">*</i>金额：
 										</th>
 										<td>
-											<input class="common-text required" id="jine" name="jine"
+											<input class="common-text required" id="jine" name="money"
 												size="50" value="" type="text">
 											<input type="hidden" name="id" value="<%=request.getParameter("id") %>">	
 										</td>
@@ -71,7 +71,7 @@ function save() {
 		$.messager.alert('警告', '密码不能为空！', 'warning');
 		return;
 	}
-	document.forms[0].action = "<%=path%>/ChongAction";
+	document.forms[0].action = "<%=path%>/RechargeServlet";
 	document.forms[0].submit();
 
 }

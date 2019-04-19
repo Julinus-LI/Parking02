@@ -4,7 +4,7 @@ package pers.arrayli.domain;
  * @author lzj13
  *	车费标准 bean
  */
-public class CheFei {
+public class CheFeiPrice {
 	private int id;  	// 车费标准id
 	private int price;	// 车费标准
 	public int getId() {

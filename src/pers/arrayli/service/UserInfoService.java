@@ -1,6 +1,7 @@
 package pers.arrayli.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import pers.arrayli.domain.UserInfo;
 
@@ -46,5 +47,29 @@ public interface UserInfoService {
 	 * @throws SQLException
 	 */
 	boolean RegisterUser(UserInfo user) throws SQLException;
+	
+	/**	查询所有的用户信息或者按条件进行查询用户信息
+	 * @param queryName   查询条件
+	 * @return	查询结果集
+	 * @throws SQLException
+	 */
+	List<UserInfo> queryAllUserInfos(String queryName) throws SQLException;
+	
+	/**添加用户信息
+	 * @param user	添加的用户信息
+	 * @return		添加成功与否
+	 * @throws SQLException
+	 */
+	boolean addUserInfo(UserInfo user) throws SQLException;
+	
+	
+	/**	按用户 id来对用户进行充值
+	 * @param uid   用户 id
+	 * @param money   充值金额
+	 * @return	返回充值成功与否
+	 * @throws SQLException
+	 */
+	boolean UserRecharge(int uid,int money) throws SQLException;
+	
 }
  

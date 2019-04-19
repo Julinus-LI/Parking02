@@ -78,9 +78,11 @@
 								</tr>
 					
 					<%
+						//获取按条件查询的关键
+						String queryName = request.getParameter("queryName");
 						// 获取管理员信息列表
 						AdminUserService service = new AdminUserServiceImpl();
-						List<AdminUser>list = service.queryAdmins();
+						List<AdminUser>list = service.queryAdmins(queryName);
 						if(list != null){
 							for(AdminUser admin:list){	
 

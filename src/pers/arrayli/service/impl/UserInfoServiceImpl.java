@@ -1,6 +1,7 @@
 package pers.arrayli.service.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import pers.arrayli.dao.UserInfoDao;
 import pers.arrayli.dao.impl.UserInfoDaoImpl;
@@ -41,6 +42,24 @@ public class UserInfoServiceImpl implements UserInfoService{
 	public boolean RegisterUser(UserInfo user) throws SQLException {
 		UserInfoDao dao = new UserInfoDaoImpl();
 		return dao.RegisterUser(user);
+	}
+
+	@Override
+	public List<UserInfo> queryAllUserInfos(String queryName) throws SQLException {
+		UserInfoDao dao = new UserInfoDaoImpl();
+		return dao.queryAllUserInfos(queryName);
+	}
+
+	@Override
+	public boolean addUserInfo(UserInfo user) throws SQLException {
+		UserInfoDao dao = new UserInfoDaoImpl();		
+		return dao.addUserInfo(user);
+	}
+
+	@Override
+	public boolean UserRecharge(int uid, int money) throws SQLException {
+		UserInfoDao dao = new UserInfoDaoImpl();		
+		return dao.UserRecharge(uid, money);
 	}
 
 }

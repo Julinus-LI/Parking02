@@ -1,5 +1,8 @@
+<%@page import="pers.arrayli.domain.UserInfo"%>
+<%@page import="pers.arrayli.service.impl.UserInfoServiceImpl"%>
+<%@page import="pers.arrayli.service.UserInfoService"%>
 <%@include file="/common/sub_header.jsp"%>
-<%@ page language="java" import="java.util.*,java.sql.*,pers.arrayli.db.*"
+<%@ page language="java" import="java.util.*,java.sql.*"
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -86,64 +89,59 @@
 									操作
 								</th>
 							</tr>
-							<%
-								DBManager dbm = new DBManager();
-								Connection conn = dbm.getConnection();
-								String queryName = request.getParameter("queryName");
-								String sql = "select * from userinfo";
-								if (queryName != null) {
-									sql = "select * from userinfo where name like '%" + queryName
-											+ "%'";
-								}
-								PreparedStatement pstmt = conn.prepareStatement(sql);
-								ResultSet rs = pstmt.executeQuery();
 
-								while (rs.next()) {
-									String id = rs.getString("id");
+							<%
+								// 获取查询条件
+								String queryName = request.getParameter("queryName");
+								
+								// 在业务层查询用户信息
+								UserInfoService service = new UserInfoServiceImpl();
+							 	List<UserInfo> list = service.queryAllUserInfos(queryName);
+								if(list != null){
+									for(UserInfo user:list){
+									
 							%>
+							
+							
 							<tr>
 
 
 								<td>
-									<%=id%>
+									<%=user.getId()%>
 								</td>
 								<td title="">
-									<%=rs.getString("name")%>
-								</td>
-
-								<td title="">
-									<%=rs.getString("pwd")%>
+									<%=user.getUsername()%>
 								</td>
 
 								<td title="">
-									<%=rs.getString("age")%>
+									<%=user.getPwd()%>
 								</td>
 
 								<td title="">
-									<%=rs.getString("tel")%>
+									<%=user.getAge()%>
+								</td>
+
+								<td title="">
+									<%=user.getTel()%>
 								</td>
 								
 								<td title="">
-									<%=rs.getString("jine")%>
+									<%=user.getMoney()%>
 								</td>
 
 								<td>
 									<a class="link-update"
-										href="<%=path%>/userinfo/modUserinfo.jsp?id=<%=id%>">修改</a>
+										href="<%=path%>/userinfo/modUserinfo.jsp?id=<%=user.getId()%>">修改</a>
 									<a class="link-update"
-										href="<%=path%>/userinfo/chong.jsp?id=<%=id%>">充值</a>	
+										href="<%=path%>/userinfo/chong.jsp?id=<%=user.getId()%>">充值</a>	
 									<a class="link-del"
-										href="<%=path%>/DelUserinfoAction?id=<%=id%>">删除</a>
+										href="<%=path%>/DelUserInfoServlet?id=<%=user.getId()%>">删除</a>
 								</td>
 							</tr>
+							
 							<%
+									}
 								}
-								if (rs != null)
-									rs.close();
-								if (pstmt != null)
-									pstmt.close();
-								if (conn != null)
-									conn.close();
 							%>
 						</table>
 						<div class="list-page">

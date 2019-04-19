@@ -1,9 +1,11 @@
 package pers.arrayli.dao.impl;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import pers.arrayli.domain.AdminUser;
 import pers.arrayli.domain.UserInfo;
@@ -58,6 +60,30 @@ public class UserInfoDaoImpl implements UserInfoDao{
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql = "insert into t_userinfo values(null,?,?,?,?,?)";
 		int result = queryRunner.update(sql,user.getUsername(),user.getPwd(),user.getAge(),user.getTel(),user.getMoney());	
+		return result > 0;
+	}
+
+	@Override
+	public List<UserInfo> queryAllUserInfos(String queryName) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "select* from t_userinfo";
+		if(queryName != null){
+			sql = "select* from t_userinfo where username like '%"+queryName+"%'";
+		}
+		List<UserInfo> list = queryRunner.query(sql, new BeanListHandler<UserInfo>(UserInfo.class));
+		return list;
+	}
+
+	@Override
+	public boolean addUserInfo(UserInfo user) throws SQLException {
+		return new UserInfoDaoImpl().RegisterUser(user);
+	}
+
+	@Override
+	public boolean UserRecharge(int uid, int money) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "update t_userinfo set money = money + ? where id = ?";	
+		int result = queryRunner.update(sql,money,uid);	
 		return result > 0;
 	}
 
