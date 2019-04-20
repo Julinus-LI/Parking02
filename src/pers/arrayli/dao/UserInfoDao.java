@@ -74,6 +74,5 @@ public interface UserInfoDao {
 	
 	boolean DelUseInfo(int uid) throws SQLException;
 	
-	
 }
  

@@ -1,5 +1,5 @@
 <%@include file="/common/sub_header.jsp"%>
-<%@ page language="java" import="java.util.*,java.sql.*,com.cn.db.*"
+<%@ page language="java" import="java.util.*,java.sql.*"
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -104,7 +104,7 @@ function method1(tableid) {
 									停车标准
 								</th>
 							</tr>
-							<%
+						<%-- 	<%
 								DBManager dbm = new DBManager();
 								Connection conn = dbm.getConnection();
 								String queryName = request.getParameter("queryName");
@@ -128,7 +128,7 @@ function method1(tableid) {
 								while (rs.next()) {
 									String id = rs.getString("id");
 									jine = jine + Long.parseLong(rs.getString("jine"));
-							%>
+							%> --%>
 							<tr>
 
 
@@ -162,7 +162,7 @@ function method1(tableid) {
 
 
 							</tr>
-							<%
+						<%-- 	<%
 								}
 								if (rs != null)
 									rs.close();
@@ -170,7 +170,7 @@ function method1(tableid) {
 									pstmt.close();
 								if (conn != null)
 									conn.close();
-							%>
+							%> --%>
 						</table>
 						<div class="list-page">
 							共计<%=jine%>元     <a href="<%=path %>/upload/export.jsp">导出</a>
