@@ -27,5 +27,11 @@ public class CheFeiPriceServiceImpl implements CheFeiPriceService {
 		return dao.setFare(id, price);
 	}
 
+	@Override
+	public CheFeiPrice QueryFare() throws SQLException {
+		CheFeiPriceDao dao = new CheFeiPriceDaoImpl();
+		return dao.QueryFare();
+	}
+
 }
  

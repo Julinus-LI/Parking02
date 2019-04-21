@@ -32,5 +32,29 @@ public class CheWeiServiceImpl implements CheWeiService {
 		return dao.updateCheWei(hao, adate, id);
 	}
 
+	@Override
+	public CheWei findCheWeiById(int id) throws SQLException {
+		CheWeiDao dao = new CheWeiDaoImpl();
+		return dao.findCheWeiById(id);
+	}
+
+	@Override
+	public boolean updateCheWeiById(int id, CheWei cheWei) throws SQLException {
+		CheWeiDao dao = new CheWeiDaoImpl();
+		return dao.updateCheWeiById(id, cheWei);
+	}
+
+	@Override
+	public boolean DelCheWeiById(int id) throws SQLException {
+		CheWeiDao dao = new CheWeiDaoImpl();
+		return dao.DelCheWeiById(id);
+	}
+
+	@Override
+	public boolean AddCheWei(CheWei cheWei) throws SQLException {
+		CheWeiDao dao = new CheWeiDaoImpl();
+		return dao.AddCheWei(cheWei);
+	}
+
 }
  

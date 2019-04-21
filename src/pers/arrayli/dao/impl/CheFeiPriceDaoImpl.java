@@ -31,5 +31,13 @@ public class CheFeiPriceDaoImpl implements CheFeiPriceDao {
 		return result > 0;
 	}
 
+	@Override
+	public CheFeiPrice QueryFare() throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "select* from t_price";
+		CheFeiPrice cheFeil = queryRunner.query(sql,new BeanHandler<CheFeiPrice>(CheFeiPrice.class));	
+		return cheFeil;
+	}
+
 }
  

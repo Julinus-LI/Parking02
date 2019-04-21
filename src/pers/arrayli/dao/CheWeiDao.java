@@ -35,4 +35,33 @@ public interface CheWeiDao {
 	 */
 	boolean updateCheWei(String hao,String adate,int id) throws SQLException;
 	
+	
+	/**	通过车位 Id 来查找车位信息
+	 * @param id	车位 id查询的车位信息
+	 * @return		返回
+	 * @throws SQLException
+	 */
+	CheWei findCheWeiById(int id) throws SQLException;
+	
+	/**	通过车位 id来修改车位信息
+	 * @param id		车位信息 id
+	 * @param cheWei	车位对象
+	 * @return			返回修改成功与否
+	 * @throws SQLException
+	 */
+	boolean updateCheWeiById(int id,CheWei cheWei) throws SQLException;
+	
+	/**	通过车位id来删除车位信息
+	 * @param id	车位 id
+	 * @return		返回删除车位信息成功与否
+	 * @throws SQLException
+	 */
+	boolean DelCheWeiById(int id) throws SQLException;
+	
+	/**	添加车位信息
+	 * @param cheWei	车位信息对象	
+	 * @return			添加车位信息成功与否
+	 * @throws SQLException
+	 */
+	boolean AddCheWei(CheWei cheWei) throws SQLException;
 }

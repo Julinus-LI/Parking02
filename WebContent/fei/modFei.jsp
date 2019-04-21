@@ -1,5 +1,8 @@
+<%@page import="pers.arrayli.domain.CheFeiPrice"%>
+<%@page import="pers.arrayli.service.impl.CheFeiPriceServiceImpl"%>
+<%@page import="pers.arrayli.service.CheFeiPriceService"%>
 <%@include file="/common/sub_header.jsp"%>
-<%@ page contentType="text/html;charset=UTF-8" import="java.util.*,java.sql.*,com.cn.db.*" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" import="java.util.*,java.sql.*" pageEncoding="UTF-8"%>
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -27,7 +30,7 @@
 							name="myform" >
 							<table class="insert-tab" width="100%">
 								<tbody>
-									 <%
+			<%-- 						 <%
 				DBManager dbm = new DBManager();
 				Connection conn = dbm.getConnection();
 				 
@@ -35,27 +38,40 @@
 				PreparedStatement stat = conn.prepareStatement(sql);
 				ResultSet rs = stat.executeQuery();
 				rs.next();
-			%>
+			%> --%>
+						<%
+							// 获取车费价格
+							CheFeiPriceService service = new CheFeiPriceServiceImpl();
+							CheFeiPrice price = service.QueryFare();
+						
+						%>
 			 
 									<tr>
+									
+										<th>
+											 <input name="id" type="hidden" id="name" value='<%=price.getId()%>'>
+										
+										</th>
+										
 										<th>
 											<i class="require-red">*</i>车费：
 										</th>
 										<td>
-											<input class="common-text required" id="price" value='<%=rs.getString("price")%>' name="price"
+											<input class="common-text required" id="price" value='<%=price.getPrice()%>' name="price"
 												size="5"  type="text">元/小时
 										</td>
 									</tr>
 									 
 									
-									 <%
+			<%-- 						 <%
 				if (rs != null)
 					rs.close();
 				if (stat != null)
 					stat.close();
 				if (conn != null)
 					conn.close();
-			%>	
+			%>	 --%>
+								
 									<tr>
 										<th></th>
 										<td>
@@ -87,7 +103,7 @@ function save() {
 		$.messager.alert('警告', '密码不能为空！', 'warning');
 		return;
 	}
-	document.forms[0].action = "<%=path%>/ModFeiAction";
+	document.forms[0].action = "<%=path%>/ModCheFeiPriceServlet";
 	document.forms[0].submit();
 
 }

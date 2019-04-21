@@ -148,4 +148,44 @@
     <servlet-name>DelUserInfoServlet</servlet-name>
     <url-pattern>/DelUserInfoServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModCheweiServlet</display-name>
+    <servlet-name>ModCheweiServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.ModCheweiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModCheweiServlet</servlet-name>
+    <url-pattern>/ModCheweiServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DelCheweiServlet</display-name>
+    <servlet-name>DelCheweiServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.DelCheweiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DelCheweiServlet</servlet-name>
+    <url-pattern>/DelCheweiServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddCheweiServlet</display-name>
+    <servlet-name>AddCheweiServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.AddCheweiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCheweiServlet</servlet-name>
+    <url-pattern>/AddCheweiServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModCheFeiPriceServlet</display-name>
+    <servlet-name>ModCheFeiPriceServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.ModCheFeiPriceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModCheFeiPriceServlet</servlet-name>
+    <url-pattern>/ModCheFeiPriceServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

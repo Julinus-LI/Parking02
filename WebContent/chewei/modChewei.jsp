@@ -1,5 +1,8 @@
+<%@page import="pers.arrayli.domain.CheWei"%>
+<%@page import="pers.arrayli.service.impl.CheWeiServiceImpl"%>
+<%@page import="pers.arrayli.service.CheWeiService"%>
 <%@include file="/common/sub_header.jsp"%>	
-<%@ page contentType="text/html;charset=UTF-8" import="java.util.*,java.sql.*,com.cn.db.*" pageEncoding="UTF-8"%>	
+<%@ page contentType="text/html;charset=UTF-8" import="java.util.*,java.sql.*" pageEncoding="UTF-8"%>	
 	
 	
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">	
@@ -27,7 +30,7 @@
 							name="myform" >	
 							<table class="insert-tab" width="100%">	
 								<tbody>	
-									 <%	
+				<%-- 					 <%	
 				DBManager dbm = new DBManager();	
 				Connection conn = dbm.getConnection();	
 				String id = request.getParameter("id");	
@@ -35,14 +38,22 @@
 				PreparedStatement stat = conn.prepareStatement(sql);	
 				ResultSet rs = stat.executeQuery();	
 				rs.next();	
-			%>	
+			%>	 --%>
+				<%
+					// 获取要修改的车位信息的 id
+					int id = Integer.parseInt(request.getParameter("id"));
+					CheWeiService service = new CheWeiServiceImpl();
+					CheWei chewei = service.findCheWeiById(id);
+					if(chewei != null){
+				%>
+			
 			 <input name="id" type="hidden" id="name" value='<%=id%>'>	
 									<tr>
 	<th>
 		<i class="require-red"></i>车位号：
 	</th>
 	<td>
-		<input class="common-text required"  value="<%=rs.getString("hao")%>" id="hao" name="hao"
+		<input class="common-text required"  value="<%=chewei.getHao()%>" id="hao" name="hao"
 			size="50" value="*" type="text">
 	</td>
 </tr>
@@ -52,7 +63,7 @@
 		<i class="require-red"></i>区域：
 	</th>
 	<td>
-		<input class="common-text required"  value="<%=rs.getString("qu")%>" id="qu" name="qu"
+		<input class="common-text required"  value="<%=chewei.getQuyu()%>" id="qu" name="quyu"
 			size="50" value="" type="text">
 	</td>
 </tr>
@@ -62,19 +73,25 @@
 		<i class="require-red"></i>备注：
 	</th>
 	<td>
-		<input class="common-text required"  value="<%=rs.getString("info")%>" id="info" name="info"
+		<input class="common-text required"  value="<%=chewei.getInfo()%>" id="info" name="info"
 			size="50" value="" type="text">
 	</td>
 </tr>
 										
-									 <%	
+			<%-- 						 <%	
 				if (rs != null)	
 					rs.close();	
 				if (stat != null)	
 					stat.close();	
 				if (conn != null)	
 					conn.close();	
-			%>		
+			%>		 --%>
+			
+			<%
+					}
+			
+			%>
+			
 									<tr>	
 										<th></th>	
 										<td>	
@@ -106,7 +123,7 @@ function save() {
 		$.messager.alert('警告', '密码不能为空！', 'warning');	
 		return;	
 	}	
-	document.forms[0].action = "<%=path%>/ModCheweiAction";	
+	document.forms[0].action = "<%=path%>/ModCheweiServlet";	
 	document.forms[0].submit();	
 	
 }	

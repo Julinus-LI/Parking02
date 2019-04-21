@@ -72,6 +72,11 @@ public interface UserInfoDao {
 	 */
 	boolean UserRecharge(int uid,int money) throws SQLException;
 	
+	/**按用户 id来删除用户
+	 * @param uid	用户id
+	 * @return		返回删除成功与否
+	 * @throws SQLException
+	 */
 	boolean DelUseInfo(int uid) throws SQLException;
 	
 }

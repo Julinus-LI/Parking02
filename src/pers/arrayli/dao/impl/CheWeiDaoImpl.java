@@ -67,4 +67,38 @@ public class CheWeiDaoImpl implements CheWeiDao {
 		return result > 0;
 	}
 
+	@Override
+	public CheWei findCheWeiById(int id) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "select* from t_chewei where id = ?";
+		CheWei cheWei = queryRunner.query(sql,new BeanHandler<CheWei>(CheWei.class) ,id);
+		return cheWei;
+	}
+
+	@Override
+	public boolean updateCheWeiById(int id, CheWei cheWei) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "update t_chewei set hao = ?,quyu = ?,info = ? where id = ?";	
+		int result = queryRunner.update(sql,cheWei.getHao(),cheWei.getQuyu(),cheWei.getInfo(),id);
+		return result > 0;
+	}
+
+	@Override
+	public boolean DelCheWeiById(int id) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "delete from t_chewei where id = ?";
+		int result = queryRunner.update(sql,id);
+		return result > 0;
+	}
+
+	@Override
+	public boolean AddCheWei(CheWei cheWei) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "insert into t_chewei values(null,?,?,?,?,?)";
+		int result = queryRunner.update(sql,cheWei.getHao(),cheWei.getInfo(),cheWei.getQuyu(),
+				cheWei.getChepai(),cheWei.getAdate());
+		
+		return result > 0;
+	}
+
 }

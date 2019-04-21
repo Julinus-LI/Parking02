@@ -92,7 +92,7 @@ function save() {
 		$.messager.alert('警告', '密码不能为空！', 'warning');
 		return;
 	}
-	document.forms[0].action = "<%=path%>/AddCheweiAction";
+	document.forms[0].action = "<%=path%>/AddCheweiServlet";
 	document.forms[0].submit();
 
 }

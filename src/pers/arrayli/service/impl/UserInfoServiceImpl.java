@@ -62,5 +62,11 @@ public class UserInfoServiceImpl implements UserInfoService{
 		return dao.UserRecharge(uid, money);
 	}
 
+	@Override
+	public boolean DelUseInfo(int uid) throws SQLException {
+		UserInfoDao dao = new UserInfoDaoImpl();		
+		return dao.DelUseInfo(uid);
+	}
+
 }
  

@@ -24,5 +24,18 @@ public interface CheFeiPriceDao {
 	 * @throws SQLException
 	 */
 	boolean setFare(int id,CheFeiPrice price) throws SQLException;
+	
+	/**	查询车费价格信息对象
+	 * @return	返回查询的车费价格信息对象
+	 * @throws SQLException
+	 */
+	CheFeiPrice QueryFare() throws SQLException;
+	
+	/**	通过车费价格 id来设置车费价格标准
+	 * @param id		车费价格 id
+	 * @return			设置车费价格成功与否
+	 * @throws SQLException
+	 */
+	//boolean setFare(int id) throws SQLException;
 }
  

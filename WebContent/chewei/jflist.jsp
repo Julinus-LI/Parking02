@@ -1,5 +1,5 @@
 <%@include file="/common/sub_header.jsp"%>
-<%@ page language="java" import="java.util.*,java.sql.*,com.cn.db.*"
+<%@ page language="java" import="java.util.*,java.sql.*"
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -84,7 +84,7 @@
 									操作
 								</th>
 							</tr>
-							<%
+						<%-- 	<%
 								DBManager dbm = new DBManager();
 								Connection conn = dbm.getConnection();
 								String queryName = request.getParameter("queryName");
@@ -101,7 +101,7 @@
 
 								while (rs.next()) {
 									String id = rs.getString("id");
-							%>
+							%> --%>
 							<tr>
 
 
@@ -135,7 +135,7 @@
 									%>
 								</td>
 							</tr>
-							<%
+						<%-- 	<%
 								}
 								if (rs != null)
 									rs.close();
@@ -143,7 +143,7 @@
 									pstmt.close();
 								if (conn != null)
 									conn.close();
-							%>
+							%> --%>
 						</table>
 						<div class="list-page">
 

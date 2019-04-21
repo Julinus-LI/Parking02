@@ -87,5 +87,13 @@ public class UserInfoDaoImpl implements UserInfoDao{
 		return result > 0;
 	}
 
+	@Override
+	public boolean DelUseInfo(int uid) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "delete from t_userinfo where id = ?";
+		int result = queryRunner.update(sql,uid);
+		return result>0;
+	}
+
 }
  
