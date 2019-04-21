@@ -43,15 +43,17 @@
 							// 获取车费价格
 							CheFeiPriceService service = new CheFeiPriceServiceImpl();
 							CheFeiPrice price = service.QueryFare();
-						
+							if(price != null){
+								request.setAttribute("id", price.getId());
+							
 						%>
 			 
 									<tr>
 									
-										<th>
+									<%-- 	<th>
 											 <input name="id" type="hidden" id="name" value='<%=price.getId()%>'>
 										
-										</th>
+										</th> --%>
 										
 										<th>
 											<i class="require-red">*</i>车费：
@@ -71,7 +73,9 @@
 				if (conn != null)
 					conn.close();
 			%>	 --%>
-								
+								<%
+									}
+								%>
 									<tr>
 										<th></th>
 										<td>

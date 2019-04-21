@@ -22,29 +22,34 @@ public class ModCheFeiPriceServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
+			System.out.println("----------------------ModCheFeiPriceServlet DEBUG Start----------------------");
 			// 1.获取车费价格数据
 			int id = Integer.parseInt(request.getParameter("id"));
 			int price = Integer.parseInt(request.getParameter("price"));
-			
+			System.out.println("----------------------ModCheFeiPriceServlet DEBUG 1----------------------");
 			// 2.把车费价格封装成一个 CheFeiPrice对象
 			CheFeiPrice cheFeiPrice = new CheFeiPrice();
 			cheFeiPrice.setPrice(price);
 			cheFeiPrice.setId(id);
-			
+			System.out.println("chefei: "+cheFeiPrice.toString());
 			// 3.通过业务层代码处理请求
 			CheFeiPriceService service = new CheFeiPriceServiceImpl();
 			boolean result = service.setFare(id, cheFeiPrice);
+			System.out.println("----------------------ModCheFeiPriceServlet DEBUG 2----------------------");
 			// 如果修改车费价格成功
 			if(result){
-				
+				request.getSession().setAttribute("fei", price);
+				response.getWriter().println("<script>alert('修改收费标准成功！');window.location.href='fei/modFei.jsp'</script>");
 			}else{
 				// 如果修改车费结果失败
+				response.getWriter().println("<script>alert('修改收费标准失败！');window.location.href='fei/modFei.jsp'</script>");
 			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("----------------------ModCheFeiPriceServlet DEBUG End----------------------");
 	}
 
 	/**
