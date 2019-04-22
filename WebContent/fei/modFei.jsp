@@ -44,8 +44,7 @@
 							CheFeiPriceService service = new CheFeiPriceServiceImpl();
 							CheFeiPrice price = service.QueryFare();
 							if(price != null){
-								request.setAttribute("id", price.getId());
-							
+								request.getSession().setAttribute("pid",price.getId());
 						%>
 			 
 									<tr>

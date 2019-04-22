@@ -1,3 +1,6 @@
+<%@page import="pers.arrayli.domain.CheWei"%>
+<%@page import="pers.arrayli.service.impl.CheWeiServiceImpl"%>
+<%@page import="pers.arrayli.service.CheWeiService"%>
 <%@include file="/common/sub_header.jsp"%>
 <%@ page language="java" import="java.util.*,java.sql.*"
 	pageEncoding="UTF-8"%>
@@ -102,34 +105,46 @@
 								while (rs.next()) {
 									String id = rs.getString("id");
 							%> --%>
+							
+							<%
+								//获取查询条件
+								// 获取车位号查询条件
+								String hao = request.getParameter("queryName");
+								// 获取区域位置关键字查询条件
+								String quyu = request.getParameter("queryName1");
+								
+								CheWeiService service = new CheWeiServiceImpl();
+								List<CheWei> list = service.QueryCheWei(hao, quyu);
+								if( list != null){
+									for(CheWei chewei:list){
+							%>
 							<tr>
 
-
 								<td>
-									<%=id%>
+									<%=chewei.getId()%>
 								</td>
 								<td title="">
-									<%=rs.getString("hao")%>
-								</td>
-
-								<td title="">
-									<%=rs.getString("qu")%>
+									<%=chewei.getHao()%>
 								</td>
 
 								<td title="">
-									<%=rs.getString("info")%>
+									<%=chewei.getQuyu()%>
+								</td>
+
+								<td title="">
+									<%=chewei.getInfo()%>
 								</td>
 
 								<td>
 									<%
-										if (rs.getString("chepai") == null
-													|| rs.getString("chepai").equals("")) {
+										if (chewei.getChepai() == null
+													|| chewei.getChepai().equals("")) {
 									%>
 									空闲
 									<%
 										} else {
 									%>
-									<a href="<%=path%>/fei/jf.jsp?id=<%=id%>"><%=rs.getString("chepai")%>&nbsp;缴费</a>
+									<a href="<%=path%>/fei/jf.jsp?id=<%=chewei.getId()%>"><%=chewei.getChepai()%>&nbsp;缴费</a>
 									<%
 										}
 									%>
@@ -144,6 +159,11 @@
 								if (conn != null)
 									conn.close();
 							%> --%>
+							
+							<%
+									}
+								}
+							%>
 						</table>
 						<div class="list-page">
 

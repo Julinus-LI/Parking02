@@ -1,6 +1,9 @@
+<%@page import="pers.arrayli.domain.CheWei"%>
+<%@page import="pers.arrayli.service.impl.CheWeiServiceImpl"%>
+<%@page import="pers.arrayli.service.CheWeiService"%>
 <%@include file="/common/sub_header.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8"
-	import="java.util.*,java.sql.*,com.cn.db.*" pageEncoding="UTF-8"%>
+	import="java.util.*,java.sql.*" pageEncoding="UTF-8"%>
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -27,7 +30,7 @@
 						<form method="post" id="myform" name="myform">
 							<table class="insert-tab" width="100%">
 								<tbody>
-									<%
+									<%-- <%
 										DBManager dbm = new DBManager();
 										Connection conn = dbm.getConnection();
 										
@@ -57,7 +60,18 @@
 									       isNo=true;
 									    }
 										 
+									%> --%>
+									
+									<%
+										// 1.获取缴费的车辆id
+										int id = Integer.parseInt(request.getParameter("id")); 
+										// 2.根据车位 Id 来获取车位信息
+										CheWeiService service = new CheWeiServiceImpl();
+										CheWei chewei = service.findCheWeiById(id);
+									
 									%>
+									
+									
 									<tr>
 										<th>
 											<i class="require-red"></i>车牌：
@@ -99,10 +113,10 @@
 											元/小时
 										</td>
 									</tr>
-									<tr>
-										<th>
-											<i class="require-red"></i>停车时长：
-										</th>
+										<tr>
+											<th>
+												<i class="require-red"></i>停车时长：
+											</th>
 										<td>
 											<input class="common-text required" id="shijian"
 												value='<%=count%>' name="shijian"
@@ -123,15 +137,19 @@
 										</td>
 									</tr>
 
-
-									<%
+								<%-- 	<%
 										if (rs != null)
 											rs.close();
 										if (stat != null)
 											stat.close();
 										if (conn != null)
 											conn.close();
+									%> --%>
+									<%
+									
+									
 									%>
+									
 									<tr>
 										<th></th>
 										<td>

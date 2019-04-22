@@ -24,7 +24,8 @@ public class ModCheFeiPriceServlet extends HttpServlet {
 		try {
 			System.out.println("----------------------ModCheFeiPriceServlet DEBUG Start----------------------");
 			// 1.获取车费价格数据
-			int id = Integer.parseInt(request.getParameter("id"));
+			int id = Integer.parseInt(request.getSession().getAttribute("pid").toString());
+		
 			int price = Integer.parseInt(request.getParameter("price"));
 			System.out.println("----------------------ModCheFeiPriceServlet DEBUG 1----------------------");
 			// 2.把车费价格封装成一个 CheFeiPrice对象

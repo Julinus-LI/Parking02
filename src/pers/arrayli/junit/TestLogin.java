@@ -8,6 +8,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import pers.arrayli.utils.CalculateTime;
 import pers.arrayli.utils.SysInfoUtils;
 
 public class TestLogin {
@@ -31,5 +32,25 @@ public class TestLogin {
 		System.out.println("技术支持");
 	}
 
+	@Test
+	public void testTimeDiff(){
+		String date1 = "2019-04-20 10:00:00";
+		String date2 = "2019-04-21 12:30:52";
+		long diff =Long.parseLong(CalculateTime.CalculateTime(date1, date2));
+		diff = diff / 1000;   //换算成秒
+		// 间隔的年
+		int day =(int) (diff / 60 / 60 /24);
+		int hour = (int)(diff / 60 / 60);
+		int temp = ((int)(diff / 60)) % 60;
+		System.out.println("temp = "+temp);
+		if(temp != 0){
+			hour = hour + 1;
+		}
+		System.out.println(date2+" 和  "+date1+" 的时间间隔是："+diff);
+		System.out.println("相差   "+day+" 天");
+		System.out.println("相差  "+ hour+" 小时");
+		
+		
+	}
 }
  
