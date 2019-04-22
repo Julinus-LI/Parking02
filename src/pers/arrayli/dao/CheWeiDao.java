@@ -64,4 +64,11 @@ public interface CheWeiDao {
 	 * @throws SQLException
 	 */
 	boolean AddCheWei(CheWei cheWei) throws SQLException;
+	
+	/**根据车位信息上面的车牌号 来查询用户的余额
+	 * @param chepai	车牌号
+	 * @return			用户的余额
+	 * @throws SQLException
+	 */
+	int GetUserMoney(String chepai) throws SQLException;
 }

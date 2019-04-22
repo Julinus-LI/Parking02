@@ -1,3 +1,6 @@
+<%@page import="pers.arrayli.utils.CalculateTime"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="pers.arrayli.domain.CheWei"%>
 <%@page import="pers.arrayli.service.impl.CheWeiServiceImpl"%>
 <%@page import="pers.arrayli.service.CheWeiService"%>
@@ -8,29 +11,29 @@
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-	<head>
-		<base href="<%=basePath%>">
+<head>
+<base href="<%=basePath%>">
 
-	</head>
+</head>
 
-	<body>
-		<jsp:include page="/top.jsp"></jsp:include>
-		<div class="container clearfix">
-			<jsp:include page="/left.jsp"></jsp:include>
-			<!--/sidebar-->
-			<div class="main-wrap">
+<body>
+	<jsp:include page="/top.jsp"></jsp:include>
+	<div class="container clearfix">
+		<jsp:include page="/left.jsp"></jsp:include>
+		<!--/sidebar-->
+		<div class="main-wrap">
 
-				<div class="crumb-wrap">
-					<div class="crumb-list">
-						<i class="icon-font"></i><span>缴费</span>
-					</div>
+			<div class="crumb-wrap">
+				<div class="crumb-list">
+					<i class="icon-font"></i><span>缴费</span>
 				</div>
-				<div class="result-wrap">
-					<div class="result-content">
-						<form method="post" id="myform" name="myform">
-							<table class="insert-tab" width="100%">
-								<tbody>
-									<%-- <%
+			</div>
+			<div class="result-wrap">
+				<div class="result-content">
+					<form method="post" id="myform" name="myform">
+						<table class="insert-tab" width="100%">
+							<tbody>
+								<%-- <%
 										DBManager dbm = new DBManager();
 										Connection conn = dbm.getConnection();
 										
@@ -61,81 +64,82 @@
 									    }
 										 
 									%> --%>
-									
-									<%
-										// 1.获取缴费的车辆id
-										int id = Integer.parseInt(request.getParameter("id")); 
-										// 2.根据车位 Id 来获取车位信息
-										CheWeiService service = new CheWeiServiceImpl();
-										CheWei chewei = service.findCheWeiById(id);
-									
-									%>
-									
-									
-									<tr>
-										<th>
-											<i class="require-red"></i>车牌：
-										</th>
-										<td>
-											<input class="common-text required" id="hao"
-												value='<%=rs.getString("chepai")%>' name="hao" size="20"
-												type="text" readonly="readonly">
-										</td>
-									</tr>
 
-									<tr>
-										<th>
-											<i class="require-red"></i>停车时间：
-										</th>
-										<td>
-											<input class="common-text required" id="jdate"
-												value='<%=bdate%>' name="jdate" size="20"
-												type="text" readonly="readonly">
-										</td>
-									</tr>
-									<tr>
-										<th>
-											<i class="require-red"></i>离开时间：
-										</th>
-										<td>
-											<input class="common-text required" id="ldate" value='<%=ldate%>'
-												name="ldate" size="20" type="text"  readonly="readonly">
-										</td>
-									</tr>
-									<tr>
-										<th>
-											<i class="require-red"></i>停车标准：
-										</th>
-										<td>
-											<input class="common-text required" id="biao"
-												value='<%=fei%>' name="biao"
-												size="5" type="text"  readonly="readonly">
-											元/小时
-										</td>
-									</tr>
-										<tr>
-											<th>
-												<i class="require-red"></i>停车时长：
-											</th>
-										<td>
-											<input class="common-text required" id="shijian"
-												value='<%=count%>' name="shijian"
-												size="5" type="text"  readonly="readonly">
-											小时
-										</td>
-									</tr>
-									<tr>
-										<th>
-											<i class="require-red"></i>费用：
-										</th>
-										<td>
-											<input class="common-text required" id="jine"
-												value='<%=jine%>' name="jine"
-												size="5" type="text"  readonly="readonly">
-											(卡内余额:<%=yu %>)	
-										 
-										</td>
-									</tr>
+								<%
+									// 1.获取缴费的车辆id
+									int id = Integer.parseInt(request.getParameter("id"));
+									// 2.根据车位 Id 来获取车位信息
+									CheWeiService service = new CheWeiServiceImpl();
+									CheWei chewei = service.findCheWeiById(id);
+
+									// 3.获取车辆入场信息
+									String jdate = chewei.getAdate();
+
+									// 4.获取当前日期
+									Date date = new Date();
+									SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+									String ldate = sdf.format(date); // 离开时间
+
+									// 5.计算时间差
+									int hours = CalculateTime.CalculateTime(jdate, ldate);
+
+									// 6.从session 中获取停车单价
+									int price = Integer.parseInt(request.getSession().getAttribute("fei").toString());
+
+									// 7.计算费用
+									int cost = hours * price;
+
+									// 8.获取车牌号
+									String chepai = chewei.getChepai();
+
+									// 9.根据车牌号来获取用户的余额
+									int balance = service.GetUserMoney(chepai);
+
+									boolean isAlipy = false;
+									//判断余额是否大于停车费用
+									if (balance > cost) {
+										isAlipy = true;
+									}
+								%>
+
+
+								<tr>
+									<th><i class="require-red"></i>车牌：</th>
+									<td><input class="common-text required" id="hao"
+										value='<%=chewei.getChepai()%>' name="chepai" size="20"
+										type="text" readonly="readonly"></td>
+								</tr>
+
+								<tr>
+									<th><i class="require-red"></i>停车时间：</th>
+									<td><input class="common-text required" id="jdate"
+										value='<%=jdate%>' name="jdate" size="20" type="text"
+										readonly="readonly"></td>
+								</tr>
+								<tr>
+									<th><i class="require-red"></i>离开时间：</th>
+									<td><input class="common-text required" id="ldate"
+										value='<%=ldate%>' name="ldate" size="20" type="text"
+										readonly="readonly"></td>
+								</tr>
+								<tr>
+									<th><i class="require-red"></i>停车标准：</th>
+									<td><input class="common-text required" id="biao"
+										value='<%=price%>' name="biao" size="5" type="text"
+										readonly="readonly"> 元/小时</td>
+								</tr>
+								<tr>
+									<th><i class="require-red"></i>停车时长：</th>
+									<td><input class="common-text required" id="shijian"
+										value='<%=hours%>' name="shijian" size="5" type="text"
+										readonly="readonly"> 小时</td>
+								</tr>
+								<tr>
+									<th><i class="require-red"></i>费用：</th>
+									<td><input class="common-text required" id="jine"
+										value='<%=cost%>' name="cost" size="5" type="text"
+										readonly="readonly"> (卡内余额:<%=balance%>)</td>
+								</tr>
 
 								<%-- 	<%
 										if (rs != null)
@@ -145,35 +149,29 @@
 										if (conn != null)
 											conn.close();
 									%> --%>
-									<%
-									
-									
-									%>
-									
-									<tr>
-										<th></th>
-										<td>
-											<input class="btn btn-primary btn6 mr10" onclick="save();"
-												value="提交" type="button">
-											<input class="btn btn6" onclick="history.go(-1)" value="返回"
-												type="button">
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</form>
-					</div>
-				</div>
 
+								<tr>
+									<th></th>
+									<td><input class="btn btn-primary btn6 mr10"
+										onclick="save();" value="提交" type="button"> <input
+										class="btn btn6" onclick="history.go(-1)" value="返回"
+										type="button"></td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
 			</div>
-			<!--/main-->
+
 		</div>
-	</body>
+		<!--/main-->
+	</div>
+</body>
 </html>
 <script>
 
 function save() {
-    var isNo="<%=isNo%>";
+    var isNo="<%=isAlipy%>";
     if(isNo=='true'){
        $.messager.alert('警告', '开内余额不足，请充值！', 'warning');
 		return;
@@ -186,8 +184,8 @@ function save() {
 		$.messager.alert('警告', '密码不能为空！', 'warning');
 		return;
 	}
-	document.forms[0].action = "<%=path%>/AddCfeiAction";
+	document.forms[0].action = "<%=path%>/AddCheFeiServlet";
 	document.forms[0].submit();
 
-}
+	}
 </script>

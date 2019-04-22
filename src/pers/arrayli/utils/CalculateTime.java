@@ -9,8 +9,10 @@ import java.util.Date;
  *	计算时间工具类
  */
 public class CalculateTime {
-	public static String CalculateTime(String jdate,String ldate){
+	public static int CalculateTime(String jdate,String ldate){
 		long diff = 0;
+		int hours = 0;
+		int temp = 0;
 		try {
 			String dateStart = jdate;
 			String dateEnd = ldate;
@@ -27,14 +29,17 @@ public class CalculateTime {
 			diff  = d2.getTime()-d1.getTime();
 			System.out.println("d2 - d1: "+diff);
 		
-			int days = diff
-			
+			hours = (int)(diff / 60 / 60);
+			temp = ((int)(diff / 60 )) % 60;
+			if( temp != 0){
+				hours = hours + 1;
+			}
 			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			return Long.toString(diff);
+			return hours;
 		}
 	}
 }

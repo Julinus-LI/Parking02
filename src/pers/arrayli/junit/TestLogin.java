@@ -36,7 +36,7 @@ public class TestLogin {
 	public void testTimeDiff(){
 		String date1 = "2019-04-20 10:00:00";
 		String date2 = "2019-04-21 12:30:52";
-		long diff =Long.parseLong(CalculateTime.CalculateTime(date1, date2));
+		long diff = CalculateTime.CalculateTime(date1, date2);
 		diff = diff / 1000;   //换算成秒
 		// 间隔的年
 		int day =(int) (diff / 60 / 60 /24);

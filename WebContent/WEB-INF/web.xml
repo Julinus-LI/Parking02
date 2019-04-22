@@ -188,4 +188,14 @@
     <servlet-name>ModCheFeiPriceServlet</servlet-name>
     <url-pattern>/ModCheFeiPriceServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddCheFeiServlet</display-name>
+    <servlet-name>AddCheFeiServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.AddCheFeiServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddCheFeiServlet</servlet-name>
+    <url-pattern>/AddCheFeiServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -11,6 +11,7 @@ import pers.arrayli.dao.CheWeiDao;
 import pers.arrayli.db.JDBCUtils;
 import pers.arrayli.domain.Che;
 import pers.arrayli.domain.CheWei;
+import pers.arrayli.domain.UserInfo;
 
 /**
  * @author lzj13 实现车位接口 数据库访问层
@@ -99,6 +100,20 @@ public class CheWeiDaoImpl implements CheWeiDao {
 				cheWei.getChepai(),cheWei.getAdate());
 		
 		return result > 0;
+	}
+
+	@Override
+	public int GetUserMoney(String chepai) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "select a.money from t_userinfo a,t_che b,t_chewei c"
+				+ " where a.id = b.uid and b.hao = c.chepai AND c.chepai = ?";
+		UserInfo user = queryRunner.query(sql,new BeanHandler<UserInfo>(UserInfo.class) ,chepai);
+		System.out.println("GetUserMoney user: "+user.toString());
+		int balance = 0;    // 余额
+		if(user != null){
+			balance = user.getMoney();
+		}
+		return balance;
 	}
 
 }
