@@ -28,7 +28,8 @@ public class CalculateTime {
 			// 计算两个时间差的毫秒数
 			diff  = d2.getTime()-d1.getTime();
 			System.out.println("d2 - d1: "+diff);
-		
+			diff = diff / 1000;    // 转换成秒
+			
 			hours = (int)(diff / 60 / 60);
 			temp = ((int)(diff / 60 )) % 60;
 			if( temp != 0){

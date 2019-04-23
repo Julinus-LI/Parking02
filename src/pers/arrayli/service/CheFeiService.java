@@ -1,6 +1,7 @@
 package pers.arrayli.service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import pers.arrayli.domain.CheFei;
 
@@ -15,5 +16,13 @@ public interface CheFeiService {
 	 * @throws SQLException
 	 */
 	boolean AddCheFei(CheFei cheFei) throws SQLException;
+	
+	/**	按关键字查询车费信息记录
+	 * @param chepai	车牌号
+	 * @param date		停车日期
+	 * @return			查询集合
+	 * @throws SQLException
+	 */
+	List<CheFei> QueryCheFei(String chepai,String date) throws SQLException;
 }
  

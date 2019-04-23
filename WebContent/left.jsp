@@ -36,8 +36,8 @@ function setMenu(obj){
                     <ul class="sub-menu" id="menu2">
                         <li><a href="<%=path %>/chewei/list.jsp">车位管理</a></li>
                         <li><a href="<%=path %>/fei/modFei.jsp">车费标准</a></li>
-                        <li><a href="<%=path %>/chewei/jflist.jsp">停车缴费</a></li>
                         <li><a href="<%=path %>/chewei/cwlist.jsp">车位状态</a></li>
+                        <li><a href="<%=path %>/chewei/jflist.jsp">停车缴费</a></li>
                         <li><a href="<%=path %>/cfei/list.jsp">停车记录查询</a></li>
                     </ul>
                 </li>

@@ -1,3 +1,6 @@
+<%@page import="pers.arrayli.domain.CheFei"%>
+<%@page import="pers.arrayli.service.impl.CheFeiServiceImpl"%>
+<%@page import="pers.arrayli.service.CheFeiService"%>
 <%@include file="/common/sub_header.jsp"%>
 <%@ page language="java" import="java.util.*,java.sql.*"
 	pageEncoding="UTF-8"%>
@@ -44,14 +47,14 @@ function method1(tableid) {
 									请输入车牌号:
 								</th>
 								<td>
-									<input class="common-text" placeholder="关键字" name="queryName"
+									<input class="common-text" placeholder="关键字" name="chepai"
 										value="" id="" type="text">
 								</td>
 								<th width="120">
 									请输入停车日期:
 								</th>
 								<td>
-									<input class="common-text" placeholder="关键字" name="queryName2"
+									<input class="common-text" placeholder="关键字" name="date"
 										value="" id="" type="text" class="Wdate"
 										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})">
 								</td>
@@ -129,34 +132,52 @@ function method1(tableid) {
 									String id = rs.getString("id");
 									jine = jine + Long.parseLong(rs.getString("jine"));
 							%> --%>
+				
+							<%
+								System.out.println("------------cfei/list.jsp--------------");
+								// 获取查询的关键字
+								// 按车牌号查询
+								String chepai = request.getParameter("chepai");
+								// 按日期查询
+								String date = request.getParameter("date");
+								System.out.println("chepai: "+chepai+"\tdate: "+date);
+
+								CheFeiService service = new CheFeiServiceImpl();
+								List<CheFei> list = service.QueryCheFei(chepai, date);
+								System.out.println("------------cfei/list.jsp--------------");
+								// 总计停车费用
+								int totalCost = 0 ;
+								if(list != null){
+									for(CheFei chefei : list){
+										totalCost  = totalCost + chefei.getCost();
+							%>
+				
 							<tr>
-
-
 								<td>
-									<%=id%>
+									<%=chefei.getId()%>
 								</td>
 								<td title="">
-									<%=rs.getString("hao")%>
-								</td>
-
-								<td title="">
-									<%=rs.getString("jdate")%>
+									<%=chefei.getHao()%>
 								</td>
 
 								<td title="">
-									<%=rs.getString("ldate")%>
+									<%=chefei.getJdate()%>
 								</td>
 
 								<td title="">
-									<%=rs.getString("jine")%>
+									<%=chefei.getLdate()%>
 								</td>
 
 								<td title="">
-									<%=rs.getString("shijian")%>
+									<%=chefei.getCost()%>
 								</td>
 
 								<td title="">
-									<%=rs.getString("biao")%>
+									<%=chefei.getHours()%>
+								</td>
+
+								<td title="">
+									<%=chefei.getPrice()%>
 								</td>
 
 
@@ -171,9 +192,14 @@ function method1(tableid) {
 								if (conn != null)
 									conn.close();
 							%> --%>
+							
+							<%
+									}
+								}
+							%>
 						</table>
 						<div class="list-page">
-							共计<%=jine%>元     <a href="<%=path %>/upload/export.jsp">导出</a>
+							共计<%=totalCost%>元     <a href="<%=path %>/upload/export.jsp">导出</a>
 
 						</div>
 					</div>

@@ -1,5 +1,5 @@
 <%@ page language="java"
-	import="java.util.*,java.io.*,com.cn.util.*,com.cn.db.*,java.sql.*"
+	import="java.util.*,java.io.*,com.cn.util.*,java.sql.*"
 	pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();

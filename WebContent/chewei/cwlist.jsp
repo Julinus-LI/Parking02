@@ -1,5 +1,8 @@
+<%@page import="pers.arrayli.domain.CheWei"%>
+<%@page import="pers.arrayli.service.impl.CheWeiServiceImpl"%>
+<%@page import="pers.arrayli.service.CheWeiService"%>
 <%@include file="/common/sub_header.jsp"%>
-<%@ page language="java" import="java.util.*,java.sql.*,com.cn.db.*"
+<%@ page language="java" import="java.util.*,java.sql.*"
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -84,7 +87,7 @@
 									操作
 								</th>
 							</tr>
-							<%
+						<%-- 	<%
 								DBManager dbm = new DBManager();
 								Connection conn = dbm.getConnection();
 								String queryName = request.getParameter("queryName");
@@ -101,41 +104,52 @@
 
 								while (rs.next()) {
 									String id = rs.getString("id");
+							%> --%>
+							
+							<%
+								//获取查询的关键字
+								String hao = request.getParameter("queryName");
+								String quyu = request.getParameter("queryName1");
+								
+								CheWeiService service = new CheWeiServiceImpl();
+								List<CheWei> list = service.QueryCheWei(hao, quyu);
+								if( list != null){
+									for(CheWei chewei:list){
 							%>
 							<tr>
 
 
 								<td>
-									<%=id%>
+									<%=chewei.getId()%>
 								</td>
 								<td title="">
-									<%=rs.getString("hao")%>
-								</td>
-
-								<td title="">
-									<%=rs.getString("qu")%>
+									<%=chewei.getHao()%>
 								</td>
 
 								<td title="">
-									<%=rs.getString("info")%>
+									<%=chewei.getQuyu()%>
+								</td>
+
+								<td title="">
+									<%=chewei.getInfo()%>
 								</td>
 
 								<td>
 									<%
-										if (rs.getString("chepai") == null
-													|| rs.getString("chepai").equals("")) {
+										if (chewei.getChepai() == null 
+											|| chewei.getChepai().equals("")) {
 									%>
 									空闲
 									<%
 										} else {
 									%>
-									<%=rs.getString("chepai")%>
+									<%=chewei.getChepai()%>
 									<%
 										}
 									%>
 								</td>
 							</tr>
-							<%
+							<%-- <%
 								}
 								if (rs != null)
 									rs.close();
@@ -143,6 +157,10 @@
 									pstmt.close();
 								if (conn != null)
 									conn.close();
+							%> --%>
+							<%
+									}
+								}
 							%>
 						</table>
 						<div class="list-page">

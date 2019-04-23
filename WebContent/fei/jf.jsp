@@ -1,3 +1,7 @@
+<%@page import="pers.arrayli.service.impl.CheFeiPriceServiceImpl"%>
+<%@page import="pers.arrayli.service.CheFeiPriceService"%>
+<%@page import="pers.arrayli.service.impl.CheFeiServiceImpl"%>
+<%@page import="pers.arrayli.service.CheFeiService"%>
 <%@page import="pers.arrayli.utils.CalculateTime"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -88,9 +92,12 @@
 									int hours = CalculateTime.CalculateTime(jdate, ldate);
 									System.out.println("停车时长 hours : "+hours);
 									
-									// 6.从session 中获取停车单价
+									// 6. 获取停车单价
 									//int price = Integer.parseInt(request.getSession().getAttribute("fei").toString());
-									int price = 3;
+									//int price = 3;
+									CheFeiPriceService service2 = new CheFeiPriceServiceImpl();
+									int price = service2.findFare();
+									
 									System.out.println("车费标准 price : "+price);
 									
 									// 7.计算费用
@@ -107,7 +114,7 @@
 									
 									boolean isAlipy = false;
 									//判断余额是否大于停车费用
-									if (balance > cost) {
+									if (cost > balance) {
 										isAlipy = true;
 									}
 									System.out.println("----------------------fei/jf.jsp Debug End -----------------------");
@@ -184,7 +191,7 @@
 function save() {
     var isNo="<%=isAlipy%>";
     if(isNo=='true'){
-       $.messager.alert('警告', '开内余额不足，请充值！', 'warning');
+       $.messager.alert('警告', '卡内余额不足，请充值！', 'warning');
 		return;
     }
 	if ($("#name").val() == "") {
