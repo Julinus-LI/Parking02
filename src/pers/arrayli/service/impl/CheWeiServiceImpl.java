@@ -62,5 +62,11 @@ public class CheWeiServiceImpl implements CheWeiService {
 		return dao.GetUserMoney(chepai);
 	}
 
+	@Override
+	public boolean updateCheWeiByChepai(String chepai) throws SQLException {
+		CheWeiDao dao = new CheWeiDaoImpl();
+		return dao.updateCheWeiByChepai(chepai);
+	}
+
 }
  

@@ -68,5 +68,11 @@ public class UserInfoServiceImpl implements UserInfoService{
 		return dao.DelUseInfo(uid);
 	}
 
+	@Override
+	public boolean updateUserMoney(String chepai, int cost) throws SQLException {
+		UserInfoDao dao = new UserInfoDaoImpl();	
+		return dao.updateUserMoney(chepai, cost);
+	}
+
 }
  

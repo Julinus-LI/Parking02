@@ -1,3 +1,5 @@
+<%@page import="pers.arrayli.service.impl.CheFeiPriceServiceImpl"%>
+<%@page import="pers.arrayli.service.CheFeiPriceService"%>
 <%@page import="pers.arrayli.service.impl.CheFeiServiceImpl"%>
 <%@page import="pers.arrayli.service.impl.CheServiceImpl"%>
 <%@page import="pers.arrayli.service.CheFeiService"%>
@@ -40,7 +42,7 @@
 				rs.next();
 			%> --%>
 			<%
-				CheFeiService service = new CheFeiServiceImpl();
+				CheFeiPriceService  service = new CheFeiPriceServiceImpl();
 				int fare = service.findFare();
 			%>
 			 

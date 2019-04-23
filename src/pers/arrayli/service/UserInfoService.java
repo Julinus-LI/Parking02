@@ -78,5 +78,13 @@ public interface UserInfoService {
 	 * @throws SQLException
 	 */
 	boolean DelUseInfo(int uid) throws SQLException;
+	
+	/**根据用户的车牌号来更新用户卡上的余额
+	 * @param chepai		车牌号
+	 * @param cost			停车费用
+	 * @return				返回更新成功与否
+	 * @throws SQLException
+	 */
+	boolean updateUserMoney(String chepai,int cost) throws SQLException;
 }
  

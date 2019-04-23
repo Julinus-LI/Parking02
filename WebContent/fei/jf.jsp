@@ -66,6 +66,7 @@
 									%> --%>
 
 								<%
+									System.out.println("----------------------fei/jf.jsp Debug Start -----------------------");
 									// 1.获取缴费的车辆id
 									int id = Integer.parseInt(request.getParameter("id"));
 									// 2.根据车位 Id 来获取车位信息
@@ -74,32 +75,42 @@
 
 									// 3.获取车辆入场信息
 									String jdate = chewei.getAdate();
-
+									System.out.println("入场时间 jdate: "+jdate);
+									
 									// 4.获取当前日期
 									Date date = new Date();
 									SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 									String ldate = sdf.format(date); // 离开时间
-
+									System.out.println("离开时间 ldate: "+ldate);
+									
+									
 									// 5.计算时间差
 									int hours = CalculateTime.CalculateTime(jdate, ldate);
-
+									System.out.println("停车时长 hours : "+hours);
+									
 									// 6.从session 中获取停车单价
-									int price = Integer.parseInt(request.getSession().getAttribute("fei").toString());
-
+									//int price = Integer.parseInt(request.getSession().getAttribute("fei").toString());
+									int price = 3;
+									System.out.println("车费标准 price : "+price);
+									
 									// 7.计算费用
 									int cost = hours * price;
-
+									System.out.println("停车费用  cost : "+cost);
+									
 									// 8.获取车牌号
 									String chepai = chewei.getChepai();
-
+									System.out.println("车牌号 chepai: "+chepai);
+									
 									// 9.根据车牌号来获取用户的余额
 									int balance = service.GetUserMoney(chepai);
-
+									System.out.println("余额 balance : "+balance);
+									
 									boolean isAlipy = false;
 									//判断余额是否大于停车费用
 									if (balance > cost) {
 										isAlipy = true;
 									}
+									System.out.println("----------------------fei/jf.jsp Debug End -----------------------");
 								%>
 
 

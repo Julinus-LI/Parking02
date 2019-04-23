@@ -12,7 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import pers.arrayli.domain.CheFei;
 import pers.arrayli.service.CheFeiService;
+import pers.arrayli.service.CheWeiService;
+import pers.arrayli.service.UserInfoService;
 import pers.arrayli.service.impl.CheFeiServiceImpl;
+import pers.arrayli.service.impl.CheWeiServiceImpl;
+import pers.arrayli.service.impl.UserInfoServiceImpl;
 
 
 /**
@@ -46,14 +50,26 @@ public class AddCheFeiServlet extends HttpServlet {
 			
 			// 3.调用业务层代码来处理请求
 			CheFeiService service = new CheFeiServiceImpl();
-			boolean result = service.AddCheFei(chefei);
-			// 如果添加成功的话
-			if(result){
-				
+			// 添加车费
+			boolean res1 = service.AddCheFei(chefei);
+			
+			// 缴费完毕后，车位就成了空位，更新车位
+			CheWeiService service2 = new CheWeiServiceImpl();
+			boolean res2 = service2.updateCheWeiByChepai(chepai);
+			
+			// 更新用户卡上余额
+			UserInfoService service3 = new UserInfoServiceImpl();
+			boolean res3 = service3.updateUserMoney(chepai, cost);
+			
+			// 如果更新成功
+			if(res1 && res2 && res3){
+				response.getWriter()
+.println("<script>alert('缴费成功！');window.location.href='chewei/jflist.jsp'</script>");
 			}else{
-				// 如果添加失败的话
-				
+				response.getWriter()
+.println("<script>alert('缴费失败！');window.location.href='chewei/jflist.jsp'</script>");
 			}
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

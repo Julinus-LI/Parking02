@@ -95,5 +95,15 @@ public class UserInfoDaoImpl implements UserInfoDao{
 		return result>0;
 	}
 
+	@Override
+	public boolean updateUserMoney(String chepai, int cost) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "update t_userinfo set money = money - ? where "
+				+ "id = (select udi from t_che where hao = ?) ";
+		// UPDATE t_userinfo SET money = money -100 WHERE id = (SELECT uid FROM t_che WHERE hao = '001');
+		int resutl = queryRunner.update(sql,cost,chepai);
+		return resutl > 0;
+	}
+
 }
  

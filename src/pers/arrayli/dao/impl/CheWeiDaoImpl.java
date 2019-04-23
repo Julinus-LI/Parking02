@@ -104,16 +104,27 @@ public class CheWeiDaoImpl implements CheWeiDao {
 
 	@Override
 	public int GetUserMoney(String chepai) throws SQLException {
+		System.out.println("--------------- CheWeiDaoImpl GetUserMoney Debug Start ------------ ");
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql = "select a.money from t_userinfo a,t_che b,t_chewei c"
-				+ " where a.id = b.uid and b.hao = c.chepai AND c.chepai = ?";
+				+ " where a.id = b.uid and b.hao = c.chepai and c.chepai = ?";
 		UserInfo user = queryRunner.query(sql,new BeanHandler<UserInfo>(UserInfo.class) ,chepai);
 		System.out.println("GetUserMoney user: "+user.toString());
 		int balance = 0;    // Óà¶î
+	
 		if(user != null){
 			balance = user.getMoney();
 		}
+		System.out.println("--------------- CheWeiDaoImpl GetUserMoney Debug Start ------------ ");
 		return balance;
+	}
+
+	@Override
+	public boolean updateCheWeiByChepai(String chepai) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "update t_chewei set chepai = ?,adate = ? where chepai = ?";
+		int result = queryRunner.update(sql,"","",chepai);
+		return result > 0;
 	}
 
 }
