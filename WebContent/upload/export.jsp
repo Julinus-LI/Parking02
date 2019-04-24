@@ -1,5 +1,5 @@
 <%@ page language="java"
-	import="java.util.*,java.io.*,com.cn.util.*,java.sql.*"
+	import="java.util.*,java.io.*,pers.arrayli.utils.ExportExcelUtil,java.sql.*"
 	pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
@@ -16,9 +16,8 @@
 
 	try {
 
-		ResultSet rs = export.selectAllDataFromDB(session
-				.getAttribute("sql")
-				+ "");
+		String sql = "select* from t_chefei";
+		ResultSet rs = export.selectAllDataFromDB(sql);
 		int rowIndex = 1;
 		while (rs.next()) {
 			List<String> list = new ArrayList<String>();
