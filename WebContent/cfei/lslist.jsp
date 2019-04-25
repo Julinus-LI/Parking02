@@ -1,6 +1,12 @@
+<%@page import="pers.arrayli.domain.PageBean"%>
+<%@page import="pers.arrayli.domain.CheFei"%>
+<%@page import="pers.arrayli.service.impl.CheFeiServiceImpl"%>
+<%@page import="pers.arrayli.service.CheFeiService"%>
 <%@include file="/common/sub_header.jsp"%>
-<%@ page language="java" import="java.util.*,java.sql.*,com.cn.db.*"
+<%@ page language="java" import="java.util.*,java.sql.*"
 	pageEncoding="UTF-8"%>
+	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -25,12 +31,28 @@
 			</div>
 			<div class="search-wrap">
 				<div class="search-content">
-					<form action="<%=path%>/cfei/list.jsp" method="post">
+					<form action="<%=path%>/PageListServlet?currentPage=1" method="post">
 						<table class="search-tab">
-							<tr>
-
-								
-								
+							<tr>	
+								<th width="100">
+									请输入车牌号:
+								</th>
+								<td>
+									<input class="common-text" placeholder="关键字" name="chepai"
+										value="" id="" type="text">
+								</td>
+								<th width="120">
+									请输入停车日期:
+								</th>
+								<td>
+									<input class="common-text" placeholder="关键字" name="jdate"
+										value="" id="" type="text" class="Wdate"
+										onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:true})">
+								</td>
+								<td>
+									<input class="btn btn-primary btn2" name="sub" value="查询"
+										type="submit">
+								</td>
 							</tr>
 						</table>
 					</form>
@@ -76,7 +98,7 @@
 									停车标准
 								</th>
 							</tr>
-							<%
+						<%-- 	<%
 								DBManager dbm = new DBManager();
 								Connection conn = dbm.getConnection();
 								String queryName = request.getParameter("queryName");
@@ -124,8 +146,68 @@
 
 									while (i < pageSize && !rs.isAfterLast()) {
 										String id = rs.getString("id");
+							%> --%>
+						<%-- 	<%
+								// 获取查询参数
+								String chepai = request.getParameter("chepai");
+								String date = request.getParameter("date");
+								CheFeiService service = new CheFeiServiceImpl();
+								List<CheFei> list = service.QueryCheFei(chepai, date);
+								
+								/* -------------------------- 设置分页显示  -------------------------*/
+								// 创建PageBean 对象
+								PageBean pageBean = new PageBean();	
+								//pageBean.setList(list);
+								//设置一页显示的记录数   5个记录
+								pageBean.setPageSize(5);
+								// 获取带显示的页码
+								String startPage = request.getParameter("page");
+								int currentPage = Integer.parseInt(startPage);
+								if(startPage == null){
+									pageBean.setCurrentPage(1);
+								}else{
+									pageBean.setCurrentPage(currentPage);
+								}
+								if(currentPage < 0){
+									pageBean.setCurrentPage(1);
+								}
+								
+								// 获取总的记录数
+								pageBean.setTotalSize(list.size());
+								
+								int temp = list.size() % pageBean.getPageSize();
+								if(temp > 0){
+									temp = list.size() / pageBean.getPageSize() + 1;
+								}else{
+									temp = list.size() / pageBean.getPageSize();
+								}
+								
+								// 获取总的页数
+								pageBean.setTotalPage(temp);
+								
+								
+								
+								
+								
+								/* -------------------------- 设置分页显示  -------------------------*/
+								
 							%>
-							<tr>
+							 --%>
+							 
+			<c:forEach items="${pagebean.list}" var="chefei">
+				<tr align="center">
+					<td>${chefei.id}</td>
+					<td>${chefei.hao}</td>
+					<td>${chefei.jdate}</td>
+					<td>${chefei.ldate}</td>
+					<td>${chefei.cost}</td>
+					<td>${chefei.hours}</td>
+					<td>${chefei.price}</td>
+					<%-- <td><a href="UpdateServlet?sid=${stu.sid }">更新</a> <a href="#" onclick="doDelete(${stu.sid})">删除</a></td> --%>
+				</tr>
+			</c:forEach>
+							 
+						<%-- 	<tr>
 
 
 								<td>
@@ -157,8 +239,8 @@
 
 
 
-							</tr>
-							<%
+							</tr> --%>
+							<%-- <%
 								rs.next();
 										i++;
 									}
@@ -168,41 +250,82 @@
 										pstmt.close();
 									if (conn != null)
 										conn.close();
-							%>
+							%> --%>
+							
+							
 						</table>
 						<div class="list-page">
-							&nbsp; 共<%=totalItem%>个记录,分<%=totalPage%>页显示,当前页是:第<%=curPage%>页
+							<%-- &nbsp; 共<%=totalItem%>个记录,分<%=totalPage%>页显示,当前页是:第<%=curPage%>页 --%>
 
+							&nbsp; 共 ${pagebean.totalSize }个记录,分 ${pagebean.pageSize }页显示,当前页是:第${pagebean.currentPage }页
 
-							<%
+						<%-- 	<%
 								if (curPage > 1) {
 							%><a href="<%=path%>/cfei/lslist.jsp?page=1">首页</a>
+							
 							<%
 								}
 							%>&nbsp;&nbsp;
-
-							<%
+ 							--%>
+ 							
+ 							<c:if test="${pagebean.currentPage != 1} ">	
+ 								<a href="<%=path%>/PageListServlet?currentPage=1">首页</a>
+ 								|   <a href="<%=path%>/PageListServlet?currentPage=${pagebean.currentPage-1}">上一页</a>
+ 							</c:if>
+ 							&nbsp;&nbsp;
+ 							
+							<%-- <%
 								if (curPage > 1) {
 							%><a href="<%=path%>/cfei/lslist.jsp?page=<%=curPage - 1%>">上一页</a>
 							<%
 								}
-							%>&nbsp;&nbsp;
-
+							%>&nbsp;&nbsp; --%>
+						
+							<%-- <c:if test="${pageBean.currentPage > 1} ">	
+ 								<a href="PageListServlet?currentPage=${pageBean.currentPage-1}">上一页</a>
+ 							</c:if>
+							&nbsp;&nbsp; --%>
+							
+						<%-- 	
 							<%
 								for (int j = 1; j <= totalPage; j++) {
 										out.print("&nbsp;&nbsp;<a href='"+path+"/cfei/lslist.jsp?page=" + j
 												+ "'>" + j + "</a>");
 									}
 							%>
-
 							&nbsp;&nbsp;
-							<%
+ --%>
+ 							<c:forEach begin="1" end="${pagebean.totalPage}" var="i">
+ 								&nbsp;&nbsp;
+								<c:if test="${pagebean.currentPage == i}">
+									${i }
+								</c:if>
+								<c:if test="${pagebean.currentPage != i}">
+									<a href="<%=path%>/PageListServlet?currentPage=${i}">${i }</a>
+								</c:if>
+							</c:forEach>	
+							&nbsp;&nbsp;
+							
+							<%-- <%
 								if (curPage < totalPage) {
 							%><a href="<%=path%>/cfei/lslist.jsp?page=<%=curPage + 1%>">下一页</a>
 							<%
 								}
 							%>&nbsp;&nbsp;
-
+ --%>
+ 							
+ 							<c:if test="${pagebean.currentPage == pagebean.totalPage }">
+								<a href="<%=path%>/PageListServlet?currentPage=${pagebean.currentPage-1}">上一页</a>
+							     	|  <a href="<%=path%>/PageListServlet?currentPage=1">首页</a>
+							</c:if>
+							
+ 							<c:if test="${pagebean.currentPage != pagebean.totalPage }">
+								<a href="<%=path%>/PageListServlet?currentPage=${pagebean.currentPage+1}">下一页</a>
+							     	|  <a href="<%=path%>/PageListServlet?currentPage=${pagebean.totalPage}">尾页</a>
+							</c:if>
+ 
+ 
+ <%-- 
 							<%
 								if (totalPage > 1) {
 							%><a href="<%=path%>/cfei/lslist.jsp?page=<%=totalPage%>">末页</a>
@@ -214,7 +337,7 @@
 									System.out.println(e1);
 								}
 							%>
-
+ --%>
 						</div>
 					</div>
 				</form>

@@ -198,4 +198,14 @@
     <servlet-name>AddCheFeiServlet</servlet-name>
     <url-pattern>/AddCheFeiServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PageListServlet</display-name>
+    <servlet-name>PageListServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.PageListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PageListServlet</servlet-name>
+    <url-pattern>/PageListServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

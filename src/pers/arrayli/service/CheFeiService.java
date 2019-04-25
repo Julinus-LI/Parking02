@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import pers.arrayli.domain.CheFei;
+import pers.arrayli.domain.PageBean;
 
 /**
  * @author lzj13
@@ -24,5 +25,13 @@ public interface CheFeiService {
 	 * @throws SQLException
 	 */
 	List<CheFei> QueryCheFei(String chepai,String date) throws SQLException;
+	
+	
+	/**	查询当前车费信息集合
+	 * @param currentPage	当前页码
+	 * @return				车费信息集合
+	 * @throws SQLException
+	 */
+	PageBean findCheFeiByPage(int currentPage,String chepai,String jdate) throws SQLException;
 }
  

@@ -37,5 +37,8 @@ public interface CheFeiPriceDao {
 	 * @throws SQLException
 	 */
 	//boolean setFare(int id) throws SQLException;
+	
+	
+	
 }
  

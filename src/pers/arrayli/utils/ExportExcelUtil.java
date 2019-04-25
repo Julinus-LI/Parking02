@@ -24,6 +24,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 
 import pers.arrayli.db.JDBCUtils;
+import pers.arrayli.domain.CheFei;
 
 
 
@@ -35,10 +36,9 @@ public class ExportExcelUtil {
 	
 	private static Connection conn ;  
 	   
-	
 	//表头
 	public static final String[] tableHeader = 
-		{"序号","车牌号","停车时间","离开时间","金额","时长","收费标准"};
+		{"序号","车牌号","停车时间","离开时间","金额","缴费时间","时长","收费标准"};
 	//创建工作本
 	public static HSSFWorkbook demoWorkBook = new HSSFWorkbook();
 	//创建表
@@ -96,6 +96,7 @@ public class ExportExcelUtil {
 	public void createTableRow(List<String> cells,short rowIndex){
 		//创建第rowIndex行
 		HSSFRow row = demoSheet.createRow((short) rowIndex);
+		//row.setHeight((short) (15.625*20));
 		row.setHeight((short) (15.625*20));
 		HSSFCellStyle style = getCellStyle();
 		for(short i = 0;i < cells.size();i++)
@@ -123,6 +124,7 @@ public class ExportExcelUtil {
 			for(int i = 1;i <= columNumber;i++)
 			{
 				list.add(rs.getString(i));
+				//System.out.println("i = "+i+"\t rs.getString(i): "+rs.getString(i));
 			}
 			createTableRow(list,(short)rowIndex);
 			rowIndex++;
@@ -152,15 +154,11 @@ public class ExportExcelUtil {
 		HSSFCellStyle style = demoWorkBook.createCellStyle();  
 	    HSSFFont font = demoWorkBook.createFont();
 	    
-	 /*   demoSheet.setColumnWidth((short)7, (short) 7000);
+	    demoSheet.setColumnWidth((short)7, (short) 7000);
 		demoSheet.setColumnWidth((short)8, (short) 7000);
 		demoSheet.setColumnWidth((short)11, (short) 5000);
-		demoSheet.setColumnWidth((short)12, (short) 5000);*/
-	    
-	    demoSheet.setColumnWidth((short)12, (short) 7000);
-	 	demoSheet.setColumnWidth((short)12, (short) 7000);
-	 	demoSheet.setColumnWidth((short)12, (short) 7000);
-	 	demoSheet.setColumnWidth((short)12, (short) 7000);
+		demoSheet.setColumnWidth((short)12, (short) 5000);
+
 	    
 	    font.setFontName("Arial");  
 	    font.setFontHeightInPoints((short) 10);// 设置字体大小  
