@@ -1,3 +1,6 @@
+<%@page import="pers.arrayli.utils.PictureUtils"%>
+<%@page import="pers.arrayli.utils.SysInfoUtils"%>
+<%@page import="pers.arrayli.domain.SysInfo"%>
 <%@ page contentType="text/html;charset=utf-8" language="java" import="com.jspsmart.upload.*"%>
 <%@ page import="com.jspsmart.upload.*"%>
 <%@ page import="java.util.*"%>
@@ -50,7 +53,8 @@ String path = request.getContextPath();
                    newFile1Name=new Date().getTime()+file_name.substring(file_name.indexOf("."));
 	               System.out.println("新文件名称："+newFile1Name);
 				
-				   String saveurl = request.getSession().getServletContext().getRealPath("imag");
+				   //String saveurl = request.getSession().getServletContext().getRealPath("imag");
+				   String saveurl = PictureUtils.PicPath;
 					System.out.println("附件路径："+saveurl);
 				   saveurl = saveurl+"/"+newFile1Name;
 				  	System.out.println("附件路径："+saveurl);
@@ -67,6 +71,6 @@ String path = request.getContextPath();
 
 <script language="javascript">
     document.write("上传成功");
-	window.parent.document.getElementById("fujian").value="/imag/<%= newFile1Name%>";
+	window.parent.document.getElementById("fujian").value="/upload/<%= newFile1Name%>";
 	window.parent.document.getElementById("fujianYuanshiming").value="<%= file_name%>";
 </script>

@@ -11,7 +11,7 @@ import org.junit.Test;
 import pers.arrayli.utils.CalculateTime;
 import pers.arrayli.utils.SysInfoUtils;
 
-public class TestLogin {
+public class TestTime {
 
 	/**
 	 *  测试获取系统信息

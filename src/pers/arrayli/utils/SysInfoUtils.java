@@ -14,6 +14,7 @@ public class SysInfoUtils {
 	public static String RunEnvironment = "Apache Tomcat";  //	运行环境
 	public static String version = "version-1.0";	//	系统版本
 	public static InetAddress addr = null; 
+	
 	static{
 		try {
 			addr = InetAddress.getLocalHost();

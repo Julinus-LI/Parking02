@@ -54,5 +54,19 @@ public interface CheService {
 	 * @throws SQLException
 	 */
 	String getHaoByUid(int uid) throws SQLException;
+	
+	/**根据车牌号来查询用户id
+	 * @param chepai		车牌号
+	 * @return				用户 uid
+	 * @throws SQLException
+	 */
+	int GetUidByHao(String chepai) throws SQLException;
+	
+	/**根据车辆信息的id来查找 车辆图片的相对路径
+	 * @param id	车辆信息 id
+	 * @return		车辆图片信息的相对路径
+	 * @throws SQLException
+	 */
+	String getPicPathById(int id) throws SQLException;
 }
  

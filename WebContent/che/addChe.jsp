@@ -7,7 +7,7 @@
 	<head>
 		<base href="<%=basePath%>">
 
-		<script language="javascript">
+<script language="javascript">
 function up() {
 
 	var pop = new Popup( {
@@ -23,8 +23,7 @@ function up() {
 	pop.show();
 }
 </script>
-
-	</head>
+</head>
 
 	<body>
 		<jsp:include page="/top.jsp"></jsp:include>

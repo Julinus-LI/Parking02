@@ -1,3 +1,5 @@
+<%@page import="pers.arrayli.service.impl.CheServiceImpl"%>
+<%@page import="pers.arrayli.service.CheService"%>
 <%@page import="pers.arrayli.service.impl.CheFeiPriceServiceImpl"%>
 <%@page import="pers.arrayli.service.CheFeiPriceService"%>
 <%@page import="pers.arrayli.service.impl.CheFeiServiceImpl"%>
@@ -79,39 +81,43 @@
 
 									// 3.获取车辆入场信息
 									String jdate = chewei.getAdate();
-									System.out.println("入场时间 jdate: "+jdate);
-									
+									System.out.println("入场时间 jdate: " + jdate);
+
 									// 4.获取当前日期
 									Date date = new Date();
 									SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 									String ldate = sdf.format(date); // 离开时间
-									System.out.println("离开时间 ldate: "+ldate);
-									
-									
+									System.out.println("离开时间 ldate: " + ldate);
+
 									// 5.计算时间差
 									int hours = CalculateTime.CalculateTime(jdate, ldate);
-									System.out.println("停车时长 hours : "+hours);
-									
+									System.out.println("停车时长 hours : " + hours);
+
 									// 6. 获取停车单价
 									//int price = Integer.parseInt(request.getSession().getAttribute("fei").toString());
 									//int price = 3;
 									CheFeiPriceService service2 = new CheFeiPriceServiceImpl();
 									int price = service2.findFare();
-									
-									System.out.println("车费标准 price : "+price);
-									
+
+									System.out.println("车费标准 price : " + price);
+
 									// 7.计算费用
 									int cost = hours * price;
-									System.out.println("停车费用  cost : "+cost);
-									
+									System.out.println("停车费用  cost : " + cost);
+
 									// 8.获取车牌号
 									String chepai = chewei.getChepai();
-									System.out.println("车牌号 chepai: "+chepai);
-									
+									System.out.println("车牌号 chepai: " + chepai);
+
 									// 9.根据车牌号来获取用户的余额
 									int balance = service.GetUserMoney(chepai);
-									System.out.println("余额 balance : "+balance);
-									
+									System.out.println("余额 balance : " + balance);
+
+									// 10.根据用户的车牌号来获取到用户 id
+									int uid = 0;
+									CheService service3 = new CheServiceImpl();
+									uid = service3.GetUidByHao(chepai);
+
 									boolean isAlipy = false;
 									//判断余额是否大于停车费用
 									if (cost > balance) {
@@ -191,8 +197,19 @@
 function save() {
     var isNo="<%=isAlipy%>";
     if(isNo=='true'){
-       $.messager.alert('警告', '卡内余额不足，请充值！', 'warning');
-		return;
+   		 $.messager.alert('警告', '卡内余额不足，请充值！', 'warning'); 
+   <%--    
+	  $.messager.defaults = { ok: "确定", cancel: "取消" };
+       var res = $.messager.confirm("操作提示","卡内余额不足，请充值！",function (data){ 
+    	   if(data){
+    			// 如果余额不足的话，那么把jsp页面提交到充值页面
+    	    	document.forms[0].action = "<%=path%>/userinfo/chong.jsp?id=<%=uid%>";
+    	 	  	document.forms[0].submit();
+    	    }else{
+    	    	return;
+    	    } 
+       }); --%>
+       
     }
 	if ($("#name").val() == "") {
 		$.messager.alert('警告', '姓名不能为空！', 'warning');
@@ -205,5 +222,5 @@ function save() {
 	document.forms[0].action = "<%=path%>/AddCheFeiServlet";
 	document.forms[0].submit();
 
-	}
+}
 </script>

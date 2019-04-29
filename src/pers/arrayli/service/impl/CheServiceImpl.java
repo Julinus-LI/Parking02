@@ -49,5 +49,17 @@ public class CheServiceImpl implements CheService {
 		CheDao dao = new CheDaoImpl();
 		return dao.getHaoByUid(uid);
 	}
+
+	@Override
+	public int GetUidByHao(String chepai) throws SQLException {
+		CheDao dao = new CheDaoImpl();
+		return dao.GetUidByHao(chepai);
+	}
+
+	@Override
+	public String getPicPathById(int id) throws SQLException {
+		CheDao dao = new CheDaoImpl();
+		return dao.getPicPathById(id);
+	}
 }
  

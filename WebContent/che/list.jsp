@@ -80,9 +80,16 @@
 								if(queryName != null){
 							
 								} */
+								String picPath = "D:\\PakringResources";
 								CheService service = new CheServiceImpl();
 								Che che = service.findByUid(uid);
 								if(che != null){
+									System.out.println("==============显示车图片绝对路径==================");
+									
+									System.out.println("picPath: "+picPath);
+									System.out.println("che.getPicture(): "+che.getPicture());
+									System.out.println("src: "+ picPath+che.getPicture());
+									System.out.println("==============显示车图片绝对路径==================");
 							%>
 							
 							<tr>
@@ -103,7 +110,8 @@
 								</td>
 
 								<td title="">
-									<img src="<%=path%>/<%=che.getPicture()%>" height="100px" width="200px"/>
+									<%-- <img src="<%=path%>/<%=che.getPicture()%>" height="100px" width="200px"/> --%>
+									<img src="<%=che.getPicture()%>" height="100px" width="200px"/>
 								</td>
 
 								<td title="">
