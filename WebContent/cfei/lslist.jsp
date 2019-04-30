@@ -98,101 +98,7 @@
 									停车标准
 								</th>
 							</tr>
-						<%-- 	<%
-								DBManager dbm = new DBManager();
-								Connection conn = dbm.getConnection();
-								String queryName = request.getParameter("queryName");
-								String sql = "select * from cfei where 1=1";
-								if (queryName != null) {
-									sql = sql + " and  hao like '%" + queryName + "%'";
-								}
-
-								String queryName2 = request.getParameter("queryName2");
-								if (queryName2 != null) {
-									sql = sql + " and  jdate like '%" + queryName2 + "%'";
-								}
-
-								System.out.println(sql);
-								PreparedStatement pstmt = conn.prepareStatement(sql);
-								ResultSet rs = pstmt.executeQuery();
-
-								try {
-
-									int pageSize;//一页显示的记录数
-									int totalItem;//记录总数
-									int totalPage;//总页数
-									int curPage;//待显示页码
-									String strPage;
-									int i;
-									pageSize = 5;//设置一页显示的记录数
-									strPage = request.getParameter("page");//获得待显示页码
-									if (strPage == null) {
-										curPage = 1;
-									} else {
-										curPage = java.lang.Integer.parseInt(strPage);//将字符串转换成整形
-									}
-									if (curPage < 1) {
-										curPage = 1;
-									}
-									rs.last();//获取记录总数
-									totalItem = rs.getRow();
-									totalPage = (totalItem + pageSize - 1) / pageSize;
-									if (curPage > totalPage)
-										curPage = totalPage;//调整待显示的页码
-									if (totalPage > 0) {//将记录指针到待显示页的第一条记录上
-										rs.absolute((curPage - 1) * pageSize + 1);
-									}
-									i = 0;
-
-									while (i < pageSize && !rs.isAfterLast()) {
-										String id = rs.getString("id");
-							%> --%>
-						<%-- 	<%
-								// 获取查询参数
-								String chepai = request.getParameter("chepai");
-								String date = request.getParameter("date");
-								CheFeiService service = new CheFeiServiceImpl();
-								List<CheFei> list = service.QueryCheFei(chepai, date);
-								
-								/* -------------------------- 设置分页显示  -------------------------*/
-								// 创建PageBean 对象
-								PageBean pageBean = new PageBean();	
-								//pageBean.setList(list);
-								//设置一页显示的记录数   5个记录
-								pageBean.setPageSize(5);
-								// 获取带显示的页码
-								String startPage = request.getParameter("page");
-								int currentPage = Integer.parseInt(startPage);
-								if(startPage == null){
-									pageBean.setCurrentPage(1);
-								}else{
-									pageBean.setCurrentPage(currentPage);
-								}
-								if(currentPage < 0){
-									pageBean.setCurrentPage(1);
-								}
-								
-								// 获取总的记录数
-								pageBean.setTotalSize(list.size());
-								
-								int temp = list.size() % pageBean.getPageSize();
-								if(temp > 0){
-									temp = list.size() / pageBean.getPageSize() + 1;
-								}else{
-									temp = list.size() / pageBean.getPageSize();
-								}
-								
-								// 获取总的页数
-								pageBean.setTotalPage(temp);
-								
-								
-								
-								
-								
-								/* -------------------------- 设置分页显示  -------------------------*/
-								
-							%>
-							 --%>
+						
 							 
 			<c:forEach items="${pagebean.list}" var="chefei">
 				<tr align="center">
@@ -206,67 +112,13 @@
 					<%-- <td><a href="UpdateServlet?sid=${stu.sid }">更新</a> <a href="#" onclick="doDelete(${stu.sid})">删除</a></td> --%>
 				</tr>
 			</c:forEach>
-							 
-						<%-- 	<tr>
-
-
-								<td>
-									<%=id%>
-								</td>
-								<td title="">
-									<%=rs.getString("hao")%>
-								</td>
-
-								<td title="">
-									<%=rs.getString("jdate")%>
-								</td>
-
-								<td title="">
-									<%=rs.getString("ldate")%>
-								</td>
-
-								<td title="">
-									<%=rs.getString("jine")%>
-								</td>
-
-								<td title="">
-									<%=rs.getString("shijian")%>
-								</td>
-
-								<td title="">
-									<%=rs.getString("biao")%>
-								</td>
-
-
-
-							</tr> --%>
-							<%-- <%
-								rs.next();
-										i++;
-									}
-									if (rs != null)
-										rs.close();
-									if (pstmt != null)
-										pstmt.close();
-									if (conn != null)
-										conn.close();
-							%> --%>
-							
+					
 							
 						</table>
 						<div class="list-page">
-							<%-- &nbsp; 共<%=totalItem%>个记录,分<%=totalPage%>页显示,当前页是:第<%=curPage%>页 --%>
-
+							
 							&nbsp; 共 ${pagebean.totalSize }个记录,分 ${pagebean.pageSize }页显示,当前页是:第${pagebean.currentPage }页
 
-						<%-- 	<%
-								if (curPage > 1) {
-							%><a href="<%=path%>/cfei/lslist.jsp?page=1">首页</a>
-							
-							<%
-								}
-							%>&nbsp;&nbsp;
- 							--%>
  							
  							<c:if test="${pagebean.currentPage != 1} ">	
  								<a href="<%=path%>/PageListServlet?currentPage=1">首页</a>
@@ -274,27 +126,7 @@
  							</c:if>
  							&nbsp;&nbsp;
  							
-							<%-- <%
-								if (curPage > 1) {
-							%><a href="<%=path%>/cfei/lslist.jsp?page=<%=curPage - 1%>">上一页</a>
-							<%
-								}
-							%>&nbsp;&nbsp; --%>
-						
-							<%-- <c:if test="${pageBean.currentPage > 1} ">	
- 								<a href="PageListServlet?currentPage=${pageBean.currentPage-1}">上一页</a>
- 							</c:if>
-							&nbsp;&nbsp; --%>
-							
-						<%-- 	
-							<%
-								for (int j = 1; j <= totalPage; j++) {
-										out.print("&nbsp;&nbsp;<a href='"+path+"/cfei/lslist.jsp?page=" + j
-												+ "'>" + j + "</a>");
-									}
-							%>
-							&nbsp;&nbsp;
- --%>
+
  							<c:forEach begin="1" end="${pagebean.totalPage}" var="i">
  								&nbsp;&nbsp;
 								<c:if test="${pagebean.currentPage == i}">
@@ -306,13 +138,7 @@
 							</c:forEach>	
 							&nbsp;&nbsp;
 							
-							<%-- <%
-								if (curPage < totalPage) {
-							%><a href="<%=path%>/cfei/lslist.jsp?page=<%=curPage + 1%>">下一页</a>
-							<%
-								}
-							%>&nbsp;&nbsp;
- --%>
+						
  							
  							<c:if test="${pagebean.currentPage == pagebean.totalPage }">
 								<a href="<%=path%>/PageListServlet?currentPage=${pagebean.currentPage-1}">上一页</a>
@@ -325,19 +151,6 @@
 							</c:if>
  
  
- <%-- 
-							<%
-								if (totalPage > 1) {
-							%><a href="<%=path%>/cfei/lslist.jsp?page=<%=totalPage%>">末页</a>
-							<%
-								}
-							%>
-							<%
-								} catch (SQLException e1) {
-									System.out.println(e1);
-								}
-							%>
- --%>
 						</div>
 					</div>
 				</form>

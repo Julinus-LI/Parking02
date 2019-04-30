@@ -39,37 +39,7 @@
 					<form method="post" id="myform" name="myform">
 						<table class="insert-tab" width="100%">
 							<tbody>
-								<%-- <%
-										DBManager dbm = new DBManager();
-										Connection conn = dbm.getConnection();
-										
 
-										String sql = "select * from chewei where id= "
-												+ request.getParameter("id");
-										PreparedStatement stat = conn.prepareStatement(sql);
-										ResultSet rs = stat.executeQuery();
-										rs.next();
-										
-										String bdate=rs.getString("adate");
-										
-										java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-										String ldate=format.format(new java.util.Date());
-										long count=dbm.calcHour(bdate,ldate);
-										String fei=(String)session.getAttribute("fei");
-										
-										long jine=count*Long.parseLong(fei);
-										
-										
-										String yue=dbm.getYue(rs.getString("chepai"));
-										
-									    long yu=Long.parseLong(yue);
-									    
-									    boolean isNo=false;
-									    if(jine>yu){
-									       isNo=true;
-									    }
-										 
-									%> --%>
 
 								<%
 									System.out.println("----------------------fei/jf.jsp Debug Start -----------------------");
@@ -165,14 +135,6 @@
 										readonly="readonly"> (卡内余额:<%=balance%>)</td>
 								</tr>
 
-								<%-- 	<%
-										if (rs != null)
-											rs.close();
-										if (stat != null)
-											stat.close();
-										if (conn != null)
-											conn.close();
-									%> --%>
 
 								<tr>
 									<th></th>
@@ -197,19 +159,8 @@
 function save() {
     var isNo="<%=isAlipy%>";
     if(isNo=='true'){
-   		 $.messager.alert('警告', '卡内余额不足，请充值！', 'warning'); 
-   <%--    
-	  $.messager.defaults = { ok: "确定", cancel: "取消" };
-       var res = $.messager.confirm("操作提示","卡内余额不足，请充值！",function (data){ 
-    	   if(data){
-    			// 如果余额不足的话，那么把jsp页面提交到充值页面
-    	    	document.forms[0].action = "<%=path%>/userinfo/chong.jsp?id=<%=uid%>";
-    	 	  	document.forms[0].submit();
-    	    }else{
-    	    	return;
-    	    } 
-       }); --%>
-       
+   		$.messager.alert('警告', '卡内余额不足，请充值！', 'warning'); 
+		return;
     }
 	if ($("#name").val() == "") {
 		$.messager.alert('警告', '姓名不能为空！', 'warning');
@@ -219,8 +170,8 @@ function save() {
 		$.messager.alert('警告', '密码不能为空！', 'warning');
 		return;
 	}
-	document.forms[0].action = "<%=path%>/AddCheFeiServlet";
-	document.forms[0].submit();
+		document.forms[0].action = "<%=path%>/AddCheFeiServlet";
+		document.forms[0].submit();
 
-}
+	}
 </script>

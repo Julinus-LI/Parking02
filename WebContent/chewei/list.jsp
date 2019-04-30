@@ -81,21 +81,7 @@
 										操作	
 									</th>	
 								</tr>	
-							<%-- 	<%
-										DBManager dbm = new DBManager();
-										Connection conn = dbm.getConnection();
-										String queryName = request.getParameter("queryName");
-										String sql = "select * from chewei";
-										if (queryName != null) {
-											sql = "select * from chewei where hao like '%" + queryName
-													+ "%'";
-										}
-										PreparedStatement pstmt = conn.prepareStatement(sql);
-										ResultSet rs = pstmt.executeQuery();
-
-										while (rs.next()) {
-											String id = rs.getString("id");
-									%>	 --%>
+							
 									
 									<%
 										// 获取查询条件
@@ -129,15 +115,6 @@
 										<a class="link-del" href="<%=path%>/DelCheweiServlet?id=<%=chewei.getId()%>">删除</a>	
 									</td>	
 								</tr>	
-								<%-- 	<%
-											}
-											if (rs != null)
-												rs.close();
-											if (pstmt != null)
-												pstmt.close();
-											if (conn != null)
-												conn.close();
-										%> 	 --%>
 										
 							<%
 										}

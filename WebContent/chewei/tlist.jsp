@@ -66,24 +66,6 @@
 
 							<th>操作</th>
 						</tr>
-					<%-- 	<%
-							DBManager dbm = new DBManager();
-							Connection conn = dbm.getConnection();
-							String queryName = request.getParameter("queryName");
-							String queryName1 = request.getParameter("queryName1");
-							String sql = "select * from chewei where 1=1";
-							if (queryName != null) {
-								sql = sql + " and hao like '%" + queryName + "%'";
-							}
-							if (queryName1 != null) {
-								sql = sql + " and qu like '%" + queryName1 + "%'";
-							}
-							PreparedStatement pstmt = conn.prepareStatement(sql);
-							ResultSet rs = pstmt.executeQuery();
-
-							while (rs.next()) {
-								String id = rs.getString("id");
-						%> --%>
 						
 						<%
 							// 获取jsp页面上的查询关键字
@@ -125,15 +107,7 @@
 						<%
 							}
 						%>
-					<%-- 	<%
-							}
-							if (rs != null)
-								rs.close();
-							if (pstmt != null)
-								pstmt.close();
-							if (conn != null)
-								conn.close();
-						%> --%>
+
 					</table>
 					<div class="list-page"></div>
 				</div>

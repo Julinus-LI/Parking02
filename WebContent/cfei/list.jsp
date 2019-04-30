@@ -107,31 +107,6 @@ function method1(tableid) {
 									停车标准
 								</th>
 							</tr>
-						<%-- 	<%
-								DBManager dbm = new DBManager();
-								Connection conn = dbm.getConnection();
-								String queryName = request.getParameter("queryName");
-								String sql = "select * from cfei where 1=1";
-								if (queryName != null) {
-									sql = sql + " and  hao like '%" + queryName + "%'";
-								}
-
-								String queryName2 = request.getParameter("queryName2");
-								if (queryName2 != null) {
-									sql = sql + " and  jdate like '%" + queryName2 + "%'";
-								}
-
-								System.out.println(sql);
-								session.setAttribute("sql",sql);
-								PreparedStatement pstmt = conn.prepareStatement(sql);
-								ResultSet rs = pstmt.executeQuery();
-
-								long jine = 0;
-
-								while (rs.next()) {
-									String id = rs.getString("id");
-									jine = jine + Long.parseLong(rs.getString("jine"));
-							%> --%>
 				
 							<%
 								System.out.println("------------cfei/list.jsp--------------");

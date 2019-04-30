@@ -30,15 +30,6 @@
 							name="myform" >	
 							<table class="insert-tab" width="100%">	
 								<tbody>	
-				<%-- 					 <%	
-				DBManager dbm = new DBManager();	
-				Connection conn = dbm.getConnection();	
-				String id = request.getParameter("id");	
-				String sql = "select * from chewei where id='" + id + "'";	
-				PreparedStatement stat = conn.prepareStatement(sql);	
-				ResultSet rs = stat.executeQuery();	
-				rs.next();	
-			%>	 --%>
 				<%
 					// 获取要修改的车位信息的 id
 					int id = Integer.parseInt(request.getParameter("id"));
@@ -77,15 +68,6 @@
 			size="50" value="" type="text">
 	</td>
 </tr>
-										
-			<%-- 						 <%	
-				if (rs != null)	
-					rs.close();	
-				if (stat != null)	
-					stat.close();	
-				if (conn != null)	
-					conn.close();	
-			%>		 --%>
 			
 			<%
 					}
