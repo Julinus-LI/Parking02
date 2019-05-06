@@ -40,6 +40,7 @@ public class CalculateTime {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
+			
 			return hours;
 		}
 	}
