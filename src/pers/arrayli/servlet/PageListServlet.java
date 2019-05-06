@@ -78,7 +78,7 @@ public class PageListServlet extends HttpServlet {
 				request.getRequestDispatcher("cfei/list.jsp").forward(request, response);
 			}else{
 				// 跳转到用户页面
-				
+				request.getRequestDispatcher("cfei/lslist.jsp").forward(request, response);
 			}
 			//response.sendRedirect("cfei/lslist.jsp");
 			

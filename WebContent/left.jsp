@@ -64,7 +64,7 @@ function setMenu(obj){
                         
                        <li><a href="<%=path %>/chewei/tlist.jsp">车位信息</a></li>
                      <%--    <li><a href="<%=path %>/cfei/lslist.jsp">停车记录查看看</a></li> --%>
-                        <li><a href="<%=path %>/PageListServlet?currentPage=1&type=admin">停车记录查看</a></li>
+                        <li><a href="<%=path %>/PageListServlet?currentPage=1&type=user">停车记录查看</a></li>
                     </ul>
                 </li>
                </c:if> 
