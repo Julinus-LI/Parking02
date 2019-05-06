@@ -22,57 +22,57 @@ import pers.arrayli.service.impl.CheWeiServiceImpl;
 
 /**
  * @author lzj13
- *	Ô¤¶¨³µÎ»servlet
+ *	é¢„å®šè½¦ä½servlet
  */
 public class ReserveServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// »ñÈ¡Êä³öÁ÷¶ÔÏó
+		// è·å–è¾“å‡ºæµå¯¹è±¡
 		PrintWriter out = response.getWriter();
 		try {
-			// »ñÈ¡Ô¤¶¨³µÎ» id
+			// è·å–é¢„å®šè½¦ä½ id
 			int id = Integer.parseInt(request.getParameter("id"));
 			
-			// »ñÈ¡ÓÃ»§ id
+			// è·å–ç”¨æˆ· id
 			int uid = Integer.parseInt(request.getSession().getAttribute("uid").toString());
 			
-			//¸ù¾İÓÃ»§ uid  À´²éÑ¯³µÅÆºÅ
+			//æ ¹æ®ç”¨æˆ· uid  æ¥æŸ¥è¯¢è½¦ç‰Œå·
 			CheService service = new CheServiceImpl();
 			String hao = service.getHaoByUid(uid);
 			
 			System.out.println("id: "+id+"\tuid: "+uid+"\thao: "+hao);
-			// Èç¹û³µÅÆºÅ²»Îª¿ÕµÄ»°,¿ÉÒÔÔ¤¶¨³µÎ»
+			// å¦‚æœè½¦ç‰Œå·ä¸ä¸ºç©ºçš„è¯,å¯ä»¥é¢„å®šè½¦ä½
 			if(hao != null){
-				// ÔÚ³µÎ»ĞÅÏ¢±íÖĞ²éÑ¯ ³µÅÆºÅÎª hao ³µÓĞÃ»ÓĞÍ£³µ
+				// åœ¨è½¦ä½ä¿¡æ¯è¡¨ä¸­æŸ¥è¯¢ è½¦ç‰Œå·ä¸º hao è½¦æœ‰æ²¡æœ‰åœè½¦
 				CheWeiService cheWeiService = new CheWeiServiceImpl();
 				System.out.println("================== ReserveServlet DEBUG Start =============");
-				// Èç¹ûÒÑ¾­Í£³µµÄ»°
+				// å¦‚æœå·²ç»åœè½¦çš„è¯
 				if(cheWeiService.isReverse(hao)){
 					System.out.println("================== ReserveServlet DEBUG End =============");
 					out
-.println("<script>alert('ÄãµÄ³µÒÑ¾­Í£ÔÚ³µÎ»ÉÏ£¡');window.location.href='chewei/tlist.jsp'</script>");
+.println("<script>alert('ä½ çš„è½¦å·²ç»åœåœ¨è½¦ä½ä¸Šï¼');window.location.href='chewei/tlist.jsp'</script>");
 				}else{
-					// Èç¹ûÃ»ÓĞÍ£³µµÄ»°
-					// »ñÈ¡µ±Ç°Ê±¼ä
+					// å¦‚æœæ²¡æœ‰åœè½¦çš„è¯
+					// è·å–å½“å‰æ—¶é—´
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					Date date = new Date();
 					String time = sdf.format(date);
 					boolean result = cheWeiService.updateCheWei(hao,time, uid);
 					
-					// Ô¤¶¨³É¹¦
+					// é¢„å®šæˆåŠŸ
 					if(result){
 						out
-.println("<script>alert('Ô¤¶©³É¹¦£¡');window.location.href='chewei/tlist.jsp'</script>");
+.println("<script>alert('é¢„è®¢æˆåŠŸï¼');window.location.href='chewei/tlist.jsp'</script>");
 					}else{
-						// Ô¤¶¨Ê§°Ü
+						// é¢„å®šå¤±è´¥
 						out
-.println("<script>alert('Ô¤¶©Ê§°Ü£¡');window.location.href='chewei/tlist.jsp'</script>");
+.println("<script>alert('é¢„è®¢å¤±è´¥ï¼');window.location.href='chewei/tlist.jsp'</script>");
 					}
 				}
 			}else{ 
-				// ³µÅÆºÅÎª¿ÕµÄ»°£¬ÇëÏÈÌí¼Ó³µÁ¾ĞÅÏ¢
+				// è½¦ç‰Œå·ä¸ºç©ºçš„è¯ï¼Œè¯·å…ˆæ·»åŠ è½¦è¾†ä¿¡æ¯
 				out
-.println("<script>alert('ÇëÌí¼Ó³µÁ¾ĞÅÏ¢£¡');window.location.href='chewei/tlist.jsp'</script>");
+.println("<script>alert('è¯·æ·»åŠ è½¦è¾†ä¿¡æ¯ï¼');window.location.href='chewei/tlist.jsp'</script>");
 			}
 			
 			

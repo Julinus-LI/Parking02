@@ -14,7 +14,7 @@ import pers.arrayli.dao.UserInfoDao;
 import pers.arrayli.db.JDBCUtils;
 /**
  * @author lzj13
- *	ÊµÏÖÓÃ»§ÐÅÏ¢Êý¾Ý·ÃÎÊ²ã
+ *	å®žçŽ°ç”¨æˆ·ä¿¡æ¯æ•°æ®è®¿é—®å±‚
  */
 public class UserInfoDaoImpl implements UserInfoDao{
 
@@ -43,7 +43,7 @@ public class UserInfoDaoImpl implements UserInfoDao{
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql = "update t_userinfo set username = ?,pwd = ?,age = ?,tel = ? where id = ?";
 		int res = queryRunner.update(sql,user.getUsername(),user.getPwd(),user.getAge(),user.getTel(),id);
-		System.out.println("¸üÐÂÓÃ»§ uid = "+id+" µÄÐÅÏ¢£¬·µ»ØÖµÎª res= "+res);
+		System.out.println("æ›´æ–°ç”¨æˆ· uid = "+id+" çš„ä¿¡æ¯ï¼Œè¿”å›žå€¼ä¸º res= "+res);
 		return res>0;
 	}
 

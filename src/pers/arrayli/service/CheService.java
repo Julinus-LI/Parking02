@@ -7,64 +7,64 @@ import pers.arrayli.domain.UserInfo;
 
 /**
  * @author lzj13
- *  ¶¨ÒåÁË³µµÄÒµÎñ²ã²Ù×÷½Ó¿Ú
+ *  å®šä¹‰äº†è½¦çš„ä¸šåŠ¡å±‚æ“ä½œæ¥å£
  */
 public interface CheService {
-	/**	Ìí¼Ó³µÁ¾ĞÅÏ¢
+	/**	æ·»åŠ è½¦è¾†ä¿¡æ¯
 	 * @param che
-	 * @return  Ìí¼Ó³µÁ¾ÊÇ·ñ³É¹¦
+	 * @return  æ·»åŠ è½¦è¾†æ˜¯å¦æˆåŠŸ
 	 * @throws SQLException
 	 */
 	boolean AddChe(Che che) throws SQLException;
 	
-	/**	°´idÀ´²éÑ¯³µÁ¾ĞÅÏ¢
-	 * @param id  ÓÃ»§id
-	 * @return  ·µ»Ø²éÑ¯µ½µÄ³µÁ¾ĞÅÏ¢
+	/**	æŒ‰idæ¥æŸ¥è¯¢è½¦è¾†ä¿¡æ¯
+	 * @param id  ç”¨æˆ·id
+	 * @return  è¿”å›æŸ¥è¯¢åˆ°çš„è½¦è¾†ä¿¡æ¯
 	 * @throws SQLException
 	 */
 	Che findByUid(int uid) throws SQLException;
 	
 	
-	/**	°´idÀ´²éÑ¯³µÁ¾ĞÅÏ¢
-	 * @param id  ³µÁ¾ĞÅÏ¢id
-	 * @return  ·µ»Ø²éÑ¯µ½µÄ³µÁ¾ĞÅÏ¢
+	/**	æŒ‰idæ¥æŸ¥è¯¢è½¦è¾†ä¿¡æ¯
+	 * @param id  è½¦è¾†ä¿¡æ¯id
+	 * @return  è¿”å›æŸ¥è¯¢åˆ°çš„è½¦è¾†ä¿¡æ¯
 	 * @throws SQLException
 	 */
 	Che findById(int id) throws SQLException;
 	
-	/** ¸ù¾İÓÃ»§µÄidÀ´¸üĞÂÓÃ»§ĞÅÏ¢
-	 * @param id  ÓÃ»§id
-	 * @param user  ÓÃ»§ĞÅÏ¢bean
-	 * @return  ·µ»Ø¸üĞÂ³É¹¦Óë·ñ
+	/** æ ¹æ®ç”¨æˆ·çš„idæ¥æ›´æ–°ç”¨æˆ·ä¿¡æ¯
+	 * @param id  ç”¨æˆ·id
+	 * @param user  ç”¨æˆ·ä¿¡æ¯bean
+	 * @return  è¿”å›æ›´æ–°æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean updateCheById(int id,Che che) throws SQLException;
 	
-	/** °´³µÁ¾idÀ´É¾³ı³µÁ¾ĞÅÏ¢
-	 * @param id  ³µÁ¾ĞÅÏ¢ id
-	 * @return  ·µ»ØÉ¾³ı³µÁ¾ĞÅÏ¢³É¹¦Óë·ñ
+	/** æŒ‰è½¦è¾†idæ¥åˆ é™¤è½¦è¾†ä¿¡æ¯
+	 * @param id  è½¦è¾†ä¿¡æ¯ id
+	 * @return  è¿”å›åˆ é™¤è½¦è¾†ä¿¡æ¯æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean delCheById(int id) throws SQLException;
 	
 	
-	/**	¸ù¾İÓÃ»§ idÀ´²éÑ¯³µÅÆºÅ
-	 * @param uid	ÓÃ»§id
-	 * @return		·µ»Ø³µÅÆºÅ
+	/**	æ ¹æ®ç”¨æˆ· idæ¥æŸ¥è¯¢è½¦ç‰Œå·
+	 * @param uid	ç”¨æˆ·id
+	 * @return		è¿”å›è½¦ç‰Œå·
 	 * @throws SQLException
 	 */
 	String getHaoByUid(int uid) throws SQLException;
 	
-	/**¸ù¾İ³µÅÆºÅÀ´²éÑ¯ÓÃ»§id
-	 * @param chepai		³µÅÆºÅ
-	 * @return				ÓÃ»§ uid
+	/**æ ¹æ®è½¦ç‰Œå·æ¥æŸ¥è¯¢ç”¨æˆ·id
+	 * @param chepai		è½¦ç‰Œå·
+	 * @return				ç”¨æˆ· uid
 	 * @throws SQLException
 	 */
 	int GetUidByHao(String chepai) throws SQLException;
 	
-	/**¸ù¾İ³µÁ¾ĞÅÏ¢µÄidÀ´²éÕÒ ³µÁ¾Í¼Æ¬µÄÏà¶ÔÂ·¾¶
-	 * @param id	³µÁ¾ĞÅÏ¢ id
-	 * @return		³µÁ¾Í¼Æ¬ĞÅÏ¢µÄÏà¶ÔÂ·¾¶
+	/**æ ¹æ®è½¦è¾†ä¿¡æ¯çš„idæ¥æŸ¥æ‰¾ è½¦è¾†å›¾ç‰‡çš„ç›¸å¯¹è·¯å¾„
+	 * @param id	è½¦è¾†ä¿¡æ¯ id
+	 * @return		è½¦è¾†å›¾ç‰‡ä¿¡æ¯çš„ç›¸å¯¹è·¯å¾„
 	 * @throws SQLException
 	 */
 	String getPicPathById(int id) throws SQLException;

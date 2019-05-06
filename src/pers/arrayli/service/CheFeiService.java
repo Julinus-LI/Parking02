@@ -8,28 +8,28 @@ import pers.arrayli.domain.PageBean;
 
 /**
  * @author lzj13
- *	³µ·ÑÒµÎñ²ã½Ó¿Ú
+ *	è½¦è´¹ä¸šåŠ¡å±‚æ¥å£
  */
 public interface CheFeiService {
-	/**Ìí¼Ó³µ·ÑĞÅÏ¢
-	 * @param cheFei  ³µ·ÑĞÅÏ¢¶ÔÏó
-	 * @return	Ìí¼Ó³É¹¦Óë·ñ
+	/**æ·»åŠ è½¦è´¹ä¿¡æ¯
+	 * @param cheFei  è½¦è´¹ä¿¡æ¯å¯¹è±¡
+	 * @return	æ·»åŠ æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean AddCheFei(CheFei cheFei) throws SQLException;
 	
-	/**	°´¹Ø¼ü×Ö²éÑ¯³µ·ÑĞÅÏ¢¼ÇÂ¼
-	 * @param chepai	³µÅÆºÅ
-	 * @param date		Í£³µÈÕÆÚ
-	 * @return			²éÑ¯¼¯ºÏ
+	/**	æŒ‰å…³é”®å­—æŸ¥è¯¢è½¦è´¹ä¿¡æ¯è®°å½•
+	 * @param chepai	è½¦ç‰Œå·
+	 * @param date		åœè½¦æ—¥æœŸ
+	 * @return			æŸ¥è¯¢é›†åˆ
 	 * @throws SQLException
 	 */
 	List<CheFei> QueryCheFei(String chepai,String date) throws SQLException;
 	
 	
-	/**	²éÑ¯µ±Ç°³µ·ÑĞÅÏ¢¼¯ºÏ
-	 * @param currentPage	µ±Ç°Ò³Âë
-	 * @return				³µ·ÑĞÅÏ¢¼¯ºÏ
+	/**	æŸ¥è¯¢å½“å‰è½¦è´¹ä¿¡æ¯é›†åˆ
+	 * @param currentPage	å½“å‰é¡µç 
+	 * @return				è½¦è´¹ä¿¡æ¯é›†åˆ
 	 * @throws SQLException
 	 */
 	PageBean findCheFeiByPage(int currentPage,String chepai,String jdate) throws SQLException;

@@ -22,17 +22,17 @@ public class AddCheServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		try {
-			// 1.´ÓÇ°¶ËÒ³Ãæ»ñÈ¡Êı¾İ
+			// 1.ä»å‰ç«¯é¡µé¢è·å–æ•°æ®
 			String hao = request.getParameter("hao");
 			String leixing = request.getParameter("leixing");
 			String picture = request.getParameter("fujian");
 			String info = request.getParameter("info");
 			int uid = Integer.parseInt(request.getSession().getAttribute("uid").toString());
 
-			System.out.println("-------------------Ìí¼Ó³µÁ¾ĞÅÏ¢---------------");
+			System.out.println("-------------------æ·»åŠ è½¦è¾†ä¿¡æ¯---------------");
 			
 
-			// 2.·â×°³µĞÅÏ¢
+			// 2.å°è£…è½¦ä¿¡æ¯
 			Che che = new Che();
 			che.setHao(hao);
 			che.setLeixing(leixing);
@@ -41,21 +41,21 @@ public class AddCheServlet extends HttpServlet {
 			che.setUid(uid);
 			
 			System.out.println(che.toString());
-			System.out.println("-------------------Ìí¼Ó³µÁ¾ĞÅÏ¢---------------");
+			System.out.println("-------------------æ·»åŠ è½¦è¾†ä¿¡æ¯---------------");
 			
-			// 3.½øĞĞÒµÎñ²ã²Ù×÷£¬°Ñ³µµÄĞÅÏ¢Ğ´ÈëÊı¾İ¿âÖĞ
+			// 3.è¿›è¡Œä¸šåŠ¡å±‚æ“ä½œï¼ŒæŠŠè½¦çš„ä¿¡æ¯å†™å…¥æ•°æ®åº“ä¸­
 			CheService service = new CheServiceImpl();
 			boolean result = service.AddChe(che);
 			System.out.println("AddCheServlet: result ="+result);
-			// Èç¹ûÌí¼Ó³É¹¦
+			// å¦‚æœæ·»åŠ æˆåŠŸ
 			if(result){
-				// Èç¹ûÌí¼Ó³É¹¦£¬ÖØ¶¨Ïòµ½  ³µµÄlist.jsp
+				// å¦‚æœæ·»åŠ æˆåŠŸï¼Œé‡å®šå‘åˆ°  è½¦çš„list.jsp
 				response.sendRedirect("che/list.jsp");
 			}else{
-				// Èç¹ûµÇÂ¼Ê§°ÜµÄ»°
-				// »ñÈ¡Êä³öÁ÷¶ÔÏó
+				// å¦‚æœç™»å½•å¤±è´¥çš„è¯
+				// è·å–è¾“å‡ºæµå¯¹è±¡
 				PrintWriter out = response.getWriter();
-				out.println("<script>alert('Ìí¼Ó³µÁ¾Ê§°Ü£¡');window.location.href='che/list.jsp'</script>");
+				out.println("<script>alert('æ·»åŠ è½¦è¾†å¤±è´¥ï¼');window.location.href='che/list.jsp'</script>");
 			}
 			
 		} catch (SQLException e) {

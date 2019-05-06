@@ -10,19 +10,19 @@ import com.sun.xml.internal.ws.Closeable;
 
 /**
  * @author lzj13
- *	½øĞĞÊı¾İ¿âµÄÁ¬½ÓºÍÊÍ·Å²Ù×÷    ÕâÀïÊ¹ÓÃC3P0Êı¾İ¿âÁ¬À´»ñÈ¡Êı¾İÔ´ºÍ´´½¨Êı¾İ¿âÁ¬½Ó
+ *	è¿›è¡Œæ•°æ®åº“çš„è¿æ¥å’Œé‡Šæ”¾æ“ä½œ    è¿™é‡Œä½¿ç”¨C3P0æ•°æ®åº“è¿æ¥è·å–æ•°æ®æºå’Œåˆ›å»ºæ•°æ®åº“è¿æ¥
  */
 public class JDBCUtils {
-	// ¶¨ÒåÊı¾İÔ´±äÁ¿
+	// å®šä¹‰æ•°æ®æºå˜é‡
 	static ComboPooledDataSource dataSource = null;
 	
-	//Ê¹ÓÃ¾²Ì¬¼ÓÔØÊı¾İÔ´£¬ÔÚ´úÂëÒ»¼ÓÔØ¾Í»ñÈ¡µ½Êı¾İ
+	//ä½¿ç”¨é™æ€åŠ è½½æ•°æ®æºï¼Œåœ¨ä»£ç ä¸€åŠ è½½å°±è·å–åˆ°æ•°æ®
 	static {
 		dataSource = new ComboPooledDataSource();
 	}
 	
 	/**
-	 * @return  ·µ»ØÊı¾İÊı¾İÔ´
+	 * @return  è¿”å›æ•°æ®æ•°æ®æº
 	 */
 	public static ComboPooledDataSource getDataSource(){
 		return dataSource;
@@ -30,17 +30,17 @@ public class JDBCUtils {
 	
 	
 	/**
-	 * @return  ·µ»Ø´´½¨µÄÊı¾İ¿âÁ¬½Ó¶ÔÏó
+	 * @return  è¿”å›åˆ›å»ºçš„æ•°æ®åº“è¿æ¥å¯¹è±¡
 	 * @throws SQLException
 	 */
 	public static Connection getConnection() throws SQLException{
 		return dataSource.getConnection();
 	}
 	
-	/** Õâ¸ö·½·¨ÓÃÓÚÊÍ·ÅÊı¾İ¿âµÄÊı¾İµÄ²éÑ¯Á¬½Ó
-	 * @param con  Êı¾İ¿âÁ¬½Ó¶ÔÏó
-	 * @param st   Ö´ĞĞ²»´ø²ÎÊıµÄsqlÓï¾ä
-	 * @param rs   Êı¾İ½á¹û¼¯ºÏ
+	/** è¿™ä¸ªæ–¹æ³•ç”¨äºé‡Šæ”¾æ•°æ®åº“çš„æ•°æ®çš„æŸ¥è¯¢è¿æ¥
+	 * @param con  æ•°æ®åº“è¿æ¥å¯¹è±¡
+	 * @param st   æ‰§è¡Œä¸å¸¦å‚æ•°çš„sqlè¯­å¥
+	 * @param rs   æ•°æ®ç»“æœé›†åˆ
 	 */
 	public static void release(Connection con,Statement st,ResultSet rs){
 		closeCon(con);
@@ -48,18 +48,18 @@ public class JDBCUtils {
 		closeRs(rs);
 	}
 	
-	/** ÖØÔØÊÍ·ÅÁ¬½Ó·½·¨ Õâ¸ö·½·¨ÓÃÓÚÊı¾İ¿âÔö£¬É¾£¬¸ÄµÈ¹¦ÄÜ
-	 * @param con  Êı¾İ¿âÁ¬½Ó¶ÔÏó
-	 * @param st   Ö´ĞĞ²»´ø²ÎÊıµÄsqlÓï¾ä
-	 * @param rs   Êı¾İ½á¹û¼¯ºÏ
+	/** é‡è½½é‡Šæ”¾è¿æ¥æ–¹æ³• è¿™ä¸ªæ–¹æ³•ç”¨äºæ•°æ®åº“å¢ï¼Œåˆ ï¼Œæ”¹ç­‰åŠŸèƒ½
+	 * @param con  æ•°æ®åº“è¿æ¥å¯¹è±¡
+	 * @param st   æ‰§è¡Œä¸å¸¦å‚æ•°çš„sqlè¯­å¥
+	 * @param rs   æ•°æ®ç»“æœé›†åˆ
 	 */
 	public static void release(Connection con,Statement st){
 		closeCon(con);
 		closeSt(st);
 	}
 	
-	/** ¹Ø±ÕÊı¾İ¿âÁ¬½Ó¶ÔÏó
-	 * @param con  Êı¾İ¿âÁ¬½Ó¶ÔÏó
+	/** å…³é—­æ•°æ®åº“è¿æ¥å¯¹è±¡
+	 * @param con  æ•°æ®åº“è¿æ¥å¯¹è±¡
 	 * @throws SQLException 
 	 */
 	public static void closeCon(Connection con) {
@@ -75,8 +75,8 @@ public class JDBCUtils {
 		}
 	}
 	
-	/** ¹Ø±ÕÊı¾İ¿â²Ù×÷Óï¾ä¶ÔÏó
-	 * @param st  Êı¾İ¿âÓï¾äÖ´ĞĞ¶ÔÏó
+	/** å…³é—­æ•°æ®åº“æ“ä½œè¯­å¥å¯¹è±¡
+	 * @param st  æ•°æ®åº“è¯­å¥æ‰§è¡Œå¯¹è±¡
 	 */
 	public static void closeSt(Statement st){
 		try {
@@ -90,8 +90,8 @@ public class JDBCUtils {
 		}
 	}
 	
-	/** ¹Ø±ÕÊı¾İ¿â²éÑ¯½á¹û½Ö
-	 * @param st  ²éÑ¯½á¹û¼¯
+	/** å…³é—­æ•°æ®åº“æŸ¥è¯¢ç»“æœè¡—
+	 * @param st  æŸ¥è¯¢ç»“æœé›†
 	 */
 	public static void closeRs(ResultSet rSet){
 		try {

@@ -13,7 +13,7 @@ import javax.servlet.ServletResponse;
  */
 /**
  * @author lzj13
- *  CharsetFilter ¹ıÂËÆ÷ Ö÷ÒªÓÃÉèÖÃrequest ºÍ respose ÖĞµÄ×Ö·û±àÂë
+ *  CharsetFilter è¿‡æ»¤å™¨ ä¸»è¦ç”¨è®¾ç½®request å’Œ respose ä¸­çš„å­—ç¬¦ç¼–ç 
  */
 public class CharsetFilter implements Filter {
 
@@ -29,17 +29,17 @@ public class CharsetFilter implements Filter {
 	 */
 	public void destroy() {
 		// TODO Auto-generated method stub
-		System.out.println("CharsetFilter Ïú»ÙÖĞ......");
+		System.out.println("CharsetFilter é”€æ¯ä¸­......");
 	}
 
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// ÉèÖÃ´Óä¯ÀÀÆ÷»ñÈ¡µÄÊı¾İÒÔ UTF-8 µÄ¸ñÊ½½øĞĞ±àÂë
+		// è®¾ç½®ä»æµè§ˆå™¨è·å–çš„æ•°æ®ä»¥ UTF-8 çš„æ ¼å¼è¿›è¡Œç¼–ç 
 		request.setCharacterEncoding("utf-8");
 		
-		// ÉèÖÃÏìÓ¦µÄ×Ö·û¼¯±àÂë
+		// è®¾ç½®å“åº”çš„å­—ç¬¦é›†ç¼–ç 
 		response.setContentType("text/html;charset=utf-8");
 		
 		chain.doFilter(request, response);
@@ -50,7 +50,7 @@ public class CharsetFilter implements Filter {
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
-		System.out.println("CharsetFilter ³õÊ¼»¯ÖĞ......");
+		System.out.println("CharsetFilter åˆå§‹åŒ–ä¸­......");
 	}
 
 }

@@ -7,12 +7,12 @@ import org.apache.tomcat.jni.OS;
 
 /**
  * @author lzj13
- *	获取服务器的IP地址和Host
+ *	鑾峰彇鏈嶅姟鍣ㄧ殑IP鍦板潃鍜孒ost
  */
 public class SysInfoUtils {
-	public static String os = "WIN10";    // 操作系统
-	public static String RunEnvironment = "Apache Tomcat";  //	运行环境
-	public static String version = "version-1.0";	//	系统版本
+	public static String os = "WIN10";    // 鎿嶄綔绯荤粺
+	public static String RunEnvironment = "Apache Tomcat";  //	杩愯鐜
+	public static String version = "version-1.0";	//	绯荤粺鐗堟湰
 	public static InetAddress addr = null; 
 	
 	static{
@@ -24,8 +24,8 @@ public class SysInfoUtils {
 		}
 	}
 	
-	/**	获取服务器的IP地址
-	 * @return 返回服务器的 IP地址
+	/**	鑾峰彇鏈嶅姟鍣ㄧ殑IP鍦板潃
+	 * @return 杩斿洖鏈嶅姟鍣ㄧ殑 IP鍦板潃
 	 * @throws UnknownHostException
 	 */
 	public static String getIP() throws UnknownHostException{

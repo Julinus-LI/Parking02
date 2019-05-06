@@ -15,19 +15,19 @@ import pers.arrayli.service.impl.CheWeiServiceImpl;
 
 /**
  * @author lzj13
- *	Ìí¼Ó³µÎ»ĞÅÏ¢
+ *	æ·»åŠ è½¦ä½ä¿¡æ¯
  */
 public class AddCheweiServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			// 1.»ñÈ¡³µÎ»ĞÅÏ¢Êı¾İ
+			// 1.è·å–è½¦ä½ä¿¡æ¯æ•°æ®
 			String hao = request.getParameter("hao");
 			String quyu = request.getParameter("qu");
 			String info = request.getParameter("info");
 			
-			// 2.°Ñ³µÎ»ĞÅÏ¢·â×°³ÉÒ»¸ö CheWei ¶ÔÏó
+			// 2.æŠŠè½¦ä½ä¿¡æ¯å°è£…æˆä¸€ä¸ª CheWei å¯¹è±¡
 			CheWei cheWei = new CheWei();
 			cheWei.setHao(hao);
 			cheWei.setQuyu(quyu);
@@ -36,20 +36,20 @@ public class AddCheweiServlet extends HttpServlet {
 			cheWei.setChepai(null);
 			cheWei.setAdate(null);
 			
-			System.out.println("Ìí¼ÓµÄ³µÎ»ĞÅÏ¢£º"+cheWei.toString());
+			System.out.println("æ·»åŠ çš„è½¦ä½ä¿¡æ¯ï¼š"+cheWei.toString());
 			
 			
-			// 3.Ö´ĞĞÒµÎñ²ã´úÂëÀ´´¦ÀíÇëÇó
+			// 3.æ‰§è¡Œä¸šåŠ¡å±‚ä»£ç æ¥å¤„ç†è¯·æ±‚
 			CheWeiService service = new CheWeiServiceImpl();
 			boolean result = service.AddCheWei(cheWei);
-			// Èç¹ûÌí¼Ó³µÎ»ĞÅÏ¢³É¹¦
+			// å¦‚æœæ·»åŠ è½¦ä½ä¿¡æ¯æˆåŠŸ
 			if(result){
 				response.sendRedirect("chewei/list.jsp");	
 			}else{
-				// Èç¹ûÌí¼Ó³µÎ»ĞÅÏ¢Ê§°Ü
-				// Èç¹û¸üĞÂÊ§°Ü
+				// å¦‚æœæ·»åŠ è½¦ä½ä¿¡æ¯å¤±è´¥
+				// å¦‚æœæ›´æ–°å¤±è´¥
 				response.getWriter()
-.println("<script>alert('Ìí¼Ó³µÎ»ĞÅÏ¢Ê§°Ü£¡');window.location.href='chewei/list.jsp'</script>");
+.println("<script>alert('æ·»åŠ è½¦ä½ä¿¡æ¯å¤±è´¥ï¼');window.location.href='chewei/list.jsp'</script>");
 			}
 			
 			

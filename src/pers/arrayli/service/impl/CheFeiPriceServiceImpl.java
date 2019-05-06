@@ -11,7 +11,7 @@ import pers.arrayli.service.CheService;
 
 /**
  * @author lzj13
- *	实现车费的业务层接口
+ *	瀹炵幇杞﹁垂鐨勪笟鍔″眰鎺ュ彛
  */
 public class CheFeiPriceServiceImpl implements CheFeiPriceService {
 

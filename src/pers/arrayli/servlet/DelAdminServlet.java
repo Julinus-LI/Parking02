@@ -14,28 +14,28 @@ import pers.arrayli.service.impl.AdminUserServiceImpl;
 
 /**
  * @author lzj13
- *	É¾³ı¹ÜÀíÔ±ĞÅÏ¢ servlet
+ *	åˆ é™¤ç®¡ç†å‘˜ä¿¡æ¯ servlet
  */
 public class DelAdminServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			// 1.»ñÈ¡ÒªÉ¾³ıµÄ¹ÜÀíÔ± id
+			// 1.è·å–è¦åˆ é™¤çš„ç®¡ç†å‘˜ id
 			int  id = Integer.parseInt(request.getParameter("id"));
 			
-			// 2. µ÷ÓÃÒµÎñ²ã´úÂëÀ´À´´¦Àí¿Í»§¶ËÇëÇó
+			// 2. è°ƒç”¨ä¸šåŠ¡å±‚ä»£ç æ¥æ¥å¤„ç†å®¢æˆ·ç«¯è¯·æ±‚
 			AdminUserService service = new AdminUserServiceImpl();
 			boolean result = service.delAdminById(id);	
-			// É¾³ı¹ÜÀíÔ±ĞÅÏ¢³É¹¦
+			// åˆ é™¤ç®¡ç†å‘˜ä¿¡æ¯æˆåŠŸ
 			if(result){
-				// ÖØ¶¨Ïòµ½ admin/list.jspÒ³Ãæ
+				// é‡å®šå‘åˆ° admin/list.jspé¡µé¢
 				response.sendRedirect("admin/list.jsp");
 				
 			}else{
-				// É¾³ı¹ÜÀíÔ±Ê§°Ü
-				// Èç¹ûĞŞ¸ÄÊ§°ÜµÄ»°
+				// åˆ é™¤ç®¡ç†å‘˜å¤±è´¥
+				// å¦‚æœä¿®æ”¹å¤±è´¥çš„è¯
 				response.getWriter().
-	println("<script>alert('É¾³ı¹ÜÀíÔ±ĞÅÏ¢Ê§°Ü£¡');window.location.href='admin/list.jsp'</script>");		
+	println("<script>alert('åˆ é™¤ç®¡ç†å‘˜ä¿¡æ¯å¤±è´¥ï¼');window.location.href='admin/list.jsp'</script>");		
 			}
 			
 		} catch (SQLException e) {

@@ -7,50 +7,50 @@ import pers.arrayli.domain.AdminUser;
 
 /**
  * @author lzj13
- *	¶¨Òå¹ÜÀíÔ±ÓÃ»§²Ù×÷µÄÒµÎñÂß¼­²ã½Ó¿Ú
+ *	å®šä¹‰ç®¡ç†å‘˜ç”¨æˆ·æ“ä½œçš„ä¸šåŠ¡é€»è¾‘å±‚æ¥å£
  */
 public interface AdminUserService {
-	/**ÑéÖ¤¹ÜÀíÔ±µÇÂ¼
-	 * @param name  ¹ÜÀíÔ±Ãû×Ö
-	 * @param password  ¹ÜÀíÔ±ÃÜÂë
-	 * @return  µÇÂ¼³É¹¦Óë·ñ
+	/**éªŒè¯ç®¡ç†å‘˜ç™»å½•
+	 * @param name  ç®¡ç†å‘˜åå­—
+	 * @param password  ç®¡ç†å‘˜å¯†ç 
+	 * @return  ç™»å½•æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean login(String username,String password) throws SQLException;
 	
 
-	/**	²éÑ¯ËùÓĞ¹ÜÀíÔ±ÓÃ»§
-	 *  @param 	queryName  Ä£ºı²éÑ¯²éÑ¯Ìõ¼ş
-	 * @return	ËùÓĞ¹ÜÀíÔ±ÓÃ»§µÄ¼¯ºÏ
+	/**	æŸ¥è¯¢æ‰€æœ‰ç®¡ç†å‘˜ç”¨æˆ·
+	 *  @param 	queryName  æ¨¡ç³ŠæŸ¥è¯¢æŸ¥è¯¢æ¡ä»¶
+	 * @return	æ‰€æœ‰ç®¡ç†å‘˜ç”¨æˆ·çš„é›†åˆ
 	 * @throws SQLException	
 	 */
 	List<AdminUser> queryAdmins(String queryName) throws SQLException;
 	
-	/**Í¨¹ı id ¶Ô¹ÜÀíÔ±±í½øĞĞ²éÑ¯
-	 * @param id ¹ÜÀíÔ±id
-	 * @return	·µ»Ø¹ÜÀíÔ±ĞÅÏ¢
+	/**é€šè¿‡ id å¯¹ç®¡ç†å‘˜è¡¨è¿›è¡ŒæŸ¥è¯¢
+	 * @param id ç®¡ç†å‘˜id
+	 * @return	è¿”å›ç®¡ç†å‘˜ä¿¡æ¯
 	 * @throws SQLException
 	 */
 	AdminUser findAdminById(int id) throws SQLException;
 	
 	
-	/** Í¨¹ı¹ÜÀíÔ± id À´¶Ô¹ÜÀíÔ±ĞÅÏ¢½øĞĞĞŞ¸Ä
-	 * @param id 	¹ÜÀíÔ± id
-	 * @return	ĞŞ¸Ä³É¹¦Óë·ñ
+	/** é€šè¿‡ç®¡ç†å‘˜ id æ¥å¯¹ç®¡ç†å‘˜ä¿¡æ¯è¿›è¡Œä¿®æ”¹
+	 * @param id 	ç®¡ç†å‘˜ id
+	 * @return	ä¿®æ”¹æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean updateAdminById(int id,AdminUser admin) throws SQLException;
 	
-	/** Í¨¹ı¹ÜÀíÔ± id À´É¾³ı¹ÜÀíÔ±
-	 * @param id  ¹ÜÀíÔ± id
-	 * @return   ·µ»ØÉ¾³ı¹ÜÀíµÄ³É¹¦Óë·ñ
+	/** é€šè¿‡ç®¡ç†å‘˜ id æ¥åˆ é™¤ç®¡ç†å‘˜
+	 * @param id  ç®¡ç†å‘˜ id
+	 * @return   è¿”å›åˆ é™¤ç®¡ç†çš„æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean delAdminById(int id) throws SQLException;
 	
-	/**	Ìí¼Ó¹ÜÀíÔ±ĞÅÏ¢
-	 * @param admin		¹ÜÀíÔ±bean
-	 * @return			·µ»ØÌí¼Ó¹ÜÀíÔ±ĞÅÏ¢³É¹¦Óë·ñ
+	/**	æ·»åŠ ç®¡ç†å‘˜ä¿¡æ¯
+	 * @param admin		ç®¡ç†å‘˜bean
+	 * @return			è¿”å›æ·»åŠ ç®¡ç†å‘˜ä¿¡æ¯æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean addAdmin(AdminUser admin) throws SQLException;

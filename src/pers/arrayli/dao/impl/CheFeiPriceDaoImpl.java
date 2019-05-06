@@ -11,7 +11,7 @@ import pers.arrayli.domain.CheFeiPrice;
 
 /**
  * @author lzj13
- *	实现车费接口
+ *	瀹炵幇杞﹁垂鎺ュ彛
  */
 public class CheFeiPriceDaoImpl implements CheFeiPriceDao {
 

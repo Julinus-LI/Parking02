@@ -14,27 +14,27 @@ import pers.arrayli.service.impl.UserInfoServiceImpl;
 
 /**
  * @author lzj13
- *	É¾³ıÓÃ»§ĞÅÏ¢ servlet
+ *	åˆ é™¤ç”¨æˆ·ä¿¡æ¯ servlet
  */
 public class DelUserInfoServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			// 1.»ñÈ¡É¾³ıÓÃ»§µÄÓÃ»§ id
+			// 1.è·å–åˆ é™¤ç”¨æˆ·çš„ç”¨æˆ· id
 			int uid  = Integer.parseInt(request.getParameter("id"));
-			System.out.println("ÒªÉ¾³ıµÄÓÃ»§idÎª£º "+uid);
-			// 2.Ö´ĞĞÒµÎñ²ã´úÂë´¦Àí¿Í»§¶ËÇëÇó
+			System.out.println("è¦åˆ é™¤çš„ç”¨æˆ·idä¸ºï¼š "+uid);
+			// 2.æ‰§è¡Œä¸šåŠ¡å±‚ä»£ç å¤„ç†å®¢æˆ·ç«¯è¯·æ±‚
 			UserInfoService service = new UserInfoServiceImpl();
 			boolean result = service.DelUseInfo(uid);
-			//Èç¹ûÉ¾³ı³É¹¦µÄ»°
+			//å¦‚æœåˆ é™¤æˆåŠŸçš„è¯
 			if(result){
-				// ÖØ¶¨Ïòµ½ userinfo/list.jsp
+				// é‡å®šå‘åˆ° userinfo/list.jsp
 				response.sendRedirect("userinfo/list.jsp");	
 			}else{
-				// Èç¹ûÉ¾³ıÊ§°ÜµÄ»°
+				// å¦‚æœåˆ é™¤å¤±è´¥çš„è¯
 				response.getWriter()
-.println("<script>alert('É¾³ıÓÃ»§ĞÅÏ¢Ê§°Ü£¡');window.location.href='userinfo/list.jsp'</script>");
+.println("<script>alert('åˆ é™¤ç”¨æˆ·ä¿¡æ¯å¤±è´¥ï¼');window.location.href='userinfo/list.jsp'</script>");
 			}
 			
 			

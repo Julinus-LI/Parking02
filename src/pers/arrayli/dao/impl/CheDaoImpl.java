@@ -10,7 +10,7 @@ import pers.arrayli.db.JDBCUtils;
 import pers.arrayli.domain.Che;
 
 /**
- * @author lzj13 实现 CheDao 接口 ，做一些数据访问层操作
+ * @author lzj13 瀹炵幇 CheDao 鎺ュ彛 锛屽仛涓�浜涙暟鎹闂眰鎿嶄綔
  */
 public class CheDaoImpl implements CheDao {
 

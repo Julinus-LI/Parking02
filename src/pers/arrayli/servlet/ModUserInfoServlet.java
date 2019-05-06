@@ -16,23 +16,23 @@ import pers.arrayli.service.impl.UserInfoServiceImpl;
 
 /**
  * @author lzj13
- *	ĞŞ¸ÄÓÃ»§ĞÅÏ¢servlet
+ *	ä¿®æ”¹ç”¨æˆ·ä¿¡æ¯servlet
  */
 public class ModUserInfoServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			// 1.»ñÈ¡ĞŞ¸ÄºóµÄÓÃ»§ĞÅÏ¢
+			// 1.è·å–ä¿®æ”¹åçš„ç”¨æˆ·ä¿¡æ¯
 			
 			int id = Integer.parseInt(request.getParameter("id"));
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			int age = Integer.parseInt(request.getParameter("age"));
 			String tel = request.getParameter("tel");
-			System.out.println("ĞŞ¸ÄºóµÄÓÃ»§ĞÅÏ¢Îª£º id = "+id+" username= "+username+"  password = "+password+" age = "+age+" tel = "+tel);
+			System.out.println("ä¿®æ”¹åçš„ç”¨æˆ·ä¿¡æ¯ä¸ºï¼š id = "+id+" username= "+username+"  password = "+password+" age = "+age+" tel = "+tel);
 			
-			// 2.ÔÚÒµÎñ²ã½øĞĞÊı¾İ´¦Àí²Ù×÷
+			// 2.åœ¨ä¸šåŠ¡å±‚è¿›è¡Œæ•°æ®å¤„ç†æ“ä½œ
 			UserInfoService service = new UserInfoServiceImpl();
 			UserInfo user  = new UserInfo();
 			user.setId(id);
@@ -42,18 +42,18 @@ public class ModUserInfoServlet extends HttpServlet {
 			user.setTel(tel);
 			service.update(id, user);
 		
-			// »ñÈ¡Êä³öÁ÷¶ÔÏó
+			// è·å–è¾“å‡ºæµå¯¹è±¡
 			PrintWriter out = response.getWriter();
 			
-			// »ñÈ¡ÓÃ»§ÀàĞÍ£¬ÅĞ¶ÏµÇÂ¼ÓÃ»§ÊÇÎª¿Õ
+			// è·å–ç”¨æˆ·ç±»å‹ï¼Œåˆ¤æ–­ç™»å½•ç”¨æˆ·æ˜¯ä¸ºç©º
 			String type = request.getParameter("type");
 			
-			// Èç¹ûÊÇÆÕÍ¨ÓÃ»§Ö´ĞĞ
+			// å¦‚æœæ˜¯æ™®é€šç”¨æˆ·æ‰§è¡Œ
 			if(type != null && type.length() >0){
 				out.
-println("<script>alert('ĞŞ¸Ä³É¹¦£¡');window.location.href='userinfo/myUserinfo.jsp'</script>");
+println("<script>alert('ä¿®æ”¹æˆåŠŸï¼');window.location.href='userinfo/myUserinfo.jsp'</script>");
 			}else{	
-				// Èç¹ûÊÇ¹ÜÀíÔ±ÓÃ»§ÖØ¶¨Ïòµ½ list.jsp
+				// å¦‚æœæ˜¯ç®¡ç†å‘˜ç”¨æˆ·é‡å®šå‘åˆ° list.jsp
 				response.sendRedirect("userinfo/list.jsp");
 			}
 			

@@ -2,15 +2,15 @@ package pers.arrayli.domain;
 
 /**
  * @author lzj13
- * ÓÃ»§»ù±¾ĞÅÏ¢ bean
+ * ç”¨æˆ·åŸºæœ¬ä¿¡æ¯ bean
  */
 public class UserInfo {
-	private int id;				// ÓÃ»§Id
-	private String username;	// ÓÃ»§ĞÕÃû
-	private String pwd;			// ÓÃ»§ÃÜÂë
-	private int age;			// ÓÃ»§ÄêÁä
-	private String tel;			// ÓÃ»§µç»°
-	private int money;			// ÓÃ»§µÄÓà¶î
+	private int id;				// ç”¨æˆ·Id
+	private String username;	// ç”¨æˆ·å§“å
+	private String pwd;			// ç”¨æˆ·å¯†ç 
+	private int age;			// ç”¨æˆ·å¹´é¾„
+	private String tel;			// ç”¨æˆ·ç”µè¯
+	private int money;			// ç”¨æˆ·çš„ä½™é¢
 	public int getId() {
 		return id;
 	}

@@ -15,7 +15,7 @@ import pers.arrayli.utils.PictureUtils;
 import pers.arrayli.utils.SysInfoUtils;
 
 /**
- * @author lzj13 É¾³ı³µÁ¾ĞÅÏ¢ servlet
+ * @author lzj13 åˆ é™¤è½¦è¾†ä¿¡æ¯ servlet
  */
 public class DelCheServlet extends HttpServlet {
 
@@ -23,15 +23,15 @@ public class DelCheServlet extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("----------------- DelCheServlet Debug Start -------------------");
 		try {
-			// 1.»ñÈ¡ÒªÉ¾³ıµÄ³µÁ¾ĞÅÏ¢µÄ id
+			// 1.è·å–è¦åˆ é™¤çš„è½¦è¾†ä¿¡æ¯çš„ id
 			int id = Integer.parseInt(request.getParameter("id"));
 			
 			CheService service = new CheServiceImpl();
-			// 2.É¾³ı³µµÄÍ¼Æ¬ĞÅÏ¢
-			// a.ÏÈ»ñÈ¡ÒªÉ¾³ıµÄÍ¼Æ¬Â·¾¶
+			// 2.åˆ é™¤è½¦çš„å›¾ç‰‡ä¿¡æ¯
+			// a.å…ˆè·å–è¦åˆ é™¤çš„å›¾ç‰‡è·¯å¾„
 
 			String delPicPath = PictureUtils.PicPath;
-			// »ñÈ¡Í¼Æ¬Ãû×Ö
+			// è·å–å›¾ç‰‡åå­—
 			String fileName = service.getPicPathById(id);
 			if (fileName != null) {
 
@@ -49,19 +49,19 @@ public class DelCheServlet extends HttpServlet {
 				System.out.println("----------------- DelCheServlet Debug End -------------------");
 			}
 			
-			// 3.Ö´ĞĞÒµÎñ²ã²Ù×÷
+			// 3.æ‰§è¡Œä¸šåŠ¡å±‚æ“ä½œ
 			
 		    boolean result = service.delCheById(id);
-			// Èç¹ûÉ¾³ı³É¹¦µÄ»°
+			// å¦‚æœåˆ é™¤æˆåŠŸçš„è¯
 			if (result) {
-				// ÖØ¶¨Ïòµ½ list.jsp
+				// é‡å®šå‘åˆ° list.jsp
 				response.sendRedirect("che/list.jsp");
 			} else {
-				// É¾³ıÊ§°ÜµÄ»°
+				// åˆ é™¤å¤±è´¥çš„è¯
 
-				// »ñÈ¡Êä³öÁ÷¶ÔÏó
+				// è·å–è¾“å‡ºæµå¯¹è±¡
 				PrintWriter out = response.getWriter();
-				out.println("<script>alert('É¾³ı³µÁ¾ĞÅÏ¢Ê§°Ü£¡');window.location.href='che/list.jsp'</script>");
+				out.println("<script>alert('åˆ é™¤è½¦è¾†ä¿¡æ¯å¤±è´¥ï¼');window.location.href='che/list.jsp'</script>");
 				out.flush();
 				out.close();
 			}

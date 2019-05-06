@@ -1,12 +1,12 @@
 package pers.arrayli.domain; 
 
 public class Che {
-	private int id;				// ³µÁ¾ĞÅÏ¢id
-	private String hao;			// ³µÅÆºÅ
-	private String leixing;		// ³µÀàĞÍ
-	private String picture;		// Í¼Æ¬
-	private String info;		// ±¸×¢
-	private int uid;			// ÓÃ»§id
+	private int id;				// è½¦è¾†ä¿¡æ¯id
+	private String hao;			// è½¦ç‰Œå·
+	private String leixing;		// è½¦ç±»å‹
+	private String picture;		// å›¾ç‰‡
+	private String info;		// å¤‡æ³¨
+	private int uid;			// ç”¨æˆ·id
 	public int getId() {
 		return id;
 	}

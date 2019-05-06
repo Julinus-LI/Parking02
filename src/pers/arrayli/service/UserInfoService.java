@@ -7,82 +7,82 @@ import pers.arrayli.domain.UserInfo;
 
 /**
  * @author lzj13
- *	ÓÃ»§ĞÅÏ¢ÒµÎñ²ã½Ó¿Ú
+ *	ç”¨æˆ·ä¿¡æ¯ä¸šåŠ¡å±‚æ¥å£
  */
 public interface UserInfoService {
-	/**ÑéÖ¤ÆÕÍ¨ÓÃ»§µÇÂ¼
-	 * @param name  ÆÕÍ¨ÓÃ»§Ãû×Ö
-	 * @param password  ÆÕÍ¨ÓÃ»§ÃÜÂë
-	 * @return  ³É¹¦£º·µ»ØÓÃ»§µÄid£»Ê§°Ü£º0
+	/**éªŒè¯æ™®é€šç”¨æˆ·ç™»å½•
+	 * @param name  æ™®é€šç”¨æˆ·åå­—
+	 * @param password  æ™®é€šç”¨æˆ·å¯†ç 
+	 * @return  æˆåŠŸï¼šè¿”å›ç”¨æˆ·çš„idï¼›å¤±è´¥ï¼š0
 	 * @throws SQLException
 	 */
 	int login(String username,String password) throws SQLException;
 	
 	
-	/**  °´ÓÃ»§ĞÅÏ¢½øĞĞ²éÑ¯£¬°ÑÓÃ»§ĞÅÏ¢ÏÔÊ¾³öÀ´
+	/**  æŒ‰ç”¨æˆ·ä¿¡æ¯è¿›è¡ŒæŸ¥è¯¢ï¼ŒæŠŠç”¨æˆ·ä¿¡æ¯æ˜¾ç¤ºå‡ºæ¥
 	 * @param id
-	 * @return  ·µ»ØÓÃ»§ĞÅÏ¢bean
+	 * @return  è¿”å›ç”¨æˆ·ä¿¡æ¯bean
 	 * @throws SQLException
 	 */
 	UserInfo QueryById(int id) throws SQLException;
 	
-	/** ¸ù¾İÓÃ»§µÄidÀ´¸üĞÂÓÃ»§ĞÅÏ¢
-	 * @param id  ÓÃ»§id
-	 * @param user  ÓÃ»§ĞÅÏ¢bean
-	 * @return  ·µ»Ø¸üĞÂ³É¹¦Óë·ñ
+	/** æ ¹æ®ç”¨æˆ·çš„idæ¥æ›´æ–°ç”¨æˆ·ä¿¡æ¯
+	 * @param id  ç”¨æˆ·id
+	 * @param user  ç”¨æˆ·ä¿¡æ¯bean
+	 * @return  è¿”å›æ›´æ–°æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean update(int id,UserInfo user) throws SQLException;
 	
-	/**	¸ù¾İÓÃ»§µÄ idÀ´ ²éÑ¯ÓÃ»§µÄÓà¶î
+	/**	æ ¹æ®ç”¨æˆ·çš„ idæ¥ æŸ¥è¯¢ç”¨æˆ·çš„ä½™é¢
 	 * @param id		
-	 * @return  ÓÃ»§Óà¶î
+	 * @return  ç”¨æˆ·ä½™é¢
 	 * @throws SQLException
 	 */
 	int QueryMoneyById(int id) throws SQLException;
 	
-	/**×¢²áÓÃ»§
-	 * @param user	»§ĞÅÏ¢¶ÔÏó
-	 * @return		·µ»ØÊÇ·ñ×¢²á³É¹¦
+	/**æ³¨å†Œç”¨æˆ·
+	 * @param user	æˆ·ä¿¡æ¯å¯¹è±¡
+	 * @return		è¿”å›æ˜¯å¦æ³¨å†ŒæˆåŠŸ
 	 * @throws SQLException
 	 */
 	boolean RegisterUser(UserInfo user) throws SQLException;
 	
-	/**	²éÑ¯ËùÓĞµÄÓÃ»§ĞÅÏ¢»òÕß°´Ìõ¼ş½øĞĞ²éÑ¯ÓÃ»§ĞÅÏ¢
-	 * @param queryName   ²éÑ¯Ìõ¼ş
-	 * @return	²éÑ¯½á¹û¼¯
+	/**	æŸ¥è¯¢æ‰€æœ‰çš„ç”¨æˆ·ä¿¡æ¯æˆ–è€…æŒ‰æ¡ä»¶è¿›è¡ŒæŸ¥è¯¢ç”¨æˆ·ä¿¡æ¯
+	 * @param queryName   æŸ¥è¯¢æ¡ä»¶
+	 * @return	æŸ¥è¯¢ç»“æœé›†
 	 * @throws SQLException
 	 */
 	List<UserInfo> queryAllUserInfos(String queryName) throws SQLException;
 	
-	/**Ìí¼ÓÓÃ»§ĞÅÏ¢
-	 * @param user	Ìí¼ÓµÄÓÃ»§ĞÅÏ¢
-	 * @return		Ìí¼Ó³É¹¦Óë·ñ
+	/**æ·»åŠ ç”¨æˆ·ä¿¡æ¯
+	 * @param user	æ·»åŠ çš„ç”¨æˆ·ä¿¡æ¯
+	 * @return		æ·»åŠ æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean addUserInfo(UserInfo user) throws SQLException;
 	
 	
-	/**	°´ÓÃ»§ idÀ´¶ÔÓÃ»§½øĞĞ³äÖµ
-	 * @param uid   ÓÃ»§ id
-	 * @param money   ³äÖµ½ğ¶î
-	 * @return	·µ»Ø³äÖµ³É¹¦Óë·ñ
+	/**	æŒ‰ç”¨æˆ· idæ¥å¯¹ç”¨æˆ·è¿›è¡Œå……å€¼
+	 * @param uid   ç”¨æˆ· id
+	 * @param money   å……å€¼é‡‘é¢
+	 * @return	è¿”å›å……å€¼æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean UserRecharge(int uid,int money) throws SQLException;
 	
 	
-	/**°´ÓÃ»§ idÀ´É¾³ıÓÃ»§
-	 * @param uid	ÓÃ»§id
-	 * @return		·µ»ØÉ¾³ı³É¹¦Óë·ñ
+	/**æŒ‰ç”¨æˆ· idæ¥åˆ é™¤ç”¨æˆ·
+	 * @param uid	ç”¨æˆ·id
+	 * @return		è¿”å›åˆ é™¤æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean DelUseInfo(int uid) throws SQLException;
 	
-	/**¸ù¾İÓÃ»§µÄ³µÅÆºÅÀ´¸üĞÂÓÃ»§¿¨ÉÏµÄÓà¶î
-	 * @param chepai		³µÅÆºÅ
-	 * @param cost			Í£³µ·ÑÓÃ
-	 * @return				·µ»Ø¸üĞÂ³É¹¦Óë·ñ
+	/**æ ¹æ®ç”¨æˆ·çš„è½¦ç‰Œå·æ¥æ›´æ–°ç”¨æˆ·å¡ä¸Šçš„ä½™é¢
+	 * @param chepai		è½¦ç‰Œå·
+	 * @param cost			åœè½¦è´¹ç”¨
+	 * @return				è¿”å›æ›´æ–°æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean updateUserMoney(String chepai,int cost) throws SQLException;

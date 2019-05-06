@@ -30,19 +30,19 @@ import pers.arrayli.utils.SysInfoUtils;
  * Servlet implementation class LoginServlet
  */
 /**
- * @author lzj13 ÓÃ»§µÇÂ¼Àà
+ * @author lzj13 ç”¨æˆ·ç™»å½•ç±»
  */
 public class LoginServlet extends HttpServlet  {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		// 1. ´ÓjspÒ³Ãæ»ñÈ¡Ìá½»ÉÏÀ´µÄÊı¾İ
+		// 1. ä»jspé¡µé¢è·å–æäº¤ä¸Šæ¥çš„æ•°æ®
 		String username = request.getParameter("username");
 		String password = request.getParameter("userpwd");
 		String type = request.getParameter("type");
 		
-		// ´òÓ¡µÇÂ¼ĞÅÏ¢
+		// æ‰“å°ç™»å½•ä¿¡æ¯
 		System.out.println("username = " + username);
 		System.out.println("password = " + password);
 		System.out.println("type = " + type);
@@ -59,37 +59,37 @@ public class LoginServlet extends HttpServlet  {
 		sysinfo.setVersion(SysInfoUtils.version);
 		sysinfo.setDateTime(time);
 		System.out.println(sysinfo.toString());
-		// ÉèÖÃÏµÍ³ĞÅÏ¢
+		// è®¾ç½®ç³»ç»Ÿä¿¡æ¯
 		request.setAttribute("sysinfo", sysinfo);	
-		// ÉèÖÃÓÃ»§µÇÂ¼ÊôĞÔ
+		// è®¾ç½®ç”¨æˆ·ç™»å½•å±æ€§
 		request.getSession().setAttribute("type", type);
 	
-		// »ñÈ¡Êä³öÁ÷¶ÔÏó
+		// è·å–è¾“å‡ºæµå¯¹è±¡
 		PrintWriter out = response.getWriter();
 	
-		// 2.¸ù¾İÌá½»ÉÏÀ´µÄ typeÀ´ÅĞ¶ÏÊÇ¹ÜÀíÔ±µÇÂ¼»¹ÊÇÆÕÍ¨ÓÃ»§µÇÂ¼
-		if ("ÓÃ»§".equals(type)) {
-			// 3. ÔÚÊı¾İ¿âÖĞ²éÕÒ²éÕÒÓÃ»§,ÑéÖ¤¹ÜÀíÔ±ÓÃ»§ÊÇ·ñ´æÔÚ
+		// 2.æ ¹æ®æäº¤ä¸Šæ¥çš„ typeæ¥åˆ¤æ–­æ˜¯ç®¡ç†å‘˜ç™»å½•è¿˜æ˜¯æ™®é€šç”¨æˆ·ç™»å½•
+		if ("ç”¨æˆ·".equals(type)) {
+			// 3. åœ¨æ•°æ®åº“ä¸­æŸ¥æ‰¾æŸ¥æ‰¾ç”¨æˆ·,éªŒè¯ç®¡ç†å‘˜ç”¨æˆ·æ˜¯å¦å­˜åœ¨
 			try {
 			
-				// 3. ÔÚÊı¾İ¿âÖĞ²éÕÒ²éÕÒÓÃ»§
+				// 3. åœ¨æ•°æ®åº“ä¸­æŸ¥æ‰¾æŸ¥æ‰¾ç”¨æˆ·
 				UserInfoService service = new UserInfoServiceImpl();
-				// µ÷ÓÃÒµÎñ²ã·½·¨À´ÑéÖ¤µÇÂ¼
+				// è°ƒç”¨ä¸šåŠ¡å±‚æ–¹æ³•æ¥éªŒè¯ç™»å½•
 				int uid = service.login(username,password);
 				System.out.println(username+":  uid = "+uid);
-				// Èç¹ûµÇÂ¼³É¹¦µÄ»°£¬ÖØ¶¨Ïòµ½ºóÌ¨µÄÊ×Ò³
+				// å¦‚æœç™»å½•æˆåŠŸçš„è¯ï¼Œé‡å®šå‘åˆ°åå°çš„é¦–é¡µ
 				if(uid >0 ){
-					// ÉèÖÃÓÃ»§id
+					// è®¾ç½®ç”¨æˆ·id
 					request.getSession().setAttribute("uid", uid);
 					request.getSession().setAttribute("username",username);
 					request.getSession().setAttribute("type", type);
 					
-					// ÕâÀïÊ¹ÓÃÇëÇó×ª·¢£¬¿ÉÒÔ¹²ÓÃrequestºÍresponse£¬ÔÚÍ¬Ò»¸öservletÄÚÖ´ĞĞ
+					// è¿™é‡Œä½¿ç”¨è¯·æ±‚è½¬å‘ï¼Œå¯ä»¥å…±ç”¨requestå’Œresponseï¼Œåœ¨åŒä¸€ä¸ªservletå†…æ‰§è¡Œ
 					request.getRequestDispatcher("index.jsp").forward(request, response);
 					//response.sendRedirect("index.jsp");
 				}else{
-					// Èç¹ûµÇÂ¼Ê§°ÜµÄ»°
-					out.println("<script>alert('ÓÃ»§Ãû»òÃÜÂëÓĞÎó£¡');window.location.href='login.jsp'</script>");
+					// å¦‚æœç™»å½•å¤±è´¥çš„è¯
+					out.println("<script>alert('ç”¨æˆ·åæˆ–å¯†ç æœ‰è¯¯ï¼');window.location.href='login.jsp'</script>");
 				}
 				
 				
@@ -98,26 +98,26 @@ public class LoginServlet extends HttpServlet  {
 				e.printStackTrace();
 			}
 		}
-		else if ("¹ÜÀíÔ±".equals(type)) {
-			// 3. ÔÚÊı¾İ¿âÖĞ²éÕÒ²éÕÒÓÃ»§,ÑéÖ¤¹ÜÀíÔ±ÓÃ»§ÊÇ·ñ´æÔÚ
+		else if ("ç®¡ç†å‘˜".equals(type)) {
+			// 3. åœ¨æ•°æ®åº“ä¸­æŸ¥æ‰¾æŸ¥æ‰¾ç”¨æˆ·,éªŒè¯ç®¡ç†å‘˜ç”¨æˆ·æ˜¯å¦å­˜åœ¨
 			try {
 			
 				request.getSession().setAttribute("username",username);
 				request.getSession().setAttribute("type", type);
 				
-				// 3. ÔÚÊı¾İ¿âÖĞ²éÕÒ²éÕÒÓÃ»§
+				// 3. åœ¨æ•°æ®åº“ä¸­æŸ¥æ‰¾æŸ¥æ‰¾ç”¨æˆ·
 				AdminUserService service = new AdminUserServiceImpl();
-				// µ÷ÓÃÒµÎñ²ã·½·¨À´ÑéÖ¤µÇÂ¼
+				// è°ƒç”¨ä¸šåŠ¡å±‚æ–¹æ³•æ¥éªŒè¯ç™»å½•
 				boolean LoginResult = service.login(username,password);
 				
-				// Èç¹ûµÇÂ¼³É¹¦µÄ»°£¬ÖØ¶¨Ïòµ½ºóÌ¨µÄÊ×Ò³
+				// å¦‚æœç™»å½•æˆåŠŸçš„è¯ï¼Œé‡å®šå‘åˆ°åå°çš„é¦–é¡µ
 				if(LoginResult){
-					// ÕâÀïÊ¹ÓÃÇëÇó×ª·¢£¬¿ÉÒÔ¹²ÓÃrequestºÍresponse£¬ÔÚÍ¬Ò»¸öservletÄÚÖ´ĞĞ
+					// è¿™é‡Œä½¿ç”¨è¯·æ±‚è½¬å‘ï¼Œå¯ä»¥å…±ç”¨requestå’Œresponseï¼Œåœ¨åŒä¸€ä¸ªservletå†…æ‰§è¡Œ
 					request.getRequestDispatcher("index.jsp").forward(request, response);
 					//response.sendRedirect("index.jsp");
 				}else{
-					// Èç¹ûµÇÂ¼Ê§°ÜµÄ»°
-					out.println("<script>alert('ÓÃ»§Ãû»òÃÜÂëÓĞÎó£¡');window.location.href='login.jsp'</script>");
+					// å¦‚æœç™»å½•å¤±è´¥çš„è¯
+					out.println("<script>alert('ç”¨æˆ·åæˆ–å¯†ç æœ‰è¯¯ï¼');window.location.href='login.jsp'</script>");
 				}
 				
 				
@@ -126,8 +126,8 @@ public class LoginServlet extends HttpServlet  {
 				e.printStackTrace();
 			}
 		}else{
-			// Èç¹ûµÇÂ¼Ê§°ÜµÄ»°
-			out.println("<script>alert('ÓÃ»§Ãû»òÃÜÂëÓĞÎó£¡');window.location.href='login.jsp'</script>");
+			// å¦‚æœç™»å½•å¤±è´¥çš„è¯
+			out.println("<script>alert('ç”¨æˆ·åæˆ–å¯†ç æœ‰è¯¯ï¼');window.location.href='login.jsp'</script>");
 		}
 		
 		out.flush();

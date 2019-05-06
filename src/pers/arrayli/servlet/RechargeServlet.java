@@ -18,30 +18,30 @@ import pers.arrayli.service.impl.UserInfoServiceImpl;
 
 /**
  * @author lzj13
- *	³äÖµ servlet   Ö÷ÒªÓÃÀ´´¦ÀíjspÒ³ÃæµÄ³äÖµÇëÇó
+ *	å……å€¼ servlet   ä¸»è¦ç”¨æ¥å¤„ç†jspé¡µé¢çš„å……å€¼è¯·æ±‚
  */
 public class RechargeServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			// 1.»ñÈ¡Êı¾İ
+			// 1.è·å–æ•°æ®
 			int id = Integer.parseInt(request.getParameter("id"));
 			int money = Integer.parseInt(request.getParameter("money"));
-			// 3.Í¨¹ıÒµÎñ²ã´úÂë¶ÔÇëÇó½øĞĞ´¦Àí
+			// 3.é€šè¿‡ä¸šåŠ¡å±‚ä»£ç å¯¹è¯·æ±‚è¿›è¡Œå¤„ç†
 			UserInfoService service = new UserInfoServiceImpl();
 			boolean result = service.UserRecharge(id, money);
-			// Èç¹û³äÖµ³É¹¦
+			// å¦‚æœå……å€¼æˆåŠŸ
 			if(result){
 				
 				response.getWriter()
-	.println("<script>alert('³äÖµ³É¹¦£¡');window.location.href='userinfo/list.jsp'</script>");
-				// Èç¹ûÌí¼Ó³É¹¦£¬ÖØ¶¨Ïòµ½  userinfo/list.jsp
+	.println("<script>alert('å……å€¼æˆåŠŸï¼');window.location.href='userinfo/list.jsp'</script>");
+				// å¦‚æœæ·»åŠ æˆåŠŸï¼Œé‡å®šå‘åˆ°  userinfo/list.jsp
 				//response.sendRedirect("userinfo/list.jsp");
 			}else{
-				// Èç¹û³äÖµÊ§°Ü
+				// å¦‚æœå……å€¼å¤±è´¥
 				response.getWriter()
-	.println("<script>alert('³äÖµÊ§°Ü£¡');window.location.href='userinfo/list.jsp'</script>");
+	.println("<script>alert('å……å€¼å¤±è´¥ï¼');window.location.href='userinfo/list.jsp'</script>");
 			}
 			
 		} catch (SQLException e) {

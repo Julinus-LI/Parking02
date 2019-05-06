@@ -10,7 +10,7 @@ import pers.arrayli.service.CheService;
 
 /**
  * @author lzj13
- *	实现车的相关操接口，业务层层操作代码
+ *	瀹炵幇杞︾殑鐩稿叧鎿嶆帴鍙ｏ紝涓氬姟灞傚眰鎿嶄綔浠ｇ爜
  */
 public class CheServiceImpl implements CheService {
 

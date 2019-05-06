@@ -2,17 +2,17 @@ package pers.arrayli.domain;
 
 /**
  * @author lzj13
- *	³µ·Ñbean
+ *	è½¦è´¹bean
  */
 public class CheFei {
-	private int id;			// ³µ·ÑĞÅÏ¢ id
-	private String hao;		// ³µÅÆºÅ
-	private String jdate;	// Èë³¡Ê±¼ä	
-	private String ldate;	// Àë¿ªÊ±¼ä
-	private int cost;		// ·ÑÓÃ
-	private String adate;	// µ±Ç°Ê±¼ä
-	private int hours;		// Í£³µÊ±³¤
-	private int price;		// Í£³µ¼Û¸ñ±ê×¼
+	private int id;			// è½¦è´¹ä¿¡æ¯ id
+	private String hao;		// è½¦ç‰Œå·
+	private String jdate;	// å…¥åœºæ—¶é—´	
+	private String ldate;	// ç¦»å¼€æ—¶é—´
+	private int cost;		// è´¹ç”¨
+	private String adate;	// å½“å‰æ—¶é—´
+	private int hours;		// åœè½¦æ—¶é•¿
+	private int price;		// åœè½¦ä»·æ ¼æ ‡å‡†
 	public int getId() {
 		return id;
 	}

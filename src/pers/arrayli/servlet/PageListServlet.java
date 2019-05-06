@@ -22,14 +22,14 @@ import pers.arrayli.service.impl.CheFeiServiceImpl;
 
 /**
  * @author lzj13
- *	·ÖÒ³ÏÔÊ¾
+ *	åˆ†é¡µæ˜¾ç¤º
  */	
 public class PageListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("--------------PageListServlet Debug Start-------------------------");
 		try {
-			// 1.»ñÈ¡ĞèÒªÏÔÊ¾µÄÒ³Âë
+			// 1.è·å–éœ€è¦æ˜¾ç¤ºçš„é¡µç 
 			System.out.println("=====================================");  
 			Enumeration en = request.getParameterNames();  
 			
@@ -43,20 +43,20 @@ public class PageListServlet extends HttpServlet {
 			System.out.println("=====================================");  
 			System.out.println(map.toString());
 			
-			// »ñÈ¡mapÀïÃæµÄcurrentPage ºÍ type²ÎÊı
+			// è·å–mapé‡Œé¢çš„currentPage å’Œ typeå‚æ•°
 		
 			int currentPage = Integer.parseInt(map.get("currentPage"));
 			
 			String type = map.get("type");
-			System.out.println("´Ó urlÖĞ»ñÈ¡µ½µÄ²ÎÊıÊÇ£º "+ "\tcurrentPage = "+currentPage+"\ttype = "+type);
+			System.out.println("ä» urlä¸­è·å–åˆ°çš„å‚æ•°æ˜¯ï¼š "+ "\tcurrentPage = "+currentPage+"\ttype = "+type);
 			
 			
-			// »ñÈ¡²éÑ¯Ìõ¼ş
-			String chepai = request.getParameter("chepai");			// ³µÅÆºÅ
-			String jdate = request.getParameter("jdate");			// Èë³¡Ê±¼ä
+			// è·å–æŸ¥è¯¢æ¡ä»¶
+			String chepai = request.getParameter("chepai");			// è½¦ç‰Œå·
+			String jdate = request.getParameter("jdate");			// å…¥åœºæ—¶é—´
 			System.out.println("chepai: "+chepai+"\tjdate: "+jdate);
 			System.out.println("currentPage: "+currentPage);
-			// 2.¸ù¾İÖ¸¶¨µÄÒ³ÊıÈ¥»ñÈ¡¸ÃÒ³µÄÊı¾İ»ØÀ´
+			// 2.æ ¹æ®æŒ‡å®šçš„é¡µæ•°å»è·å–è¯¥é¡µçš„æ•°æ®å›æ¥
 			CheFeiService service  = new CheFeiServiceImpl();
 			PageBean pageBean =  service.findCheFeiByPage(currentPage,chepai,jdate);
 			System.out.println("pageBean.getCurrentPage(): "+pageBean.getCurrentPage());
@@ -69,15 +69,15 @@ public class PageListServlet extends HttpServlet {
 					System.out.println(list.get(i).toString());
 				}
 			}
-			// 3.°ÑÊı¾İÉèÖÃµ½×÷ÓÃÓò
+			// 3.æŠŠæ•°æ®è®¾ç½®åˆ°ä½œç”¨åŸŸ
 			request.setAttribute("pagebean", pageBean);
 			System.out.println("--------------PageListServlet Debug End-------------------------");
-			// 4.Ìø×ªµ½Ö¸¶¨Ò³Ãæ
-			// Ìø×ªµ½¹ÜÀíÔ±Ò³Ãæ
+			// 4.è·³è½¬åˆ°æŒ‡å®šé¡µé¢
+			// è·³è½¬åˆ°ç®¡ç†å‘˜é¡µé¢
 			if("admin".equals(type)){
 				request.getRequestDispatcher("cfei/list.jsp").forward(request, response);
 			}else{
-				// Ìø×ªµ½ÓÃ»§Ò³Ãæ
+				// è·³è½¬åˆ°ç”¨æˆ·é¡µé¢
 				
 			}
 			//response.sendRedirect("cfei/lslist.jsp");

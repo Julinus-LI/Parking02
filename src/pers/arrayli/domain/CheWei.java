@@ -2,14 +2,14 @@ package pers.arrayli.domain;
 
 /**
  * @author lzj13
- *	³µÎ»bean
+ *	è½¦ä½bean
  */
 public class CheWei {
-	private int id;				// ³µÎ» id
-	private String hao;			// ³µÎ»ºÅ
-	private String info;		// ±¸×¢
-	private String quyu;		// ÇøÓò
-	private String chepai;		// ³µÅÆ	
+	private int id;				// è½¦ä½ id
+	private String hao;			// è½¦ä½å·
+	private String info;		// å¤‡æ³¨
+	private String quyu;		// åŒºåŸŸ
+	private String chepai;		// è½¦ç‰Œ	
 	private String adate;
 	public int getId() {
 		return id;

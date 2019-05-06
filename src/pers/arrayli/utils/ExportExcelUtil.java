@@ -29,27 +29,27 @@ import pers.arrayli.domain.CheFei;
 
 
 /**
- * Excelµ¼³ö²Ù×÷
+ * Excelå¯¼å‡ºæ“ä½œ
  *
  */
 public class ExportExcelUtil {
 	
 	private static Connection conn ;  
 	   
-	//±íÍ·
+	//è¡¨å¤´
 	public static final String[] tableHeader = 
-		{"ĞòºÅ","³µÅÆºÅ","Í£³µÊ±¼ä","Àë¿ªÊ±¼ä","½ğ¶î","½É·ÑÊ±¼ä","Ê±³¤","ÊÕ·Ñ±ê×¼"};
-	//´´½¨¹¤×÷±¾
+		{"åºå·","è½¦ç‰Œå·","åœè½¦æ—¶é—´","ç¦»å¼€æ—¶é—´","é‡‘é¢","ç¼´è´¹æ—¶é—´","æ—¶é•¿","æ”¶è´¹æ ‡å‡†"};
+	//åˆ›å»ºå·¥ä½œæœ¬
 	public static HSSFWorkbook demoWorkBook = new HSSFWorkbook();
-	//´´½¨±í
+	//åˆ›å»ºè¡¨
 	public static HSSFSheet demoSheet = demoWorkBook.createSheet("Sheet1");
-	//±íÍ·µÄµ¥Ôª¸ñ¸öÊıÄ¿  
+	//è¡¨å¤´çš„å•å…ƒæ ¼ä¸ªæ•°ç›®  
 	public static final short cellNumber = (short)tableHeader.length;
-	//Êı¾İ¿â±íµÄÁĞÊı 
+	//æ•°æ®åº“è¡¨çš„åˆ—æ•° 
 	public static final int columNumber = tableHeader.length;
 	
 	/**
-	 * »ñµÃÊı¾İ¿âÁ¬½Ó
+	 * è·å¾—æ•°æ®åº“è¿æ¥
 	 * @return conn
 	 * @throws SQLException 
 	 */
@@ -61,7 +61,7 @@ public class ExportExcelUtil {
 	 }
 	
 	/**
-	 * ²éÕÒ½á¹û¼¯
+	 * æŸ¥æ‰¾ç»“æœé›†
 	 * @return
 	 * @throws SQLException
 	 */
@@ -73,12 +73,12 @@ public class ExportExcelUtil {
 	 }
 	
 	/**
-	 * ´´½¨±íÍ·
+	 * åˆ›å»ºè¡¨å¤´
 	 * @return
 	 */
 	public void createTableHeader(){
 	//	HSSFHeader header = demoSheet.getHeader();
-	//	header.setCenter("´óÇøĞÅÏ¢±í");
+	//	header.setCenter("å¤§åŒºä¿¡æ¯è¡¨");
 		HSSFRow headerRow = demoSheet.createRow((short) 0);
 		for(int i = 0;i < cellNumber;i++){
 			HSSFCell headerCell = headerRow.createCell((short) i);
@@ -89,19 +89,19 @@ public class ExportExcelUtil {
 	}
 	
 	/**
-	 * ´´½¨ĞĞ
+	 * åˆ›å»ºè¡Œ
 	 * @param cells
 	 * @param rowIndex
 	 */
 	public void createTableRow(List<String> cells,short rowIndex){
-		//´´½¨µÚrowIndexĞĞ
+		//åˆ›å»ºç¬¬rowIndexè¡Œ
 		HSSFRow row = demoSheet.createRow((short) rowIndex);
 		//row.setHeight((short) (15.625*20));
 		row.setHeight((short) (15.625*20));
 		HSSFCellStyle style = getCellStyle();
 		for(short i = 0;i < cells.size();i++)
 		{
-			//´´½¨µÚi¸öµ¥Ôª¸ñ
+			//åˆ›å»ºç¬¬iä¸ªå•å…ƒæ ¼
 			HSSFCell cell = row.createCell((short) i);
 			cell.setCellStyle(style);
 			cell.setEncoding(HSSFCell.ENCODING_UTF_16);
@@ -110,7 +110,7 @@ public class ExportExcelUtil {
 	}
 	
 	/**
-	 * ´´½¨Õû¸öExcel±í
+	 * åˆ›å»ºæ•´ä¸ªExcelè¡¨
 	 * @throws SQLException 
 	 *
 	 */
@@ -132,7 +132,7 @@ public class ExportExcelUtil {
 	}
 	
 	/**
-	 * µ¼³ö±í¸ñ
+	 * å¯¼å‡ºè¡¨æ ¼
 	 * @param sheet
 	 * @param os
 	 * @return 
@@ -147,7 +147,7 @@ public class ExportExcelUtil {
 	}
 	
 	/**
-	 * ÉèÖÃÍ·²¿ÑùÊ½
+	 * è®¾ç½®å¤´éƒ¨æ ·å¼
 	 * @return HSSFCellStyle
 	 */
 	public HSSFCellStyle getTitleStyle(){
@@ -161,11 +161,11 @@ public class ExportExcelUtil {
 
 	    
 	    font.setFontName("Arial");  
-	    font.setFontHeightInPoints((short) 10);// ÉèÖÃ×ÖÌå´óĞ¡  
+	    font.setFontHeightInPoints((short) 10);// è®¾ç½®å­—ä½“å¤§å°  
         font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
         style.setFillForegroundColor(HSSFColor.LAVENDER.index);
         style.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
-        style.setAlignment(HSSFCellStyle.ALIGN_CENTER);// ×óÓÒ¾ÓÖĞ  
+        style.setAlignment(HSSFCellStyle.ALIGN_CENTER);// å·¦å³å±…ä¸­  
         style.setBorderLeft(HSSFCellStyle.BORDER_THIN);  
         style.setBorderRight(HSSFCellStyle.BORDER_THIN);  
         style.setBorderTop(HSSFCellStyle.BORDER_THIN);  
@@ -176,16 +176,16 @@ public class ExportExcelUtil {
 	}
 	
 	/**
-	 * ÉèÖÃ±í¸ñ¸ñÑùÊ½
+	 * è®¾ç½®è¡¨æ ¼æ ¼æ ·å¼
 	 * @return HSSFCellStyle
 	 */
 	public HSSFCellStyle getCellStyle(){
 		HSSFCellStyle style = demoWorkBook.createCellStyle();  
         HSSFFont font = demoWorkBook.createFont();  
-        font.setFontHeightInPoints((short) 10);// ÉèÖÃ×ÖÌå´óĞ¡
+        font.setFontHeightInPoints((short) 10);// è®¾ç½®å­—ä½“å¤§å°
         style.setFillForegroundColor(HSSFColor.LIGHT_GREEN.index);
         style.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
-        style.setAlignment(HSSFCellStyle.ALIGN_CENTER);// ×óÓÒ¾ÓÖĞ  
+        style.setAlignment(HSSFCellStyle.ALIGN_CENTER);// å·¦å³å±…ä¸­  
         style.setBorderLeft(HSSFCellStyle.BORDER_THIN);  
         style.setBorderRight(HSSFCellStyle.BORDER_THIN);  
         style.setBorderTop(HSSFCellStyle.BORDER_THIN);  

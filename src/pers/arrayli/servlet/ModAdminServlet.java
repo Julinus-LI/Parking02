@@ -15,36 +15,36 @@ import pers.arrayli.service.impl.AdminUserServiceImpl;
 
 /**
  * @author lzj13
- *	ĞŞ¸Ä¹ÜÀíÔ±ĞÅÏ¢
+ *	ä¿®æ”¹ç®¡ç†å‘˜ä¿¡æ¯
  */
 public class ModAdminServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			// 1.´ÓÇ°¶ËÒ³Ãæ»ñÈ¡¹ÜÀíÔ±ĞÅÏ¢
+			// 1.ä»å‰ç«¯é¡µé¢è·å–ç®¡ç†å‘˜ä¿¡æ¯
 			
 			int id = Integer.parseInt(request.getParameter("id"));
 			String userName = request.getParameter("name");
 			String passWord = request.getParameter("pwd");
 			
-			// 2.°Ñ»ñÈ¡µ½µÄĞÅÏ¢·â×°³ÉÒ»¸ö AdminUser¶ÔÏó
+			// 2.æŠŠè·å–åˆ°çš„ä¿¡æ¯å°è£…æˆä¸€ä¸ª AdminUserå¯¹è±¡
 			AdminUser admin = new  AdminUser();
 			admin.setUserName(userName);
 			admin.setUserPassword(passWord);
 			System.out.println("id: "+id+"\tadmin: "+admin.toString());
 			
-			// 3.ÒµÎñ²ã´¦ÀíÇ°¶ËÒ³ÃæÇëÇó
+			// 3.ä¸šåŠ¡å±‚å¤„ç†å‰ç«¯é¡µé¢è¯·æ±‚
 			AdminUserService service = new AdminUserServiceImpl();
 			boolean result = service.updateAdminById(id, admin);
-			// Èç¹ûĞŞ¸Ä³É¹¦µÄ»°
+			// å¦‚æœä¿®æ”¹æˆåŠŸçš„è¯
 			if(result){
-				// ÖØ¶¨Ïòµ½ admin/list.jsp
+				// é‡å®šå‘åˆ° admin/list.jsp
 				response.sendRedirect("admin/list.jsp");
 			}else{
-					// Èç¹ûĞŞ¸ÄÊ§°ÜµÄ»°
-				// Èç¹ûĞŞ¸ÄÊ§°ÜµÄ»°
-				response.getWriter().println("<script>alert('ĞŞ¸Ä¹ÜÀíÔ±ĞÅÏ¢Ê§°Ü£¡');window.location.href='admin/list.jsp'</script>");
+					// å¦‚æœä¿®æ”¹å¤±è´¥çš„è¯
+				// å¦‚æœä¿®æ”¹å¤±è´¥çš„è¯
+				response.getWriter().println("<script>alert('ä¿®æ”¹ç®¡ç†å‘˜ä¿¡æ¯å¤±è´¥ï¼');window.location.href='admin/list.jsp'</script>");
 			}
 			
 			

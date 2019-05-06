@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * @author lzj13
- *	¼ÆËãÊ±¼ä¹¤¾ßÀà
+ *	è®¡ç®—æ—¶é—´å·¥å…·ç±»
  */
 public class CalculateTime {
 	public static int CalculateTime(String jdate,String ldate){
@@ -17,18 +17,18 @@ public class CalculateTime {
 			String dateStart = jdate;
 			String dateEnd = ldate;
 			
-			// ¸ñÊ½»¯ÈÕÆÚ
+			// æ ¼å¼åŒ–æ—¥æœŸ
 			SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Date d1 = null;
 			Date d2 = null;
-			// °Ñ×Ö·û´®ÈÕÆÚ¸ñÊ½»¯³ÉÈÕÆÚ¶ÔÏó
+			// æŠŠå­—ç¬¦ä¸²æ—¥æœŸæ ¼å¼åŒ–æˆæ—¥æœŸå¯¹è±¡
 			d1 = sdf.parse(jdate);
 			d2 = sdf.parse(ldate);
 			
-			// ¼ÆËãÁ½¸öÊ±¼ä²îµÄºÁÃëÊı
+			// è®¡ç®—ä¸¤ä¸ªæ—¶é—´å·®çš„æ¯«ç§’æ•°
 			diff  = d2.getTime()-d1.getTime();
 			System.out.println("d2 - d1: "+diff);
-			diff = diff / 1000;    // ×ª»»³ÉÃë
+			diff = diff / 1000;    // è½¬æ¢æˆç§’
 			
 			hours = (int)(diff / 60 / 60);
 			temp = ((int)(diff / 60 )) % 60;

@@ -17,18 +17,18 @@ import pers.arrayli.service.impl.UserInfoServiceImpl;
 
 /**
  * @author lzj13
- *	ÓÃ»§×¢²á servlet
+ *	ç”¨æˆ·æ³¨å†Œ servlet
  */
 public class UserRegisterServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 1.´ÓÇ°¶ËÒ³Ãæ»ñÈ¡Êı¾İ
+		// 1.ä»å‰ç«¯é¡µé¢è·å–æ•°æ®
 		String username = request.getParameter("name");
 		String pwd = request.getParameter("pwd");
 		int age =Integer.parseInt(request.getParameter("age"));
 		String tel = request.getParameter("tel");
 		
-		// 2.°Ñ»ñÈ¡µ½µÄ×¢²áĞÅÏ¢·â×°³ÉÒ»¸öÓÃ»§ĞÅÏ¢¶ÔÏó
+		// 2.æŠŠè·å–åˆ°çš„æ³¨å†Œä¿¡æ¯å°è£…æˆä¸€ä¸ªç”¨æˆ·ä¿¡æ¯å¯¹è±¡
 		UserInfo user  = new UserInfo();
 		user.setUsername(username);
 		user.setPwd(pwd);
@@ -37,21 +37,21 @@ public class UserRegisterServlet extends HttpServlet {
 		user.setMoney(0);
 		System.out.println("Register user: "+user);
 		
-		// »ñÈ¡Êä³öÁ÷¶ÔÏó
+		// è·å–è¾“å‡ºæµå¯¹è±¡
 		PrintWriter out = response.getWriter();
 		try {
 		
-			// 3.µ÷ÓÃÒµÎñ²ã´úÂë£¬´¦ÀíÇëÇó
+			// 3.è°ƒç”¨ä¸šåŠ¡å±‚ä»£ç ï¼Œå¤„ç†è¯·æ±‚
 			UserInfoService service = new UserInfoServiceImpl();
 			boolean result = service.RegisterUser(user);
-			// Èç¹û×¢²á³É¹¦
+			// å¦‚æœæ³¨å†ŒæˆåŠŸ
 			if(result){
 				out.
-		println("<script>alert('×¢²á³É¹¦ÇëµÇÂ¼£¡');window.location.href='login.jsp'</script>");
+		println("<script>alert('æ³¨å†ŒæˆåŠŸè¯·ç™»å½•ï¼');window.location.href='login.jsp'</script>");
 				
-			}else{ 		// Èç¹û×¢²áÊ§°Ü
+			}else{ 		// å¦‚æœæ³¨å†Œå¤±è´¥
 				out.
-println("<script>alert('×¢²á³É¹¦Ê§°Ü,ÇëÖØĞÂ×¢²á£¡');window.location.href='userinfo/regUserinfo.jsp'</script>");
+println("<script>alert('æ³¨å†ŒæˆåŠŸå¤±è´¥,è¯·é‡æ–°æ³¨å†Œï¼');window.location.href='userinfo/regUserinfo.jsp'</script>");
 			}
 			
 		} catch (SQLException e) {

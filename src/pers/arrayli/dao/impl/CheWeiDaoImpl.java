@@ -14,7 +14,7 @@ import pers.arrayli.domain.CheWei;
 import pers.arrayli.domain.UserInfo;
 
 /**
- * @author lzj13 ÊµÏÖ³µÎ»½Ó¿Ú Êı¾İ¿â·ÃÎÊ²ã
+ * @author lzj13 å®ç°è½¦ä½æ¥å£ æ•°æ®åº“è®¿é—®å±‚
  */
 public class CheWeiDaoImpl implements CheWeiDao {
 
@@ -49,11 +49,11 @@ public class CheWeiDaoImpl implements CheWeiDao {
 		CheWei cheWei = queryRunner.query(sql,new BeanHandler<CheWei>(CheWei.class) ,hao);
 		System.out.println("cheWei: "+cheWei);
 		System.out.println("---------------------  isReverse DEBUG End --------------------");
-		// Èç¹û³µÅÆºÅÎª haoµÄ³µ£¬²éÑ¯µÄ³µÎ»ºÅ²»Îª¿Õ£¬ËµÃ÷¸Ã³µÒÑ¾­Í£³µ
+		// å¦‚æœè½¦ç‰Œå·ä¸º haoçš„è½¦ï¼ŒæŸ¥è¯¢çš„è½¦ä½å·ä¸ä¸ºç©ºï¼Œè¯´æ˜è¯¥è½¦å·²ç»åœè½¦
 		if(cheWei != null){
 			return true;
 		}
-		// Îª¿ÕµÄ»°£¬ËµÃ÷¸Ã³µ»¹Ã»ÓĞÍ£³µ
+		// ä¸ºç©ºçš„è¯ï¼Œè¯´æ˜è¯¥è½¦è¿˜æ²¡æœ‰åœè½¦
 		return false;
 	}
 
@@ -110,7 +110,7 @@ public class CheWeiDaoImpl implements CheWeiDao {
 				+ " where a.id = b.uid and b.hao = c.chepai and c.chepai = ?";
 		UserInfo user = queryRunner.query(sql,new BeanHandler<UserInfo>(UserInfo.class) ,chepai);
 		System.out.println("GetUserMoney user: "+user.toString());
-		int balance = 0;    // Óà¶î
+		int balance = 0;    // ä½™é¢
 	
 		if(user != null){
 			balance = user.getMoney();

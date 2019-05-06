@@ -2,11 +2,11 @@ package pers.arrayli.domain;
 
 /**
  * @author lzj13
- *	车费标准 bean
+ *	杞﹁垂鏍囧噯 bean
  */
 public class CheFeiPrice {
-	private int id;  	// 车费标准id
-	private int price;	// 车费标准
+	private int id;  	// 杞﹁垂鏍囧噯id
+	private int price;	// 杞﹁垂鏍囧噯
 	public int getId() {
 		return id;
 	}

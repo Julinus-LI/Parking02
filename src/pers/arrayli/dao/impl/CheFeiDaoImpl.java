@@ -15,7 +15,7 @@ import pers.arrayli.domain.CheFei;
 
 /**
  * @author lzj13
- *	³µ·ÑĞÅÏ¢ÊµÏÖÀà
+ *	è½¦è´¹ä¿¡æ¯å®ç°ç±»
  */
 public class CheFeiDaoImpl implements CheFeiDao{
 

@@ -15,7 +15,7 @@ import pers.arrayli.service.impl.CheFeiPriceServiceImpl;
 
 /**
  * @author lzj13
- *	ĞŞ¸Ä³µ·Ñ¼Û¸ñ servlet
+ *	ä¿®æ”¹è½¦è´¹ä»·æ ¼ servlet
  */
 public class ModCheFeiPriceServlet extends HttpServlet {
 
@@ -23,27 +23,27 @@ public class ModCheFeiPriceServlet extends HttpServlet {
 		
 		try {
 			System.out.println("----------------------ModCheFeiPriceServlet DEBUG Start----------------------");
-			// 1.»ñÈ¡³µ·Ñ¼Û¸ñÊı¾İ
+			// 1.è·å–è½¦è´¹ä»·æ ¼æ•°æ®
 			int id = Integer.parseInt(request.getSession().getAttribute("pid").toString());
 		
 			int price = Integer.parseInt(request.getParameter("price"));
 			System.out.println("----------------------ModCheFeiPriceServlet DEBUG 1----------------------");
-			// 2.°Ñ³µ·Ñ¼Û¸ñ·â×°³ÉÒ»¸ö CheFeiPrice¶ÔÏó
+			// 2.æŠŠè½¦è´¹ä»·æ ¼å°è£…æˆä¸€ä¸ª CheFeiPriceå¯¹è±¡
 			CheFeiPrice cheFeiPrice = new CheFeiPrice();
 			cheFeiPrice.setPrice(price);
 			cheFeiPrice.setId(id);
 			System.out.println("chefei: "+cheFeiPrice.toString());
-			// 3.Í¨¹ıÒµÎñ²ã´úÂë´¦ÀíÇëÇó
+			// 3.é€šè¿‡ä¸šåŠ¡å±‚ä»£ç å¤„ç†è¯·æ±‚
 			CheFeiPriceService service = new CheFeiPriceServiceImpl();
 			boolean result = service.setFare(id, cheFeiPrice);
 			System.out.println("----------------------ModCheFeiPriceServlet DEBUG 2----------------------");
-			// Èç¹ûĞŞ¸Ä³µ·Ñ¼Û¸ñ³É¹¦
+			// å¦‚æœä¿®æ”¹è½¦è´¹ä»·æ ¼æˆåŠŸ
 			if(result){
 				request.getSession().setAttribute("fei", price);
-				response.getWriter().println("<script>alert('ĞŞ¸ÄÊÕ·Ñ±ê×¼³É¹¦£¡');window.location.href='fei/modFei.jsp'</script>");
+				response.getWriter().println("<script>alert('ä¿®æ”¹æ”¶è´¹æ ‡å‡†æˆåŠŸï¼');window.location.href='fei/modFei.jsp'</script>");
 			}else{
-				// Èç¹ûĞŞ¸Ä³µ·Ñ½á¹ûÊ§°Ü
-				response.getWriter().println("<script>alert('ĞŞ¸ÄÊÕ·Ñ±ê×¼Ê§°Ü£¡');window.location.href='fei/modFei.jsp'</script>");
+				// å¦‚æœä¿®æ”¹è½¦è´¹ç»“æœå¤±è´¥
+				response.getWriter().println("<script>alert('ä¿®æ”¹æ”¶è´¹æ ‡å‡†å¤±è´¥ï¼');window.location.href='fei/modFei.jsp'</script>");
 			}
 			
 		} catch (SQLException e) {

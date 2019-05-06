@@ -2,12 +2,12 @@ package pers.arrayli.domain;
 
 /**
  * @author lzj13
- * ¹ÜÀíÔ±ÓÃ»§bean
+ * ç®¡ç†å‘˜ç”¨æˆ·bean
  */
 public class AdminUser {
-	private int id;   		  		// ¹ÜÀíÔ±ÓÃ»§id
-	private String userName;  		// ¹ÜÀíÔ±ÓÃ»§ĞÕÃû
-	private String userPassword;  	// ¹ÜÀíÔ±ÓÃ»§ÃÜÂë
+	private int id;   		  		// ç®¡ç†å‘˜ç”¨æˆ·id
+	private String userName;  		// ç®¡ç†å‘˜ç”¨æˆ·å§“å
+	private String userPassword;  	// ç®¡ç†å‘˜ç”¨æˆ·å¯†ç 
 	public int getId() {
 		return id;
 	}

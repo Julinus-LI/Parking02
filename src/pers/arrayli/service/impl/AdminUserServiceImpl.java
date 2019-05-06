@@ -11,7 +11,7 @@ import pers.arrayli.service.AdminUserService;
 
 /**
  * @author lzj13
- *	ÊµÏÖAdminUserService½Ó¿ÚµÄ·½·¨
+ *	å®ç°AdminUserServiceæ¥å£çš„æ–¹æ³•
  */
 public class AdminUserServiceImpl implements AdminUserService {
 

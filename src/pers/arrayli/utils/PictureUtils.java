@@ -3,24 +3,24 @@ package pers.arrayli.utils;
 import java.io.File;
 
 /**
- * @author lzj13 Í¼Æ¬×ÊÔ´²Ù×÷Àà
+ * @author lzj13 å›¾ç‰‡èµ„æºæ“ä½œç±»
  */
 public class PictureUtils {
 	public static String PicPath = "D:\\PakringResources\\upload";
 
 	public static void delPicture(String fileName) {
 		File file = new File(fileName);
-		// Èç¹ûÎÄ¼şÂ·¾¶Ëù¶ÔÓ¦µÄÎÄ¼ş´æÔÚ£¬²¢ÇÒÊÇÒ»¸öÎÄ¼ş£¬ÔòÖ±½ÓÉ¾³ı
+		// å¦‚æœæ–‡ä»¶è·¯å¾„æ‰€å¯¹åº”çš„æ–‡ä»¶å­˜åœ¨ï¼Œå¹¶ä¸”æ˜¯ä¸€ä¸ªæ–‡ä»¶ï¼Œåˆ™ç›´æ¥åˆ é™¤
 		if (file.exists() && file.isFile()) {
 			if (file.delete()) {
-				System.out.println("É¾³ı" + fileName + "³É¹¦£¡");
+				System.out.println("åˆ é™¤" + fileName + "æˆåŠŸï¼");
 
 			} else {
-				System.out.println("É¾³ı" + fileName + "Ê§°Ü£¡");
+				System.out.println("åˆ é™¤" + fileName + "å¤±è´¥ï¼");
 
 			}
 		} else {
-			System.out.println("É¾³ıµ¥¸öÎÄ¼şÊ§°Ü£º" + fileName + "²»´æÔÚ£¡");
+			System.out.println("åˆ é™¤å•ä¸ªæ–‡ä»¶å¤±è´¥ï¼š" + fileName + "ä¸å­˜åœ¨ï¼");
 
 		}
 	}

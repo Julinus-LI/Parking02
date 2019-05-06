@@ -14,22 +14,22 @@ import pers.arrayli.utils.SysInfoUtils;
 public class TestTime {
 
 	/**
-	 *  ²âÊÔ»ñÈ¡ÏµÍ³ĞÅÏ¢
+	 *  æµ‹è¯•è·å–ç³»ç»Ÿä¿¡æ¯
 	 * @throws UnknownHostException 
 	 */
 	@Test
 	public void testSysInfo() throws UnknownHostException {
-		// ´òÓ¡ÏµÍ³ĞÅÏ¢
-		System.out.println("²Ù×÷ÏµÍ³£º"+ "WIN10");
-		System.out.println("ÔËĞĞ»·¾³£º"+"Apache Tomcat");
-		System.out.println("°æ±¾£º"+ "version-1.0");
+		// æ‰“å°ç³»ç»Ÿä¿¡æ¯
+		System.out.println("æ“ä½œç³»ç»Ÿï¼š"+ "WIN10");
+		System.out.println("è¿è¡Œç¯å¢ƒï¼š"+"Apache Tomcat");
+		System.out.println("ç‰ˆæœ¬ï¼š"+ "version-1.0");
 		Date date  = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String time = sdf.format(date);
-		System.out.println("±±¾©Ê±¼ä£º "+ time);
-		System.out.println("·şÎñÆ÷ÓòÃû/IP£º "+SysInfoUtils.getIP());
-		System.out.println("Host£º"+SysInfoUtils.getHost());
-		System.out.println("¼¼ÊõÖ§³Ö");
+		System.out.println("åŒ—äº¬æ—¶é—´ï¼š "+ time);
+		System.out.println("æœåŠ¡å™¨åŸŸå/IPï¼š "+SysInfoUtils.getIP());
+		System.out.println("Hostï¼š"+SysInfoUtils.getHost());
+		System.out.println("æŠ€æœ¯æ”¯æŒ");
 	}
 
 	@Test
@@ -37,8 +37,8 @@ public class TestTime {
 		String date1 = "2019-04-20 10:00:00";
 		String date2 = "2019-04-21 12:30:52";
 		long diff = CalculateTime.CalculateTime(date1, date2);
-		diff = diff / 1000;   //»»Ëã³ÉÃë
-		// ¼ä¸ôµÄÄê
+		diff = diff / 1000;   //æ¢ç®—æˆç§’
+		// é—´éš”çš„å¹´
 		int day =(int) (diff / 60 / 60 /24);
 		int hour = (int)(diff / 60 / 60);
 		int temp = ((int)(diff / 60)) % 60;
@@ -46,9 +46,9 @@ public class TestTime {
 		if(temp != 0){
 			hour = hour + 1;
 		}
-		System.out.println(date2+" ºÍ  "+date1+" µÄÊ±¼ä¼ä¸ôÊÇ£º"+diff);
-		System.out.println("Ïà²î   "+day+" Ìì");
-		System.out.println("Ïà²î  "+ hour+" Ğ¡Ê±");
+		System.out.println(date2+" å’Œ  "+date1+" çš„æ—¶é—´é—´éš”æ˜¯ï¼š"+diff);
+		System.out.println("ç›¸å·®   "+day+" å¤©");
+		System.out.println("ç›¸å·®  "+ hour+" å°æ—¶");
 		
 		
 	}

@@ -6,34 +6,34 @@ import pers.arrayli.domain.CheFeiPrice;
 
 /**
  * @author lzj13
- *	³µ·Ñ±ê×¼½Ó¿Ú
- *	Ö÷ÒªÓÃÀ´¶¨ÒåÒ»Ğ©ÉèÖÃºÍ²éÑ¯³µ·Ñ±ê×¼µÄ½Ó¿Ú
+ *	è½¦è´¹æ ‡å‡†æ¥å£
+ *	ä¸»è¦ç”¨æ¥å®šä¹‰ä¸€äº›è®¾ç½®å’ŒæŸ¥è¯¢è½¦è´¹æ ‡å‡†çš„æ¥å£
  */
 public interface CheFeiPriceDao {
-	/**	²éÑ¯³µ·Ñ±ê×¼
-	 * @return ²éÑ¯µÄ³µ·Ñ±ê×¼
+	/**	æŸ¥è¯¢è½¦è´¹æ ‡å‡†
+	 * @return æŸ¥è¯¢çš„è½¦è´¹æ ‡å‡†
 	 * @throws SQLException
 	 */
 	int findFare() throws SQLException;
 	
 	
-	/**	ÉèÖÃ³µ·Ñ±ê×¼
-	 * @param  id		³µ·Ñ±ê×¼id
-	 * @param price		³µ·Ñ±ê×¼
-	 * @return	ÉèÖÃ³µ·Ñ±ê×¼³É¹¦Óë·ñ
+	/**	è®¾ç½®è½¦è´¹æ ‡å‡†
+	 * @param  id		è½¦è´¹æ ‡å‡†id
+	 * @param price		è½¦è´¹æ ‡å‡†
+	 * @return	è®¾ç½®è½¦è´¹æ ‡å‡†æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean setFare(int id,CheFeiPrice price) throws SQLException;
 	
-	/**	²éÑ¯³µ·Ñ¼Û¸ñĞÅÏ¢¶ÔÏó
-	 * @return	·µ»Ø²éÑ¯µÄ³µ·Ñ¼Û¸ñĞÅÏ¢¶ÔÏó
+	/**	æŸ¥è¯¢è½¦è´¹ä»·æ ¼ä¿¡æ¯å¯¹è±¡
+	 * @return	è¿”å›æŸ¥è¯¢çš„è½¦è´¹ä»·æ ¼ä¿¡æ¯å¯¹è±¡
 	 * @throws SQLException
 	 */
 	CheFeiPrice QueryFare() throws SQLException;
 	
-	/**	Í¨¹ı³µ·Ñ¼Û¸ñ idÀ´ÉèÖÃ³µ·Ñ¼Û¸ñ±ê×¼
-	 * @param id		³µ·Ñ¼Û¸ñ id
-	 * @return			ÉèÖÃ³µ·Ñ¼Û¸ñ³É¹¦Óë·ñ
+	/**	é€šè¿‡è½¦è´¹ä»·æ ¼ idæ¥è®¾ç½®è½¦è´¹ä»·æ ¼æ ‡å‡†
+	 * @param id		è½¦è´¹ä»·æ ¼ id
+	 * @return			è®¾ç½®è½¦è´¹ä»·æ ¼æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	//boolean setFare(int id) throws SQLException;

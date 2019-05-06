@@ -14,7 +14,7 @@ import pers.arrayli.db.JDBCUtils;
 
 /**
  * @author lzj13
- *	ÊµÏÖ¹ÜÀíÔ±ÓÃ»§½Ó¿Ú   Êı¾İ·ÃÎÊ²ã
+ *	å®ç°ç®¡ç†å‘˜ç”¨æˆ·æ¥å£   æ•°æ®è®¿é—®å±‚
  */
 public class AdminUserDaoImpl  implements AdminUserDao{
 

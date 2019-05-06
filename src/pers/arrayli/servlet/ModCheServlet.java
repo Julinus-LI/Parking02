@@ -16,24 +16,24 @@ import pers.arrayli.service.CheService;
 import pers.arrayli.service.impl.CheServiceImpl;
 
 /**
- * @author lzj13 ĞŞ¸Ä³µÁ¾ĞÅÏ¢servlet
+ * @author lzj13 ä¿®æ”¹è½¦è¾†ä¿¡æ¯servlet
  */
 public class ModCheServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// »ñÈ¡Êä³öÁ÷¶ÔÏó
+		// è·å–è¾“å‡ºæµå¯¹è±¡
 		PrintWriter out = response.getWriter();
 
 		try {
-			// 1.´ÓÇ°¶ËÒ³Ãæ»ñÈ¡Ìá½»ÉÏÀ´µÄÊı¾İ
+			// 1.ä»å‰ç«¯é¡µé¢è·å–æäº¤ä¸Šæ¥çš„æ•°æ®
 			int id = Integer.parseInt(request.getParameter("id"));
 			String hao = request.getParameter("hao");
 			String leixing = request.getParameter("leixing");
 			String picture = request.getParameter("fujian");
 			String info = request.getParameter("info");
 
-			// 2.¹¹ÔìÒ»¸öJavabean ¶ÔÏó
+			// 2.æ„é€ ä¸€ä¸ªJavabean å¯¹è±¡
 			Che che = new Che();
 			che.setId(id);
 			che.setHao(hao);
@@ -41,16 +41,16 @@ public class ModCheServlet extends HttpServlet {
 			che.setPicture(picture);
 			che.setInfo(info);
 
-			// 3.µ÷ÓÃÒµÎñ²ã´úÂë½øĞĞ´¦Àí
+			// 3.è°ƒç”¨ä¸šåŠ¡å±‚ä»£ç è¿›è¡Œå¤„ç†
 			CheService service = new CheServiceImpl();
 			boolean result = service.updateCheById(id, che);
-			// Èç¹ûĞŞ¸Ä³É¹¦µÄ»°
+			// å¦‚æœä¿®æ”¹æˆåŠŸçš„è¯
 			if (result) {
-				// Èç¹ûÌí¼Ó³É¹¦£¬ÖØ¶¨Ïòµ½ ³µµÄlist.jsp
+				// å¦‚æœæ·»åŠ æˆåŠŸï¼Œé‡å®šå‘åˆ° è½¦çš„list.jsp
 				response.sendRedirect("che/list.jsp");
 			} else {
-				// Èç¹ûĞŞ¸ÄÊ§°ÜµÄ»°
-				out.println("<script>alert('ĞŞ¸Ä³µÁ¾ĞÅÏ¢Ê§°Ü£¡');window.location.href='che/list.jsp'</script>");
+				// å¦‚æœä¿®æ”¹å¤±è´¥çš„è¯
+				out.println("<script>alert('ä¿®æ”¹è½¦è¾†ä¿¡æ¯å¤±è´¥ï¼');window.location.href='che/list.jsp'</script>");
 			}
 
 		} catch (SQLException e) {

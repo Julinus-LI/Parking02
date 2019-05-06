@@ -14,12 +14,12 @@ public class TestDelPicture {
 		
 		Map<String, Integer> map = new HashMap<>();
 		map.put("zhangsan",18);
-		map.put("李四",20);
-		map.put("王五",19);
+		map.put("鏉庡洓",20);
+		map.put("鐜嬩簲",19);
 		
 		System.out.println(map.get("zhangsan"));
-		System.out.println(map.get("李四"));
-		System.out.println(map.get("王五"));
+		System.out.println(map.get("鏉庡洓"));
+		System.out.println(map.get("鐜嬩簲"));
 		
 	}
 

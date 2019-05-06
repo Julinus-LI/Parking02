@@ -14,27 +14,27 @@ import pers.arrayli.service.impl.CheWeiServiceImpl;
 
 /**
  * @author lzj13
- *	É¾³ı³µÎ»ĞÅÏ¢ servlet
+ *	åˆ é™¤è½¦ä½ä¿¡æ¯ servlet
  */
 public class DelCheweiServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			// 1.»ñÈ¡É¾³ı³µÎ»ĞÅÏ¢µÄ³µÎ» id
+			// 1.è·å–åˆ é™¤è½¦ä½ä¿¡æ¯çš„è½¦ä½ id
 			int id = Integer.parseInt(request.getParameter("id"));
 			
-			// 2.Í¨¹ıÒµÎñ²ã´úÂëÀ´Ö´ĞĞÇëÇó
+			// 2.é€šè¿‡ä¸šåŠ¡å±‚ä»£ç æ¥æ‰§è¡Œè¯·æ±‚
 			CheWeiService service = new CheWeiServiceImpl();
 			boolean result = service.DelCheWeiById(id);
-			// Èç¹ûÉ¾³ı³É¹¦
+			// å¦‚æœåˆ é™¤æˆåŠŸ
 			if(result){
 				response.sendRedirect("chewei/list.jsp");	
 			}else{
-				// Èç¹ûÉ¾³ıÊ§°Ü
-				// Èç¹û¸üĞÂÊ§°Ü
+				// å¦‚æœåˆ é™¤å¤±è´¥
+				// å¦‚æœæ›´æ–°å¤±è´¥
 				response.getWriter()
-	.println("<script>alert('É¾³ı³µÎ»ĞÅÏ¢Ê§°Ü£¡');window.location.href='chewei/list.jsp'</script>");
+	.println("<script>alert('åˆ é™¤è½¦ä½ä¿¡æ¯å¤±è´¥ï¼');window.location.href='chewei/list.jsp'</script>");
 			}
 			
 		} catch (SQLException e) {

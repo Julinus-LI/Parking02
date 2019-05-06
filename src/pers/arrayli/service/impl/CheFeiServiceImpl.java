@@ -27,11 +27,11 @@ public class CheFeiServiceImpl implements CheFeiService{
 	@Override
 	public PageBean findCheFeiByPage(int currentPage,String chepai,String jdate) throws SQLException {
 		System.out.println("---------------- CheFeiServiceImpl Debug Start -------------------");
-		// ·â×°·ÖÒ³µÄ¸ÄÒ³Êı¾İ
+		// å°è£…åˆ†é¡µçš„æ”¹é¡µæ•°æ®
 		PageBean<CheFei> pageBean = new PageBean<CheFei>();
 		
-		pageBean.setCurrentPage(currentPage);  //ÉèÖÃµ±Ç°Ò³Êı
-		int pageSize = CheFeiDao.PAGE_SIZE;//ÉèÖÃÃ¿Ò³ÏÔÊ¾µÄÒ³Êı
+		pageBean.setCurrentPage(currentPage);  //è®¾ç½®å½“å‰é¡µæ•°
+		int pageSize = CheFeiDao.PAGE_SIZE;//è®¾ç½®æ¯é¡µæ˜¾ç¤ºçš„é¡µæ•°
 		pageBean.setPageSize(pageSize);
 
 		CheFeiDao dao = new CheFeiDaoImpl();
@@ -41,11 +41,11 @@ public class CheFeiServiceImpl implements CheFeiService{
 			System.out.println(cheFei.toString());
 		}
 		
-		pageBean.setList(list); // ÉèÖÃÕâÒ»Ò³µÄÑ§ÉúÊı¾İ
+		pageBean.setList(list); // è®¾ç½®è¿™ä¸€é¡µçš„å­¦ç”Ÿæ•°æ®
 		
-		//×ÜµÄ¼ÇÂ¼Êı£¬×ÜµÄÒ³Êı
+		//æ€»çš„è®°å½•æ•°ï¼Œæ€»çš„é¡µæ•°
 		int count = dao.findCount(chepai,jdate);
-		pageBean.setTotalSize(count); // ÉèÖÃ×ÜµÄ¼ÇÂ¼Êı
+		pageBean.setTotalSize(count); // è®¾ç½®æ€»çš„è®°å½•æ•°
 		
 		System.out.println("count :" +count);
 		

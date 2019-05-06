@@ -1,12 +1,12 @@
 package pers.arrayli.domain; 
 
 public class SysInfo {
-	private String os;    // ²Ù×÷ÏµÍ³
-	private String runEn;  //	ÔËĞĞ»·¾³
-	private String version;	//	ÏµÍ³°æ±¾
-	private String dateTime;  // Ê±¼äºÍÈÕÆÚ
-	private String ip;		// ·şÎñÆ÷IP
-	private String  host;	// ·şÎñÆ÷Ö÷»úÃû
+	private String os;    // æ“ä½œç³»ç»Ÿ
+	private String runEn;  //	è¿è¡Œç¯å¢ƒ
+	private String version;	//	ç³»ç»Ÿç‰ˆæœ¬
+	private String dateTime;  // æ—¶é—´å’Œæ—¥æœŸ
+	private String ip;		// æœåŠ¡å™¨IP
+	private String  host;	// æœåŠ¡å™¨ä¸»æœºå
 	public String getOs() {
 		return os;
 	}

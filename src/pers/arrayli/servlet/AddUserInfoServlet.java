@@ -15,37 +15,37 @@ import pers.arrayli.service.impl.UserInfoServiceImpl;
 
 /**
  * @author lzj13
- *	Ìí¼ÓÓÃ»§ĞÅÏ¢ servlet
+ *	æ·»åŠ ç”¨æˆ·ä¿¡æ¯ servlet
  */
 public class AddUserInfoServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			// 1.»ñÈ¡Ç°¶ËÒ³ÃæµÄÊı¾İ
+			// 1.è·å–å‰ç«¯é¡µé¢çš„æ•°æ®
 			String username = request.getParameter("name");
 			String password = request.getParameter("pwd");
 			int age = Integer.parseInt(request.getParameter("age"));
 			String tel = request.getParameter("tel");
 			
-			// 2.°Ñ»ñÈ¡µ½µÄÓÃ»§ĞÅÏ¢·â×°³ÉÒ»¸ö UserInfo ¶ÔÏó
+			// 2.æŠŠè·å–åˆ°çš„ç”¨æˆ·ä¿¡æ¯å°è£…æˆä¸€ä¸ª UserInfo å¯¹è±¡
 			UserInfo user = new UserInfo();
 			user.setUsername(username);
 			user.setPwd(password);
 			user.setAge(age);
 			user.setTel(tel);
 			
-			// 3.Ö´ĞĞÒµÎñ²ã´úÂë
+			// 3.æ‰§è¡Œä¸šåŠ¡å±‚ä»£ç 
 			UserInfoService service = new UserInfoServiceImpl();
 			boolean result = service.addUserInfo(user);
-			// Èç¹ûÌí¼ÓÓÃ»§ĞÅÏ¢³É¹¦
+			// å¦‚æœæ·»åŠ ç”¨æˆ·ä¿¡æ¯æˆåŠŸ
 			if(result){
-				// ÖØ¶¨Ïòµ½   userinfo/list.jsp
+				// é‡å®šå‘åˆ°   userinfo/list.jsp
 				response.sendRedirect("userinfo/list.jsp");
 			}else{
-				// Èç¹ûÌí¼ÓÓÃ»§ĞÅÏ¢Ê§°Ü
+				// å¦‚æœæ·»åŠ ç”¨æˆ·ä¿¡æ¯å¤±è´¥
 				response.getWriter()
-.println("<script>alert('Ìí¼ÓÓÃ»§ĞÅÏ¢Ê§°Ü£¡');window.location.href='userinfo/list.jsp'</script>");
+.println("<script>alert('æ·»åŠ ç”¨æˆ·ä¿¡æ¯å¤±è´¥ï¼');window.location.href='userinfo/list.jsp'</script>");
 			}
 			
 		} catch (SQLException e) {

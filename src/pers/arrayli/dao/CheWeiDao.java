@@ -7,11 +7,11 @@ import pers.arrayli.domain.CheWei;
 
 /**
  * @author lzj13
- *	¶¨Òå³µÎ»Êı¾İ·ÃÎÊ²ã½Ó¿Ú
+ *	å®šä¹‰è½¦ä½æ•°æ®è®¿é—®å±‚æ¥å£
  */
 public interface CheWeiDao {
 
-	/**	°´³µÎ»ºÅ²éÕÒ»òÕß°´ÇøÓò²éÕÒ£¬»òÕß°´Á½ÕßÌõ¼şÒ»Æğ²éÕÒ
+	/**	æŒ‰è½¦ä½å·æŸ¥æ‰¾æˆ–è€…æŒ‰åŒºåŸŸæŸ¥æ‰¾ï¼Œæˆ–è€…æŒ‰ä¸¤è€…æ¡ä»¶ä¸€èµ·æŸ¥æ‰¾
 	 * @param hao
 	 * @param quyu
 	 * @return
@@ -19,62 +19,62 @@ public interface CheWeiDao {
 	 */
 	List<CheWei> QueryCheWei(String hao,String quyu) throws SQLException;
 	
-	/**	ÔÚ³µÎ»ĞÅÏ¢±íÖĞ²éÕÒ³µÅÆºÅÎª hao ÓĞÃ»ÓĞÍ£³µ
-	 * @param hao  ³µÅÆºÅ
-	 * @return	   ·µ»Ø³µÅÆºÅÎª hao µÄ³µÁ¾ÓĞÃ»ÓĞÍ£³µ
+	/**	åœ¨è½¦ä½ä¿¡æ¯è¡¨ä¸­æŸ¥æ‰¾è½¦ç‰Œå·ä¸º hao æœ‰æ²¡æœ‰åœè½¦
+	 * @param hao  è½¦ç‰Œå·
+	 * @return	   è¿”å›è½¦ç‰Œå·ä¸º hao çš„è½¦è¾†æœ‰æ²¡æœ‰åœè½¦
 	 * @throws SQLException
 	 */
 	boolean isReverse(String hao) throws SQLException;
 	
-	/** ¸üĞÂµ±Ç°³µÎ»ĞÅÏ¢
-	 * @param hao		³µÅÆºÅ
-	 * @param adate		µ±Ç°Ê±¼äºÍÈÕÆÚ
-	 * @param id		³µÎ»ĞÅÏ¢ id
-	 * @return			¸üĞÂ³É¹¦Óë·ñ
+	/** æ›´æ–°å½“å‰è½¦ä½ä¿¡æ¯
+	 * @param hao		è½¦ç‰Œå·
+	 * @param adate		å½“å‰æ—¶é—´å’Œæ—¥æœŸ
+	 * @param id		è½¦ä½ä¿¡æ¯ id
+	 * @return			æ›´æ–°æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean updateCheWei(String hao,String adate,int id) throws SQLException;
 	
 	
-	/**	Í¨¹ı³µÎ» Id À´²éÕÒ³µÎ»ĞÅÏ¢
-	 * @param id	³µÎ» id²éÑ¯µÄ³µÎ»ĞÅÏ¢
-	 * @return		·µ»Ø
+	/**	é€šè¿‡è½¦ä½ Id æ¥æŸ¥æ‰¾è½¦ä½ä¿¡æ¯
+	 * @param id	è½¦ä½ idæŸ¥è¯¢çš„è½¦ä½ä¿¡æ¯
+	 * @return		è¿”å›
 	 * @throws SQLException
 	 */
 	CheWei findCheWeiById(int id) throws SQLException;
 	
-	/**	Í¨¹ı³µÎ» idÀ´ĞŞ¸Ä³µÎ»ĞÅÏ¢
-	 * @param id		³µÎ»ĞÅÏ¢ id
-	 * @param cheWei	³µÎ»¶ÔÏó
-	 * @return			·µ»ØĞŞ¸Ä³É¹¦Óë·ñ
+	/**	é€šè¿‡è½¦ä½ idæ¥ä¿®æ”¹è½¦ä½ä¿¡æ¯
+	 * @param id		è½¦ä½ä¿¡æ¯ id
+	 * @param cheWei	è½¦ä½å¯¹è±¡
+	 * @return			è¿”å›ä¿®æ”¹æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean updateCheWeiById(int id,CheWei cheWei) throws SQLException;
 	
-	/**	Í¨¹ı³µÎ»idÀ´É¾³ı³µÎ»ĞÅÏ¢
-	 * @param id	³µÎ» id
-	 * @return		·µ»ØÉ¾³ı³µÎ»ĞÅÏ¢³É¹¦Óë·ñ
+	/**	é€šè¿‡è½¦ä½idæ¥åˆ é™¤è½¦ä½ä¿¡æ¯
+	 * @param id	è½¦ä½ id
+	 * @return		è¿”å›åˆ é™¤è½¦ä½ä¿¡æ¯æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean DelCheWeiById(int id) throws SQLException;
 	
-	/**	Ìí¼Ó³µÎ»ĞÅÏ¢
-	 * @param cheWei	³µÎ»ĞÅÏ¢¶ÔÏó	
-	 * @return			Ìí¼Ó³µÎ»ĞÅÏ¢³É¹¦Óë·ñ
+	/**	æ·»åŠ è½¦ä½ä¿¡æ¯
+	 * @param cheWei	è½¦ä½ä¿¡æ¯å¯¹è±¡	
+	 * @return			æ·»åŠ è½¦ä½ä¿¡æ¯æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean AddCheWei(CheWei cheWei) throws SQLException;
 	
-	/**¸ù¾İ³µÎ»ĞÅÏ¢ÉÏÃæµÄ³µÅÆºÅ À´²éÑ¯ÓÃ»§µÄÓà¶î
-	 * @param chepai	³µÅÆºÅ
-	 * @return			ÓÃ»§µÄÓà¶î
+	/**æ ¹æ®è½¦ä½ä¿¡æ¯ä¸Šé¢çš„è½¦ç‰Œå· æ¥æŸ¥è¯¢ç”¨æˆ·çš„ä½™é¢
+	 * @param chepai	è½¦ç‰Œå·
+	 * @return			ç”¨æˆ·çš„ä½™é¢
 	 * @throws SQLException
 	 */
 	int GetUserMoney(String chepai) throws SQLException;
 	
-	/**°´³µÅÆºÅÀ´¸úĞÂ³µÎ»ĞÅÏ¢
-	 * @param chepai	³µÅÆºÅ	
-	 * @return			·µ»ØÍ£³µ³É¹¦Óë·ñ
+	/**æŒ‰è½¦ç‰Œå·æ¥è·Ÿæ–°è½¦ä½ä¿¡æ¯
+	 * @param chepai	è½¦ç‰Œå·	
+	 * @return			è¿”å›åœè½¦æˆåŠŸä¸å¦
 	 * @throws SQLException
 	 */
 	boolean updateCheWeiByChepai(String chepai) throws SQLException;

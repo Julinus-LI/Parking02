@@ -15,35 +15,35 @@ import pers.arrayli.service.impl.CheWeiServiceImpl;
 
 /**
  * @author lzj13
- *	ĞŞ¸Ä³µÎ»ĞÅÏ¢ servlet
+ *	ä¿®æ”¹è½¦ä½ä¿¡æ¯ servlet
  */
 public class ModCheweiServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		try {
-			// 1.»ñÈ¡ÒªĞŞ¸ÄµÄ³µÎ»ĞÅÏ¢ id
+			// 1.è·å–è¦ä¿®æ”¹çš„è½¦ä½ä¿¡æ¯ id
 			int id = Integer.parseInt(request.getParameter("id"));
 			String hao = request.getParameter("hao");
 			String quyu = request.getParameter("quyu");
 			String info = request.getParameter("info");
 			
-			// 2. °Ñ³µÎ»ĞÅÏ¢·â×°³ÉÒ»¸ö CheWei ¶ÔÏó
+			// 2. æŠŠè½¦ä½ä¿¡æ¯å°è£…æˆä¸€ä¸ª CheWei å¯¹è±¡
 			CheWei cheWei = new CheWei();
 			cheWei.setHao(hao);
 			cheWei.setInfo(info);
 			cheWei.setQuyu(quyu);
 			
-			// 3.µ÷ÓÃÒµÎñ²ã´úÂë´¦ÀíÇëÇó
+			// 3.è°ƒç”¨ä¸šåŠ¡å±‚ä»£ç å¤„ç†è¯·æ±‚
 			CheWeiService service = new CheWeiServiceImpl();
 			boolean result = service.updateCheWeiById(id, cheWei);
-			// Èç¹û¸üĞÂ³É¹¦
+			// å¦‚æœæ›´æ–°æˆåŠŸ
 			if(result){
 				response.sendRedirect("chewei/list.jsp");	
 			}else{
-				// Èç¹û¸üĞÂÊ§°Ü
+				// å¦‚æœæ›´æ–°å¤±è´¥
 				response.getWriter()
-	.println("<script>alert('¸üĞÂ³µÎ»ĞÅÏ¢Ê§°Ü£¡');window.location.href='chewei/list.jsp'</script>");
+	.println("<script>alert('æ›´æ–°è½¦ä½ä¿¡æ¯å¤±è´¥ï¼');window.location.href='chewei/list.jsp'</script>");
 			}
 			
 		} catch (SQLException e) {

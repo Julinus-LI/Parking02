@@ -10,7 +10,7 @@ import pers.arrayli.service.CheWeiService;
 
 /**
  * @author lzj13
- *	ʵ�ֳ�λ��Ϣ�Ľӿ�
+ *	实现车位信息的接口
  */
 public class CheWeiServiceImpl implements CheWeiService {
 

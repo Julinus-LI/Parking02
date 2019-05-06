@@ -21,24 +21,24 @@ import pers.arrayli.service.impl.UserInfoServiceImpl;
 
 /**
  * @author lzj13
- *	Ìí¼Ó³µ·ÑĞÅÏ¢
+ *	æ·»åŠ è½¦è´¹ä¿¡æ¯
  */
 public class AddCheFeiServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			// 1.»ñÈ¡Êı¾İ
-			String chepai = request.getParameter("chepai");					// ³µÅÆºÅ
-			String jdate = request.getParameter("jdate");					// Èë³¡Ê±¼ä
-			String ldate = request.getParameter("ldate");					// Àë¿ªÊ±¼ä
-			int cost = Integer.parseInt(request.getParameter("cost"));		// Í£³µ·ÑÓÃ
-			int hours = Integer.parseInt(request.getParameter("shijian"));	// Í£³µÊ±³¤
+			// 1.è·å–æ•°æ®
+			String chepai = request.getParameter("chepai");					// è½¦ç‰Œå·
+			String jdate = request.getParameter("jdate");					// å…¥åœºæ—¶é—´
+			String ldate = request.getParameter("ldate");					// ç¦»å¼€æ—¶é—´
+			int cost = Integer.parseInt(request.getParameter("cost"));		// åœè½¦è´¹ç”¨
+			int hours = Integer.parseInt(request.getParameter("shijian"));	// åœè½¦æ—¶é•¿
 			Date date = new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			String currentTime = sdf.format(date);							// µ±Ç°Ê±¼ä
-			int biaoPrice = Integer.parseInt(request.getParameter("biao"));	// Í£³µ±ê×¼¼Û¸ñ
+			String currentTime = sdf.format(date);							// å½“å‰æ—¶é—´
+			int biaoPrice = Integer.parseInt(request.getParameter("biao"));	// åœè½¦æ ‡å‡†ä»·æ ¼
 			
-			// 2.°Ñ»ñÈ¡µ½µÄÊı¾İ·â×°³ÉÒ»¸ö CheFei ¶ÔÏó
+			// 2.æŠŠè·å–åˆ°çš„æ•°æ®å°è£…æˆä¸€ä¸ª CheFei å¯¹è±¡
 			CheFei chefei = new CheFei();
 			chefei.setHao(chepai);
 			chefei.setJdate(jdate);
@@ -48,26 +48,26 @@ public class AddCheFeiServlet extends HttpServlet {
 			chefei.setAdate(currentTime);
 			chefei.setPrice(biaoPrice);
 			
-			// 3.µ÷ÓÃÒµÎñ²ã´úÂëÀ´´¦ÀíÇëÇó
+			// 3.è°ƒç”¨ä¸šåŠ¡å±‚ä»£ç æ¥å¤„ç†è¯·æ±‚
 			CheFeiService service = new CheFeiServiceImpl();
-			// Ìí¼Ó³µ·Ñ
+			// æ·»åŠ è½¦è´¹
 			boolean res1 = service.AddCheFei(chefei);
 			
-			// ½É·ÑÍê±Ïºó£¬³µÎ»¾Í³ÉÁË¿ÕÎ»£¬¸üĞÂ³µÎ»
+			// ç¼´è´¹å®Œæ¯•åï¼Œè½¦ä½å°±æˆäº†ç©ºä½ï¼Œæ›´æ–°è½¦ä½
 			CheWeiService service2 = new CheWeiServiceImpl();
 			boolean res2 = service2.updateCheWeiByChepai(chepai);
 			
-			// ¸üĞÂÓÃ»§¿¨ÉÏÓà¶î
+			// æ›´æ–°ç”¨æˆ·å¡ä¸Šä½™é¢
 			UserInfoService service3 = new UserInfoServiceImpl();
 			boolean res3 = service3.updateUserMoney(chepai, cost);
 			
-			// Èç¹û¸üĞÂ³É¹¦
+			// å¦‚æœæ›´æ–°æˆåŠŸ
 			if(res1 && res2 && res3){
 				response.getWriter()
-.println("<script>alert('½É·Ñ³É¹¦£¡');window.location.href='chewei/jflist.jsp'</script>");
+.println("<script>alert('ç¼´è´¹æˆåŠŸï¼');window.location.href='chewei/jflist.jsp'</script>");
 			}else{
 				response.getWriter()
-.println("<script>alert('½É·ÑÊ§°Ü£¡');window.location.href='chewei/jflist.jsp'</script>");
+.println("<script>alert('ç¼´è´¹å¤±è´¥ï¼');window.location.href='chewei/jflist.jsp'</script>");
 			}
 		
 		} catch (SQLException e) {

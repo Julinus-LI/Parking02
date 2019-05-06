@@ -4,14 +4,14 @@ import java.util.List;
 
 /**
  * @author lzj13
- *	·ÖÒ³ÏÔÊ¾ bean
+ *	åˆ†é¡µæ˜¾ç¤º bean
  */
 public class PageBean<T> {
-	private int currentPage; 	 //µ±Ç°Ò³
-	private int totalPage;		// ×ÜÒ³Êı
-	private int  pageSize;		//Ã¿Ò³µÄ¼ÇÂ¼Êı
-	private int totalSize;		//×ÜµÄ¼ÇÂ¼Êı
-	private List<T> list;		//µ±Ç°Ò³µÄÍ£³µ¼ÇÂ¼
+	private int currentPage; 	 //å½“å‰é¡µ
+	private int totalPage;		// æ€»é¡µæ•°
+	private int  pageSize;		//æ¯é¡µçš„è®°å½•æ•°
+	private int totalSize;		//æ€»çš„è®°å½•æ•°
+	private List<T> list;		//å½“å‰é¡µçš„åœè½¦è®°å½•
 	public int getCurrentPage() {
 		return currentPage;
 	}

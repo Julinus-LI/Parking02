@@ -10,10 +10,10 @@ import pers.arrayli.service.UserInfoService;
 
 /**
  * @author lzj13
- *	ÓÃ»§ĞÅÏ¢ÒµÎñ²ã´úÂë
+ *	ç”¨æˆ·ä¿¡æ¯ä¸šåŠ¡å±‚ä»£ç 
  */
 public class UserInfoServiceImpl implements UserInfoService{
-	// ÑéÖ¤ÆÕÍ¨ÓÃ»§µÇÂ¼
+	// éªŒè¯æ™®é€šç”¨æˆ·ç™»å½•
 	@Override
 	public int login(String username, String password) throws SQLException {
 		UserInfoDao userInfoDao = new UserInfoDaoImpl();
