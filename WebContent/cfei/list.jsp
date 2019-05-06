@@ -108,6 +108,21 @@ function method1(tableid) {
 								</th>
 							</tr>
 				
+			<c:forEach items="${pagebean.list}" var="chefei">
+				<tr align="center">
+					<td>${chefei.id}</td>
+					<td>${chefei.hao}</td>
+					<td>${chefei.jdate}</td>
+					<td>${chefei.ldate}</td>
+					<td>${chefei.cost}</td>
+					<td>${chefei.hours}</td>
+					<td>${chefei.price}</td>
+					<%-- <td><a href="UpdateServlet?sid=${stu.sid }">更新</a> <a href="#" onclick="doDelete(${stu.sid})">删除</a></td> --%>
+				</tr>
+			</c:forEach>
+		</table>	
+				
+				
 							<%
 								System.out.println("------------cfei/list.jsp--------------");
 								// 获取查询的关键字
@@ -125,9 +140,11 @@ function method1(tableid) {
 								if(list != null){
 									for(CheFei chefei : list){
 										totalCost  = totalCost + chefei.getCost();
+									}
+								}
 							%>
 				
-							<tr>
+							<%-- <tr>
 								<td>
 									<%=chefei.getId()%>
 								</td>
@@ -155,28 +172,58 @@ function method1(tableid) {
 									<%=chefei.getPrice()%>
 								</td>
 
-
-
-							</tr>
-						<%-- 	<%
-								}
-								if (rs != null)
-									rs.close();
-								if (pstmt != null)
-									pstmt.close();
-								if (conn != null)
-									conn.close();
-							%> --%>
+							</tr> --%>
 							
-							<%
+							<%-- <%
 									}
 								}
-							%>
-						</table>
-						<div class="list-page">
-							共计<%=totalCost%>元     <a href="<%=path %>/upload/export.jsp">导出</a>
+							%> --%>
+			
 
+						<div class="list-page">
+							
+							&nbsp; 共 ${pagebean.totalSize }个记录,分 ${pagebean.pageSize }页显示,当前页是: 第${pagebean.currentPage } 页
+
+ 							
+ 							<c:if test="${pagebean.currentPage != 1} ">	
+ 								<a href="<%=path%>/PageListServlet?currentPage=1&type=admin">首页</a>
+ 								|   <a href="<%=path%>/PageListServlet?currentPage=${pagebean.currentPage-1}&type=admin">上一页</a>
+ 							</c:if>
+ 							&nbsp;&nbsp;
+ 							
+
+ 							<c:forEach begin="1" end="${pagebean.totalPage}" var="i">
+ 								
+								<c:if test="${pagebean.currentPage == i}">
+									${i }
+								</c:if>
+								<c:if test="${pagebean.currentPage != i}">
+									<a href="<%=path%>/PageListServlet?currentPage=${i}&type=admin">${i }</a>
+								</c:if>
+							</c:forEach>	
+							&nbsp;&nbsp;
+							
+						
+ 							
+ 							<c:if test="${pagebean.currentPage == pagebean.totalPage }">
+								<a href="<%=path%>/PageListServlet?currentPage=${pagebean.currentPage-1}&type=admin">上一页</a>
+							     	|  <a href="<%=path%>/PageListServlet?currentPage=1&type=admin">首页</a>
+							</c:if>
+							
+ 							<c:if test="${pagebean.currentPage != pagebean.totalPage }">
+								<a href="<%=path%>/PageListServlet?currentPage=${pagebean.currentPage+1}&type=admin">下一页</a>
+							     	|  <a href="<%=path%>/PageListServlet?currentPage=${pagebean.totalPage}&type=admin">尾页</a>
+							</c:if>
+ 							<br><br>
+ 							<c:if test="${pagebean.totalSize != 0 }">
+ 								共计 <%=totalCost%> 元     <a href="<%=path%>/upload/export.jsp">导出</a>
+ 							</c:if>
+ 
 						</div>
+						<%-- <div class="list-page">
+								共计 <%=totalCost%> 元     <a href="<%=path%>/upload/export.jsp">导出</a>
+						</div> --%>
+						
 					</div>
 				</form>
 			</div>

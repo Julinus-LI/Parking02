@@ -2,7 +2,12 @@ package pers.arrayli.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +30,26 @@ public class PageListServlet extends HttpServlet {
 		System.out.println("--------------PageListServlet Debug Start-------------------------");
 		try {
 			// 1.获取需要显示的页码
-			int currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			System.out.println("=====================================");  
+			Enumeration en = request.getParameterNames();  
+			
+			Map<String, String> map = new HashMap<String,String>();
+			while(en.hasMoreElements()){  
+			    String name = en.nextElement().toString();  
+			    String value = request.getParameter(name);
+			    System.out.println(name+" = "+value);  
+			    map.put(name,value);
+			}  
+			System.out.println("=====================================");  
+			System.out.println(map.toString());
+			
+			// 获取map里面的currentPage 和 type参数
+		
+			int currentPage = Integer.parseInt(map.get("currentPage"));
+			
+			String type = map.get("type");
+			System.out.println("从 url中获取到的参数是： "+ "\tcurrentPage = "+currentPage+"\ttype = "+type);
+			
 			
 			// 获取查询条件
 			String chepai = request.getParameter("chepai");			// 车牌号
@@ -49,8 +73,15 @@ public class PageListServlet extends HttpServlet {
 			request.setAttribute("pagebean", pageBean);
 			System.out.println("--------------PageListServlet Debug End-------------------------");
 			// 4.跳转到指定页面
+			// 跳转到管理员页面
+			if("admin".equals(type)){
+				request.getRequestDispatcher("cfei/list.jsp").forward(request, response);
+			}else{
+				// 跳转到用户页面
+				
+			}
 			//response.sendRedirect("cfei/lslist.jsp");
-			request.getRequestDispatcher("cfei/lslist.jsp").forward(request, response);
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -117,7 +117,7 @@
 						</table>
 						<div class="list-page">
 							
-							&nbsp; 共 ${pagebean.totalSize }个记录,分 ${pagebean.pageSize }页显示,当前页是:第${pagebean.currentPage }页
+							&nbsp; 共 ${pagebean.totalSize }个记录,分 ${pagebean.pageSize }页显示,当前页是: 第${pagebean.currentPage } 页
 
  							
  							<c:if test="${pagebean.currentPage != 1} ">	
@@ -128,7 +128,7 @@
  							
 
  							<c:forEach begin="1" end="${pagebean.totalPage}" var="i">
- 								&nbsp;&nbsp;
+ 								
 								<c:if test="${pagebean.currentPage == i}">
 									${i }
 								</c:if>

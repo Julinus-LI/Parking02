@@ -12,7 +12,7 @@ import pers.arrayli.domain.CheFei;
  */
 public interface CheFeiDao {
 	
-	int PAGE_SIZE  = 5;  // 每页显示的个数  常量
+	int PAGE_SIZE  = 7;  // 每页显示的个数  常量
 	
 	/**添加车费信息
 	 * @param cheFei  车费信息对象
