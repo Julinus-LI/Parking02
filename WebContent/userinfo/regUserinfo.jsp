@@ -46,6 +46,16 @@
 
 									<tr>
 										<th>
+											<i class="require-red"></i>确认密码：
+										</th>
+										<td>
+											<input class="common-text required" id="confirmPassword" name="confirmPassword"
+												size="50" value="" type="text">
+										</td>
+									</tr>
+									
+									<tr>
+										<th>
 											<i class="require-red"></i>年龄：
 										</th>
 										<td>

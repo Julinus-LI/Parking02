@@ -270,6 +270,9 @@ $(function() {
 					<input type="password" name="userpwd" id="userpwd" maxlength="16"
 						id="" tabindex="2">
 				</div>
+				
+				
+				
 				<div class="code">
 					<br/>
 					<select tabindex="3" name="type">

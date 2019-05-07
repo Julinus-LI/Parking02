@@ -57,7 +57,7 @@ public class ReserveServlet extends HttpServlet {
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 					Date date = new Date();
 					String time = sdf.format(date);
-					boolean result = cheWeiService.updateCheWei(hao,time, uid);
+					boolean result = cheWeiService.updateCheWei(hao,time, id);
 					
 					// 预定成功
 					if(result){
