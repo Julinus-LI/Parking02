@@ -54,6 +54,7 @@ public class PageListServlet extends HttpServlet {
 			// 获取查询条件
 			String chepai = request.getParameter("chepai");			// 车牌号
 			String jdate = request.getParameter("jdate");			// 入场时间
+			
 			System.out.println("chepai: "+chepai+"\tjdate: "+jdate);
 			System.out.println("currentPage: "+currentPage);
 			// 2.根据指定的页数去获取该页的数据回来
@@ -81,8 +82,6 @@ public class PageListServlet extends HttpServlet {
 				request.getRequestDispatcher("cfei/lslist.jsp").forward(request, response);
 			}
 			//response.sendRedirect("cfei/lslist.jsp");
-			
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
