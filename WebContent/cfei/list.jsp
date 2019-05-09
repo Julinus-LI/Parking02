@@ -39,7 +39,7 @@ function method1(tableid) {
 			</div>
 			<div class="search-wrap">
 				<div class="search-content">
-					<form action="<%=path%>/cfei/list.jsp" method="post">
+					<form action="<%=path%>/PageListServlet?currentPage=1" method="post">
 						<table class="search-tab">
 							<tr>
 
