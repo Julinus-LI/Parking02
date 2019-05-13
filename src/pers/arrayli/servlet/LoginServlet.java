@@ -36,8 +36,31 @@ public class LoginServlet extends HttpServlet  {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		// 获取输出流对象
+		PrintWriter out = response.getWriter();
+		// 1.判断验证码 是否正确
+        String key = (String) request.getSession().getAttribute("key");// session中验证码
+        
+        String key2 = request.getParameter("autocode");
+        System.out.println("key: "+key+"\tkey2: "+key2);
+        System.out.println(key.equals(key2));
+        if(key2.equals("") || key2 == null){
+        	response.getWriter().println("<script>alert('请输入验证码！');window.location.href='login.jsp'</script>");
+        }else{
+        	
+      
+        if (!key.equals(key2)) {
+            System.out.println("验证码输入错误!");
+        	// 验证码无效
+            //request.setAttribute("msg", "验证码错误");
+            response.getWriter().println("<script>alert('验证码输入错误!！');window.location.href='login.jsp'</script>");
+           return;
+        }/*else{
+        	System.out.println("验证码输入正确!");
+        	response.getWriter().println("<script>alert('登录成功！');window.location.href='login.jsp'</script>");
+        }*/
 		
-		// 1. 从jsp页面获取提交上来的数据
+		// 2. 从jsp页面获取提交上来的数据
 		String username = request.getParameter("username");
 		String password = request.getParameter("userpwd");
 		String type = request.getParameter("type");
@@ -64,8 +87,7 @@ public class LoginServlet extends HttpServlet  {
 		// 设置用户登录属性
 		request.getSession().setAttribute("type", type);
 	
-		// 获取输出流对象
-		PrintWriter out = response.getWriter();
+	
 	
 		// 2.根据提交上来的 type来判断是管理员登录还是普通用户登录
 		if ("用户".equals(type)) {
@@ -132,6 +154,7 @@ public class LoginServlet extends HttpServlet  {
 		
 		out.flush();
 		out.close();
+        }
 	}
 
 	/**

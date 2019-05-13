@@ -272,7 +272,6 @@ $(function() {
 				</div>
 				
 				
-				
 				<div class="code">
 					<br/>
 					<select tabindex="3" name="type">
@@ -280,13 +279,19 @@ $(function() {
 					  <option value="管理员">管理员</option>
 					</select>
 				</div>
-				<!-- div class="code">
-			<label>验证码：</label>
-			<input type="text" name="" maxlength="4" id="code" tabindex="3">
-			<div class="codeImg">
-				<img src="<%=path%>/limg/captcha.jpeg.jpg">
-			</div>
-		</div -->
+				<div class="password">
+					<label>
+						验证码：
+					</label>
+					<input style="float:right;" type="text" class="form-control" id="inputaccount" name="autocode"
+								placeholder="请输入验证码">
+					<img style="float: right;" id="loginform:vCode" src="<%=path%>/validatecode.jsp"
+								onclick="javascript:document.getElementById('loginform:vCode'). src='validatecode.jsp?'+Math.random();" />
+				</div>
+		
+		
+		
+		
 		<div  class="code"><br/></div>
 
 				<div class="login">

@@ -208,5 +208,14 @@
     <servlet-name>PageListServlet</servlet-name>
     <url-pattern>/PageListServlet</url-pattern>
   </servlet-mapping>
- 
+  <servlet>
+    <description></description>
+    <display-name>PageListServlet02</display-name>
+    <servlet-name>PageListServlet02</servlet-name>
+    <servlet-class>pers.arrayli.servlet.PageListServlet02</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PageListServlet02</servlet-name>
+    <url-pattern>/PageListServlet02</url-pattern>
+  </servlet-mapping>
 </web-app>
