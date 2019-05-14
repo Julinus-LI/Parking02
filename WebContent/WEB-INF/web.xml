@@ -218,4 +218,14 @@
     <servlet-name>PageListServlet02</servlet-name>
     <url-pattern>/PageListServlet02</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UploadExcelServlet</display-name>
+    <servlet-name>UploadExcelServlet</servlet-name>
+    <servlet-class>pers.arrayli.servlet.UploadExcelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadExcelServlet</servlet-name>
+    <url-pattern>/UploadExcelServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

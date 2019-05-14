@@ -41,6 +41,8 @@ function setMenu(obj){
                        <%--  <li><a href="<%=path %>/cfei/list.jsp">停车记录查询</a></li> --%>
                      <%--    <li><a href="<%=path %>/PageListServlet?currentPage=1&type=admin">停车记录查询</a></li> --%>
                         <li><a href="<%=path %>/PageListServlet02?currentPage=1&type=admin">停车记录查询</a></li>
+                   		<li><a href="<%=path %>/upload/ImportExcel.jsp">批量添加车位</a></li>
+                  	
                     </ul>
                 </li>
                </c:if> 

@@ -78,4 +78,12 @@ public interface CheWeiDao {
 	 * @throws SQLException
 	 */
 	boolean updateCheWeiByChepai(String chepai) throws SQLException;
+	
+	
+	/** 根据添加的车位 id 来判断是否存在车位
+	 * @param id  车位 id
+	 * @return 返回 id 是否存在;存在 false,不存在 true;
+	 * @throws SQLException
+	 */
+	boolean isExistById(int id) throws SQLException;
 }

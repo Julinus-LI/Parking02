@@ -11,6 +11,7 @@ public class CheWei {
 	private String quyu;		// 区域
 	private String chepai;		// 车牌	
 	private String adate;
+	
 	public int getId() {
 		return id;
 	}

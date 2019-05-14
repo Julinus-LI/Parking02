@@ -128,4 +128,15 @@ public class CheWeiDaoImpl implements CheWeiDao {
 		return result > 0;
 	}
 
+	@Override
+	public boolean isExistById(int id) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = "select * from t_chewei where id = ?";
+		CheWei chewei = queryRunner.query(sql,new BeanHandler<CheWei>(CheWei.class) ,id);
+		if(chewei != null){
+			return true;
+		}
+		return false;
+	}
+
 }

@@ -68,5 +68,11 @@ public class CheWeiServiceImpl implements CheWeiService {
 		return dao.updateCheWeiByChepai(chepai);
 	}
 
+	@Override
+	public boolean isExistById(int id) throws SQLException {
+		CheWeiDao dao = new CheWeiDaoImpl();
+		return dao.isExistById(id);
+	}
+
 }
  
