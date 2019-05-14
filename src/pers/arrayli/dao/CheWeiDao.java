@@ -86,4 +86,12 @@ public interface CheWeiDao {
 	 * @throws SQLException
 	 */
 	boolean isExistById(int id) throws SQLException;
+	
+	
+	/**添加车位信息
+	 * @param cheWei	车位信息对象	
+	 * @return		添加成功与否
+	 * @throws SQLException
+	 */
+	boolean AddCheWeiByExcel(CheWei cheWei)throws SQLException;
 }

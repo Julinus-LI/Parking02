@@ -139,4 +139,22 @@ public class CheWeiDaoImpl implements CheWeiDao {
 		return false;
 	}
 
+	@Override
+	public boolean AddCheWeiByExcel(CheWei cheWei) throws SQLException {
+		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
+		String sql = null;
+		int result = 0;
+		if(isExistById(cheWei.getId())){
+			sql = "insert into t_chewei values(null,?,?,?,?,?)";
+			 result = queryRunner.update(sql,cheWei.getHao(),cheWei.getInfo(),cheWei.getQuyu(),
+						cheWei.getChepai(),cheWei.getAdate());
+		}else{
+			sql = "insert into t_chewei values(?,?,?,?,?,?)";
+			 result = queryRunner.update(sql,cheWei.getId(),cheWei.getHao(),cheWei.getInfo(),cheWei.getQuyu(),
+						cheWei.getChepai(),cheWei.getAdate());
+		}
+			
+		return result > 0;
+	}
+
 }

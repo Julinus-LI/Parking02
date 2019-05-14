@@ -74,5 +74,11 @@ public class CheWeiServiceImpl implements CheWeiService {
 		return dao.isExistById(id);
 	}
 
+	@Override
+	public boolean AddCheWeiByExcel(CheWei cheWei) throws SQLException {
+		CheWeiDao dao = new CheWeiDaoImpl();
+		return dao.AddCheWeiByExcel(cheWei);
+	}
+
 }
  

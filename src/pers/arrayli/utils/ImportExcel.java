@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpUtils;
+
 import jxl.Sheet;
 import jxl.Workbook;
 import pers.arrayli.domain.CheWei;
@@ -24,10 +26,14 @@ public class ImportExcel {
      * @return  返回表格中的数据集合 list
      */
     public static List<CheWei> getAllByExcel(String file){
-        List<CheWei> list=new ArrayList<CheWei>();
+    	System.out.println("======================getAllByExcel======================");
+    	System.out.println("file: "+file);
+    	List<CheWei> list=new ArrayList<CheWei>();
+    	
+   
         try {
             Workbook rwb=Workbook.getWorkbook(new File(file));
-            Sheet rs=rwb.getSheet("Test Shee 1");//或者rwb.getSheet(0)
+            Sheet rs=rwb.getSheet(0);//或者rwb.getSheet(0)
             int clos=rs.getColumns();//得到所有的列
             int rows=rs.getRows();//得到所有的行
             
@@ -50,7 +56,7 @@ public class ImportExcel {
                     cheWei.setChepai(chepai);
                     cheWei.setAdate(adate);
                     
-                    System.out.println(chepai.toString());
+                    System.out.println(cheWei.toString());
                     list.add(cheWei);
                     
                    /* System.out.println("id:"+id+" name:"+name+" sex:"+sex+" num:"+num);
@@ -61,6 +67,7 @@ public class ImportExcel {
             // TODO Auto-generated catch block
             e.printStackTrace();
         } 
+        System.out.println("======================getAllByExcel======================");
         return list;
         
     }
@@ -71,24 +78,35 @@ public class ImportExcel {
      * @return 当前插入的数据的id是否存在 ，存在 false 不存在 true
      */
     public static boolean isExist(int id){
-       
-    	
-    	
-    	
-        return false;
+
+		try {
+			CheWeiService service = new CheWeiServiceImpl();
+			boolean result = service.isExistById(id);
+			if(result){
+				return false;
+			}else{
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();    	
+		}
+		return false;
     }
 	
 	public static void ImportExcel(String filePath){
+		
 		 // 1.得到表格中所有的数据
         List<CheWei> listExcel = getAllByExcel(filePath);
         System.out.println(listExcel.toString());
-        
+        System.out.println("=========================ImportExcel listExcel =================");
         // 2.调用业务层代码来处理请求
         CheWeiService service = new CheWeiServiceImpl();
        
         
         // 3.把 listExcel 集合中的数据一个一个插入数据库中
         for(CheWei cheWei:listExcel){
+        	System.out.println(cheWei.toString());
         	try {
 				boolean result = service.AddCheWei(cheWei);
 				if(!result){
@@ -100,31 +118,7 @@ public class ImportExcel {
 			}
         	
         }
-        
-        
-        
-        
-        
-        
-        
-       /* DBhepler db=new DBhepler();
-        
-        for (CheW stuEntity : listExcel) {
-            int id=stuEntity.getId();
-            if (!StuService.isExist(id)) {
-                //不存在就添加
-                String sql="insert into stu (name,sex,num) values(?,?,?)";
-                String[] str=new String[]{stuEntity.getName(),stuEntity.getSex(),stuEntity.getNum()+""};
-                db.AddU(sql, str);
-            }else {
-                //存在就更新
-                String sql="update stu set name=?,sex=?,num=? where id=?";
-                String[] str=new String[]{stuEntity.getName(),stuEntity.getSex(),stuEntity.getNum()+"",id+""};
-                db.AddU(sql, str);
-            }
-        }*/
-        
-        
+        System.out.println("=========================ImportExcel listExcel ================="); 
 	}
 }
  
