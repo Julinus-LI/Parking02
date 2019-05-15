@@ -39,11 +39,14 @@ public class ModCheweiServlet extends HttpServlet {
 			boolean result = service.updateCheWeiById(id, cheWei);
 			// 如果更新成功
 			if(result){
-				response.sendRedirect("chewei/list.jsp");	
+				//response.sendRedirect("chewei/list02.jsp");
+				//<%=path %>/PageListServlet02?currentPage=1&type=CheWeiManagement
+				response.sendRedirect("PageListServlet02?currentPage=1&type=CheWeiManagement");
+				//request.getRequestDispatcher("chewei/list02.jsp");
 			}else{
 				// 如果更新失败
 				response.getWriter()
-	.println("<script>alert('更新车位信息失败！');window.location.href='chewei/list.jsp'</script>");
+	.println("<script>alert('更新车位信息失败！');window.location.href='chewei/list02.jsp'</script>");
 			}
 			
 		} catch (SQLException e) {

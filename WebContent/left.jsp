@@ -34,9 +34,11 @@ function setMenu(obj){
                 <li>
                     <a href="#" onclick="return setMenu(2)"><i class="icon-font">&#xe003;</i>车位管理</a>
                     <ul class="sub-menu" id="menu2">
-                        <li><a href="<%=path %>/chewei/list.jsp">车位管理</a></li>
+                       <%--  <li><a href="<%=path %>/chewei/list.jsp">车位管理</a></li> --%>
+                        <li><a href="<%=path %>/PageListServlet02?currentPage=1&type=CheWeiManagement">车位管理</a></li>
                         <li><a href="<%=path %>/fei/modFei.jsp">车费标准</a></li>
-                        <li><a href="<%=path %>/chewei/cwlist.jsp">车位状态</a></li>
+                        <%-- <li><a href="<%=path %>/chewei/cwlist.jsp">车位状态</a></li> --%>
+                        <li><a href="<%=path %>//PageListServlet02?currentPage=1&type=status">车位状态</a></li>
                         <li><a href="<%=path %>/chewei/jflist.jsp">停车缴费</a></li>
                        <%--  <li><a href="<%=path %>/cfei/list.jsp">停车记录查询</a></li> --%>
                      <%--    <li><a href="<%=path %>/PageListServlet?currentPage=1&type=admin">停车记录查询</a></li> --%>

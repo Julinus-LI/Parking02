@@ -44,12 +44,14 @@ public class AddCheweiServlet extends HttpServlet {
 			boolean result = service.AddCheWei(cheWei);
 			// 如果添加车位信息成功
 			if(result){
-				response.sendRedirect("chewei/list.jsp");	
+				//response.sendRedirect("chewei/list02.jsp");	
+				response.sendRedirect("PageListServlet02?currentPage=1&type=CheWeiManagement");	
+				//request.getRequestDispatcher("PageListServlet02?currentPage=1&type=CheWeiManagement").forward(request,response);	
 			}else{
 				// 如果添加车位信息失败
 				// 如果更新失败
 				response.getWriter()
-.println("<script>alert('添加车位信息失败！');window.location.href='chewei/list.jsp'</script>");
+.println("<script>alert('添加车位信息失败！');window.location.href='chewei/list02.jsp'</script>");
 			}
 			
 			
