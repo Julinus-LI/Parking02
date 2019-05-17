@@ -63,11 +63,11 @@ public class AddCheFeiServlet extends HttpServlet {
 			
 			// 如果更新成功
 			if(res1 && res2 && res3){
-				response.getWriter()
-.println("<script>alert('缴费成功！');window.location.href='chewei/jflist.jsp'</script>");
+				response.sendRedirect("PageListServlet02?currentPage=1&type=payment");
+				//response.getWriter().println("<script>alert('缴费成功！');window.location.href='chewei/jflist02.jsp'</script>");
 			}else{
 				response.getWriter()
-.println("<script>alert('缴费失败！');window.location.href='chewei/jflist.jsp'</script>");
+.println("<script>alert('缴费失败！');window.location.href='chewei/jflist02.jsp'</script>");
 			}
 		
 		} catch (SQLException e) {

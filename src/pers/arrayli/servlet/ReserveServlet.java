@@ -49,8 +49,14 @@ public class ReserveServlet extends HttpServlet {
 				// 如果已经停车的话
 				if(cheWeiService.isReverse(hao)){
 					System.out.println("================== ReserveServlet DEBUG End =============");
-					out
-.println("<script>alert('你的车已经停在车位上！');window.location.href='chewei/tlist.jsp'</script>");
+/*					out
+.println("<script>alert('你的车已经停在车位上！');window.location.href='chewei/tlist02.jsp'</script>");*/
+					/*out
+					.println("<script>alert('你的车已经停在车位上！');window.location.href='chewei/tlist02.jsp'</script>");*/
+					//request.getRequestDispatcher("PageListServlet02?currentPage=1&type=UserCheWeiInfo").forward(request, response);
+					
+					response.sendRedirect("PageListServlet02?currentPage=1&type=UserCheWeiInfo");
+					
 				}else{
 					// 如果没有停车的话
 					// 获取当前时间
@@ -61,18 +67,19 @@ public class ReserveServlet extends HttpServlet {
 					
 					// 预定成功
 					if(result){
-						out
-.println("<script>alert('预订成功！');window.location.href='chewei/tlist.jsp'</script>");
+				/*		out
+.println("<script>alert('预订成功！');window.location.href='chewei/tlist02.jsp'</script>");*/
+						response.sendRedirect("PageListServlet02?currentPage=1&type=UserCheWeiInfo");
 					}else{
 						// 预定失败
 						out
-.println("<script>alert('预订失败！');window.location.href='chewei/tlist.jsp'</script>");
+.println("<script>alert('预订失败！');window.location.href='chewei/tlist02.jsp'</script>");
 					}
 				}
 			}else{ 
 				// 车牌号为空的话，请先添加车辆信息
 				out
-.println("<script>alert('请添加车辆信息！');window.location.href='chewei/tlist.jsp'</script>");
+.println("<script>alert('请添加车辆信息！');window.location.href='chewei/tlist02.jsp'</script>");
 			}
 			
 			

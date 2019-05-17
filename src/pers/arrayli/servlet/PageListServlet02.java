@@ -118,6 +118,49 @@ public class PageListServlet02 extends HttpServlet {
 				pageBean.setPageSize(res.getCheWeiPageSize());
 				pageBean.setTotalPage(res.getCheWeiTotalPage());
 				pageBean.setTotalSize(res.getCheWeiTotalSize());
+			}else if("payment".equals(type)){
+				// 1.获取查询条件
+				// 获取车位号查询条件
+				String hao = request.getParameter("queryName");
+				// 获取区域位置关键字查询条件
+				String quyu = request.getParameter("queryName1");
+				 
+				// 2.获取查询结果集
+				ResultUtils res = new ResultUtils();
+				if(currentPage == 1){
+					res.getCheWei(hao, quyu);
+				}
+				List<CheWei> tempList = res.PageListQueryCheWei(currentPage, hao, quyu);
+				System.out.println("============================2==================");
+				pageBean = new PageBean();
+				pageBean.setCurrentPage(currentPage);
+				pageBean.setList(tempList);
+				pageBean.setPageSize(res.getCheWeiPageSize());
+				pageBean.setTotalPage(res.getCheWeiTotalPage());
+				pageBean.setTotalSize(res.getCheWeiTotalSize());
+			}else if("UserCheWeiInfo".equals(type)){
+				// 获取jsp页面上的查询关键字
+				// 按车位号查询关键字
+				String hao = request.getParameter("queryName");  
+				// 按区域查询关键字
+				String quyu = request.getParameter("queryName1");
+				System.out.println("hao: "+hao);
+				System.out.println("quyu: "+quyu);
+				
+				// 2. 获取查询结果集
+				ResultUtils res = new ResultUtils();
+				if(currentPage == 1){
+					res.getCheWei(hao, quyu);
+				}
+				List<CheWei> tempList = res.PageListQueryCheWei(currentPage, hao, quyu);
+				System.out.println("============================2==================");
+				pageBean = new PageBean();
+				pageBean.setCurrentPage(currentPage);
+				pageBean.setList(tempList);
+				pageBean.setPageSize(res.getCheWeiPageSize());
+				pageBean.setTotalPage(res.getCheWeiTotalPage());
+				pageBean.setTotalSize(res.getCheWeiTotalSize());
+				
 			}
 				
 			
@@ -152,6 +195,11 @@ public class PageListServlet02 extends HttpServlet {
 			}else if("CheWeiManagement".equals(type)){
 				// 跳转到车位状态页面
 				request.getRequestDispatcher("chewei/list02.jsp").forward(request, response);
+			}else if("payment".equals(type)){
+				// 跳转到车位状态页面
+				request.getRequestDispatcher("chewei/jflist02.jsp").forward(request, response);
+			}else if("UserCheWeiInfo".equals(type)){
+				request.getRequestDispatcher("chewei/tlist02.jsp").forward(request, response);
 			}
 			
 			//response.sendRedirect("cfei/lslist.jsp");

@@ -108,10 +108,18 @@ public class CheWeiDaoImpl implements CheWeiDao {
 		QueryRunner queryRunner = new QueryRunner(JDBCUtils.getDataSource());
 		String sql = "select * from t_userinfo a,t_che b,t_chewei c"
 				+ " where a.id = b.uid and b.hao = c.chepai and c.chepai = ?";
+		System.out.println("chepai: "+chepai);
+		System.out.println("============================1=======================");
+		//String sql = "select * t_userinfo where id = (select uid from t_che where chepai = '沪BHJ521')";
+		//sql = "select * t_userinfo where id = '?'";
+		System.out.println("============================2=======================");
+		System.out.println("sql: "+sql);
 		UserInfo user = queryRunner.query(sql,new BeanHandler<UserInfo>(UserInfo.class) ,chepai);
+		//UserInfo user = queryRunner.query(sql, new BeanHandler<UserInfo>(UserInfo.class),chepai);
+		
 		System.out.println("GetUserMoney user: "+user.toString());
 		int balance = 0;    // 余额
-	
+		System.out.println("============================3=======================");
 		if(user != null){
 			balance = user.getMoney();
 		}

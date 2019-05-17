@@ -38,8 +38,9 @@ function setMenu(obj){
                         <li><a href="<%=path %>/PageListServlet02?currentPage=1&type=CheWeiManagement">车位管理</a></li>
                         <li><a href="<%=path %>/fei/modFei.jsp">车费标准</a></li>
                         <%-- <li><a href="<%=path %>/chewei/cwlist.jsp">车位状态</a></li> --%>
-                        <li><a href="<%=path %>//PageListServlet02?currentPage=1&type=status">车位状态</a></li>
-                        <li><a href="<%=path %>/chewei/jflist.jsp">停车缴费</a></li>
+                        <li><a href="<%=path %>/PageListServlet02?currentPage=1&type=status">车位状态</a></li>
+                       <%--  <li><a href="<%=path %>/chewei/jflist.jsp">停车缴费</a></li> --%>
+                        <li><a href="<%=path %>/PageListServlet02?currentPage=1&type=payment"">停车缴费</a></li>
                        <%--  <li><a href="<%=path %>/cfei/list.jsp">停车记录查询</a></li> --%>
                      <%--    <li><a href="<%=path %>/PageListServlet?currentPage=1&type=admin">停车记录查询</a></li> --%>
                         <li><a href="<%=path %>/PageListServlet02?currentPage=1&type=admin">停车记录查询</a></li>
@@ -67,7 +68,8 @@ function setMenu(obj){
                          <li><a href="<%=path %>/userinfo/getCard.jsp">卡余额</a></li>
                         <li><a href="<%=path %>/fei/viewFei.jsp">收费标准</a></li>
                         
-                       <li><a href="<%=path %>/chewei/tlist.jsp">车位信息</a></li>
+                    <%--    <li><a href="<%=path %>/chewei/tlist.jsp">车位信息</a></li> --%>
+                       <li><a href="<%=path %>/PageListServlet02?currentPage=1&type=UserCheWeiInfo">车位信息</a></li>
                      <%--    <li><a href="<%=path %>/cfei/lslist.jsp">停车记录查看看</a></li> --%>
                      <%--    <li><a href="<%=path %>/PageListServlet?currentPage=1&type=user">停车记录查看</a></li> --%>
                         <li><a href="<%=path %>/PageListServlet02?currentPage=1&type=user">停车记录查看</a></li>

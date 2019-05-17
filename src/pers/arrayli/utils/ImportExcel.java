@@ -53,8 +53,10 @@ public class ImportExcel {
                     cheWei.setHao(hao);
                     cheWei.setInfo(info);
                     cheWei.setQuyu(quyu);
-                    cheWei.setChepai(chepai);
-                    cheWei.setAdate(adate);
+                 /*   cheWei.setChepai("NULL");
+                    cheWei.setAdate("NULL");*/
+                    cheWei.setChepai(null);
+                    cheWei.setAdate(null);
                     
                     System.out.println(cheWei.toString());
                     list.add(cheWei);

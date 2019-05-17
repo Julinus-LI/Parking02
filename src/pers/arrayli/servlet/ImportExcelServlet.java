@@ -117,9 +117,8 @@ public class ImportExcelServlet extends HttpServlet {
         System.out.println("==============================ImportExcelServlet===============");
         
         //request.setAttribute("message",message);
-        request.getRequestDispatcher("chewei/list.jsp").forward(request, response);
-		
-		
+        //request.getRequestDispatcher("chewei/list02.jsp").forward(request, response);
+        response.sendRedirect("PageListServlet02?currentPage=1&type=status");
 		
 	}
 
